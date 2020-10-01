@@ -2,15 +2,7 @@
 import Foundation
 
 struct Prayer: Identifiable {
-    
-    enum PrayerName: String {
-        case Fajr
-        case Zuhr
-        case Asr
-        case Maghrib
-        case Isha
-    }
-    
+
     let id = UUID()
     let name: PrayerName
     let time: Date

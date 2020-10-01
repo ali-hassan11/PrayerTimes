@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct PrayerTimesHomeView: View {
+    
+    let viewModel: PrayerTimesHomeViewModel
+    
     var body: some View {
         
         VStack() {
@@ -26,7 +29,7 @@ struct PrayerTimesHomeView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        PrayerTimesHomeView()
+        PrayerTimesHomeView(viewModel: PrayerTimesHomeViewModel())
     }
 }
 
@@ -40,7 +43,7 @@ let gregorianDate = "01 October 2020"
 let nextPrayer: Prayer = Prayer(name: .Asr, time: Date(), formattedTime: "20:00")
 
 let prayers: [Prayer] = [Prayer(name: .Fajr, time: Date(), formattedTime: "00:00"),
-                         Prayer(name: .Zuhr, time: Date(), formattedTime: "10:00"),
+                         Prayer(name: .Dhuhr, time: Date(), formattedTime: "10:00"),
                          Prayer(name: .Asr, time: Date(), formattedTime: "20:00", isNextPrayer: true),
                          Prayer(name: .Maghrib, time: Date(), formattedTime: "30:00"),
                          Prayer(name: .Isha, time: Date(), formattedTime: "40:00")]

@@ -10,7 +10,22 @@ import XCTest
 
 class URLBuilderTests: XCTestCase {
         
-    func testCreatesCorrectURL() throws {
+    func testURLBuilderReturnsNotNil() {
+        
+        //Given
+        let prayerTimeConfiguration = PrayerTimeConfiguration(timestamp: "00000000",
+                                                       coordinates: .init(latitude: "111", longitude: "222"),
+                                                       method: .islamicSocietyOfNorthAmerica,
+                                                       school: .hanafi)
+        
+        //When
+        let url = URLBuilder.prayerTimesForDateURL(configuration: prayerTimeConfiguration)
+        
+        //Then
+        XCTAssertNotNil(url)
+    }
+    
+    func testURLBuilderCreatesCorrectUrl() throws {
         
         //Given
         let prayerTimeConfiguration1 = PrayerTimeConfiguration(timestamp: "00000000",
@@ -61,5 +76,4 @@ class URLBuilderTests: XCTestCase {
         XCTAssertEqual(urlString4, expectedUrl4)
         XCTAssertEqual(urlString5, expectedUrl5)
     }
-
 }

@@ -12,6 +12,7 @@ class URLBuilder {
     private static let baseURLTemplate = "https://api.aladhan.com/v1/timings/{timestamp}?latitude={latitude}&longitude={longitude}&method={method}&school={school}"
     
     static func prayerTimesForDateURL(configuration: PrayerTimeConfiguration) -> URL? {
+        
         let urlString = baseURLTemplate
             .replacingOccurrences(of: "{timestamp}", with: configuration.timestamp)
             .replacingOccurrences(of: "{latitude}", with: configuration.coordinates.latitude)
