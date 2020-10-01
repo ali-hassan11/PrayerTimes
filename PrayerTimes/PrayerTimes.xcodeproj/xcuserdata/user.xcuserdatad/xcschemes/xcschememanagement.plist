@@ -4,15 +4,35 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>PrayerTimeWidgetExtension.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
 		<key>PrayerTimes.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>CE28BA242526146300AAD5BD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CE28BA352526146500AAD5BD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CE28BA402526146500AAD5BD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CE6EAEE625263BCE00E688D3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
