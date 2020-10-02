@@ -28,7 +28,6 @@ class PrayerTimesHomeViewModel: ObservableObject {
         fetchData(settings: settings)
     }
     
-    //Pass in configuration
     func fetchData(settings: SettingsConfiguration) {
         let prayerTimesConfiguration = PrayerTimesConfiguration(timestamp: Date().timestampString,
                                                                coordinates: .init(latitude: "53.5228", longitude: "1.1285"),
@@ -51,13 +50,12 @@ class PrayerTimesHomeViewModel: ObservableObject {
             }
         }
     }
-    
 }
  
 extension PrayerTimesHomeViewModel {
     
-    
     private func handlePrayerTimes(prayerTimesResponse: PrayerTimesResponse) {
+        
         let prayerTimesData = prayerTimesResponse.prayerTimesData
         
         var prayerTimes = [Prayer]()
@@ -68,25 +66,13 @@ extension PrayerTimesHomeViewModel {
         let prayerNames: [PrayerName] = [.fajr, .sunrise, .dhuhr, .asr, .maghrib, .isha]
             
         prayerNames.forEach { prayerName in
-            guard let prayerTime = prayerTimesData.timings[prayerName.capitalized()] else { return }
-            
-            let formatter = DateFormatter()
-            let dateFormat = "dd-MM-yyyy"
-            formatter.dateFormat = "\(dateFormat) HH:mm"
-            formatter.timeZone = .current
-            
+            guard let prayerTimeString = prayerTimesData.timings[prayerName.capitalized()] else { return }
             let prayerDateString = prayerTimesData.dateInfo.gergorianDate.date
             
-            let prayerTimesDate: Date
-            if let date = formatter.date(from: "\(prayerDateString) \(prayerTime)") {
-                prayerTimesDate = Date(timeIntervalSince1970: TimeInterval(date.timeIntervalSince1970))
-            } else {
-                prayerTimesDate = currentDate
-            }
-            
+            let prayerTimesDate = self.prayerTimesDate(dateString: prayerDateString, timeString: prayerTimeString, currentDate: currentDate)
             let isNextPrayer = self.isNextPrayer(prayerTimesDate: prayerTimesDate, currentDate: currentDate)
-            let prayer = Prayer(name: prayerName.capitalized(), time: Date(), formattedTime: prayerTime, isNextPrayer: isNextPrayer)
             
+            let prayer = Prayer(name: prayerName.capitalized(), timestamp: Date(), formattedTime: prayerTimeString, isNextPrayer: isNextPrayer)
             prayerTimes.append(prayer)
             
             DispatchQueue.main.async {
@@ -96,6 +82,7 @@ extension PrayerTimesHomeViewModel {
     }
     
     private func handleDate(prayerTimesResponse: PrayerTimesResponse, dateType: DateMode) {
+        
         let hijri = prayerTimesResponse.prayerTimesData.dateInfo.hijriDate.readable()
         let gregorian = prayerTimesResponse.prayerTimesData.dateInfo.gergorianDate.readable()
         let date = dateType == .hijri ? hijri : gregorian
@@ -105,17 +92,35 @@ extension PrayerTimesHomeViewModel {
         }
     }
     
+    private func prayerTimesDate(dateString: String, timeString: String, currentDate: Date) -> Date {
+        
+        if let date = formatter.date(from: "\(dateString) \(timeString)") {
+            return Date(timeIntervalSince1970: TimeInterval(date.timeIntervalSince1970))
+        } else {
+            return currentDate
+        }
+    }
+    
     private func isNextPrayer(prayerTimesDate: Date, currentDate: Date) -> Bool {
+        
         if nextPrayerFound {
             return false
         }
-        
+        formatter.dateStyle = .full
         if currentDate < prayerTimesDate {
             nextPrayerFound = true
             return true
         } else {
             return false
         }
+    }
+    
+    private var formatter: DateFormatter {
+        let formatter = DateFormatter()
+        let dateFormat = "dd-MM-yyyy"
+        formatter.dateFormat = "\(dateFormat) HH:mm"
+        formatter.timeZone = .current
+        return formatter
     }
 }
 

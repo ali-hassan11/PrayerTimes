@@ -29,7 +29,7 @@ struct NextPrayerView: View {
 
 struct NextPrayerView_Previews: PreviewProvider {
     
-    @State static var prayer: Prayer? = Prayer(name: "Fajr", time: Date(), formattedTime: "Time", isNextPrayer: true)
+    @State static var prayer: Prayer? = Prayer(name: "Fajr", timestamp: Date(), formattedTime: "Time", isNextPrayer: true)
     
     static var previews: some View {
         NextPrayerView(prayer: $prayer)

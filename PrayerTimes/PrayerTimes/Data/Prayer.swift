@@ -9,9 +9,9 @@ struct Prayer: Identifiable {
     let formattedTime: String
     let isNextPrayer: Bool
     
-    init(name: String, time: Date, formattedTime: String, isNextPrayer: Bool = false) {
+    init(name: String, timestamp: Date, formattedTime: String, isNextPrayer: Bool = false) {
         self.name = name
-        self.timestamp = time
+        self.timestamp = timestamp
         self.formattedTime = formattedTime
         self .isNextPrayer = isNextPrayer
     }
