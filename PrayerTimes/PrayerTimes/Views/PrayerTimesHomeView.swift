@@ -18,7 +18,7 @@ struct PrayerTimesHomeView: View {
             Spacer()
             DateView(formattedDate: $viewModel.formattedDate)
             NextPrayerView(prayer: $viewModel.nextPrayer)
-            PrayerTimesList(prayers: $viewModel.prayers)
+            PrayerTimesListView(prayers: $viewModel.prayers)
             Spacer()
         }
         .animation(.spring(response: 0.4, dampingFraction: 0.68, blendDuration: 0.5))

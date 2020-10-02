@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PrayerTimesList: View {
+struct PrayerTimesListView: View {
     
     @Binding var prayers: [Prayer]
     
@@ -21,7 +21,8 @@ struct PrayerTimesList: View {
                     Text("\(prayer.formattedTime)")
                 }
                 .padding(.all, 20)
-                .background(prayer.isNextPrayer ? Color.blue.opacity(0.5) : Color.clear)
+//                .background(prayer.isNextPrayer ? Color.blue.opacity(0.5) : Color.clear)
+                Divider()
             }
         }
     }
