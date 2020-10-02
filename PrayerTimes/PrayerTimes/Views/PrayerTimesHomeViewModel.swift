@@ -62,7 +62,7 @@ extension PrayerTimesHomeViewModel {
         
         var prayerTimes = [Prayer]()
                 
-        let currentTimestamp = TimeInterval(prayerTimesData.dateInfo.timestamp) ?? Date().timeIntervalSince1970 //TRY BOTH AFTER ASR
+        let currentTimestamp = TimeInterval(prayerTimesData.dateInfo.timestamp) ?? Date().timeIntervalSince1970
         let currentDate = Date(timeIntervalSince1970: currentTimestamp)
         
         let prayerNames: [PrayerName] = [.fajr, .sunrise, .dhuhr, .asr, .maghrib, .isha]
@@ -84,17 +84,7 @@ extension PrayerTimesHomeViewModel {
                 prayerTimesDate = currentDate
             }
             
-            var isNextPrayer = false
-            
-            if !nextPrayerFound {
-                if currentDate < prayerTimesDate {
-                    isNextPrayer = true
-                    nextPrayerFound = true
-                } else {
-                    isNextPrayer = false
-                }
-            }
-            
+            let isNextPrayer = self.isNextPrayer(prayerTimesDate: prayerTimesDate, currentDate: currentDate)
             let prayer = Prayer(name: prayerName.capitalized(), time: Date(), formattedTime: prayerTime, isNextPrayer: isNextPrayer)
             
             prayerTimes.append(prayer)
@@ -112,6 +102,19 @@ extension PrayerTimesHomeViewModel {
         
         DispatchQueue.main.async {
             self.formattedDate = date
+        }
+    }
+    
+    private func isNextPrayer(prayerTimesDate: Date, currentDate: Date) -> Bool {
+        if nextPrayerFound {
+            return false
+        }
+        
+        if currentDate < prayerTimesDate {
+            nextPrayerFound = true
+            return true
+        } else {
+            return false
         }
     }
 }
