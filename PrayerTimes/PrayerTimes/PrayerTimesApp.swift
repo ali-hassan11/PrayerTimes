@@ -11,7 +11,7 @@ import SwiftUI
 struct PrayerTimesApp: App {
     
     init() {
-        self.settingsConfiguration = SettingsConfiguration(dateType: .gregorian,
+        self.settingsConfiguration = SettingsConfiguration(dateType: .hijri,
                                                            method: .muslimWorldLeague,
                                                            school: .shafi,
                                                            timeZone: .current)//Get from UserDefaults/CoreData

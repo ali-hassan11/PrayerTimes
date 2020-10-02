@@ -63,7 +63,6 @@ class PrayerTimesHomeViewModel: ObservableObject {
     
     }
 }
-
  
 extension PrayerTimesHomeViewModel {
     

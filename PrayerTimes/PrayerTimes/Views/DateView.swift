@@ -16,7 +16,6 @@ struct DateView: View {
             Text(formattedDate)
             Spacer()
         }
-        .padding(.horizontal, 20)
     }
 }
 
