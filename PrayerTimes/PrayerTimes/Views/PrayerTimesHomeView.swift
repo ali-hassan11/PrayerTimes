@@ -10,7 +10,7 @@ import SwiftUI
 struct PrayerTimesHomeView: View {
     
     @ObservedObject var viewModel: PrayerTimesHomeViewModel
-    
+        
     var body: some View {
                 
         VStack() {

@@ -1,23 +1,11 @@
 //
-//  PrayerTimeConfiguration.swift
+//  Method.swift
 //  PrayerTimes
 //
-//  Created by user on 01/10/2020.
+//  Created by user on 02/10/2020.
 //
 
 import Foundation
-
-struct PrayerTimeConfiguration {
-    let timestamp: String
-    let coordinates: Coordinates
-    let method: Method
-    let school: School
-}
-
-struct Coordinates {
-    let latitude: String
-    let longitude: String
-}
 
 enum Method: Int {
     case shiaIthnaAnsari
@@ -35,15 +23,6 @@ enum Method: Int {
     case unionOrganizationIslamicDeFrance
     case siyanetIsleriBaskanligiTurkey
     case spiritualAdministrationOfMuslimsOfRussia
-    
-    func toString() -> String {
-        return String(rawValue)
-    }
-}
-
-enum School: Int {
-    case shafi
-    case hanafi
     
     func toString() -> String {
         return String(rawValue)

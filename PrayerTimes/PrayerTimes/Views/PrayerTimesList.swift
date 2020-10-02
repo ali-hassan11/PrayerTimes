@@ -26,9 +26,3 @@ struct PrayerTimesList: View {
         }
     }
 }
-
-//struct PrayerTimesList_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PrayerTimesList(prayers: )
-//    }
-//}

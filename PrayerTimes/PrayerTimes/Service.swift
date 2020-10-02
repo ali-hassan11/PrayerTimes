@@ -7,12 +7,12 @@
 
 import Foundation
 
+struct CustomError: Error {
+    let title: String
+    let message: String
+}
+
 class Service {
-    
-    struct CustomError: Error {
-        let title: String
-        let message: String
-    }
     
     static let shared = Service()
     private init() {}

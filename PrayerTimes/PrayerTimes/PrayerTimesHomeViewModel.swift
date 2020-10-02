@@ -12,11 +12,11 @@ class PrayerTimesHomeViewModel: ObservableObject {
     @Published var prayers: [Prayer] = []
     
     init() {
-       fetchData()
+        fetchData()
     }
     
     func fetchData() {
-        let prayerTimesConfiguration = PrayerTimeConfiguration(timestamp: "00000000",
+        let prayerTimesConfiguration = PrayerTimesConfiguration(timestamp: "00000000",
                                                                coordinates: .init(latitude: "53.5228", longitude: "1.1285"),
                                                                method: .muslimWorldLeague,
                                                                school: .shafi)
@@ -28,9 +28,12 @@ class PrayerTimesHomeViewModel: ObservableObject {
             switch result {
             case .success(let prayerTimesResponse):
                 
+                let timings = prayerTimesResponse.prayerTimesData.timings
+                
                 var prayerTimes = [Prayer]()
                 
-                for(prayerName,prayerTime) in prayerTimesResponse.prayerTimesData.timings {
+                ["Fajr", "Sunrise", "Dhuhr", "Asr", "Maghrib", "Isha"].forEach { prayerName in
+                    guard let prayerTime = timings[prayerName] else { return }
                     let prayer = Prayer(name: prayerName, time: Date(), formattedTime: prayerTime, isNextPrayer: false)
                     prayerTimes.append(prayer)
                 }
