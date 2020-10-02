@@ -38,6 +38,7 @@
 		CED3D2752526E16600561999 /* DateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D2742526E16600561999 /* DateTests.swift */; };
 		CED3D2832526E7A300561999 /* DateTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D2822526E7A300561999 /* DateTypes.swift */; };
 		CED3D2932526E7E000561999 /* SettingsConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D2922526E7E000561999 /* SettingsConfigurationTests.swift */; };
+		CED3D29B25277E8000561999 /* PrayerTimesHomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D29A25277E7F00561999 /* PrayerTimesHomeViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +111,7 @@
 		CED3D2742526E16600561999 /* DateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTests.swift; sourceTree = "<group>"; };
 		CED3D2822526E7A300561999 /* DateTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTypes.swift; sourceTree = "<group>"; };
 		CED3D2922526E7E000561999 /* SettingsConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsConfigurationTests.swift; sourceTree = "<group>"; };
+		CED3D29A25277E7F00561999 /* PrayerTimesHomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimesHomeViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +196,7 @@
 				CED3D2742526E16600561999 /* DateTests.swift */,
 				CED3D2922526E7E000561999 /* SettingsConfigurationTests.swift */,
 				CE28BA3C2526146500AAD5BD /* Info.plist */,
+				CED3D29A25277E7F00561999 /* PrayerTimesHomeViewModelTests.swift */,
 			);
 			path = PrayerTimesTests;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 			files = (
 				CEA625442526C00700592075 /* Month+DecodableTests.swift in Sources */,
 				CEA625132526B6BF00592075 /* PrayerTimesData+DecodableTests.swift in Sources */,
+				CED3D29B25277E8000561999 /* PrayerTimesHomeViewModelTests.swift in Sources */,
 				CEA625182526B6DC00592075 /* DateData+DecodableTests.swift in Sources */,
 				CEA624B525268AC300592075 /* Response+DecodableTests.swift in Sources */,
 				CED3D2752526E16600561999 /* DateTests.swift in Sources */,

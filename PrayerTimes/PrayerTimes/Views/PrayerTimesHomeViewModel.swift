@@ -19,12 +19,11 @@ class PrayerTimesHomeViewModel: ObservableObject {
             }
         }
     }
-    
     @Published var nextPrayer: Prayer?
     @Published var formattedDate: String = ""
     
-//    @EnvironmentObject var settingsConfiguration: SettingsConfiguration
-
+    private var nextPrayerFound = false
+    
     init(settings: SettingsConfiguration) {
         fetchData(settings: settings)
     }
@@ -45,7 +44,7 @@ class PrayerTimesHomeViewModel: ObservableObject {
             case .success(let prayerTimesResponse):
                 
                 self?.handlePrayerTimes(prayerTimesResponse: prayerTimesResponse)
-                self?.handleDate(prayerTimesResponse: prayerTimesResponse, dateType: settings.dateType)
+                self?.handleDate(prayerTimesResponse: prayerTimesResponse, dateType: settings.dateMode)
                                 
             case .failure(let error):
                 print(error)
@@ -53,7 +52,10 @@ class PrayerTimesHomeViewModel: ObservableObject {
         }
     }
     
-    private var nextPrayerFound = false
+}
+ 
+extension PrayerTimesHomeViewModel {
+    
     
     private func handlePrayerTimes(prayerTimesResponse: PrayerTimesResponse) {
         let prayerTimesData = prayerTimesResponse.prayerTimesData
