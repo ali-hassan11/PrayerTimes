@@ -39,6 +39,7 @@
 		CED3D2832526E7A300561999 /* DateTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D2822526E7A300561999 /* DateTypes.swift */; };
 		CED3D2932526E7E000561999 /* SettingsConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D2922526E7E000561999 /* SettingsConfigurationTests.swift */; };
 		CED3D29B25277E8000561999 /* PrayerTimesHomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D29A25277E7F00561999 /* PrayerTimesHomeViewModelTests.swift */; };
+		CED3D2A02527840200561999 /* PrayerName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D29F2527840200561999 /* PrayerName.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,7 @@
 		CED3D2822526E7A300561999 /* DateTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTypes.swift; sourceTree = "<group>"; };
 		CED3D2922526E7E000561999 /* SettingsConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsConfigurationTests.swift; sourceTree = "<group>"; };
 		CED3D29A25277E7F00561999 /* PrayerTimesHomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimesHomeViewModelTests.swift; sourceTree = "<group>"; };
+		CED3D29F2527840200561999 /* PrayerName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerName.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +238,7 @@
 			children = (
 				CE6EAEDA252625CF00E688D3 /* Prayer.swift */,
 				CEA624E52526B39A00592075 /* Decodable */,
+				CED3D29F2527840200561999 /* PrayerName.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				CE6EAEDD25262C2300E688D3 /* PrayerTimesList.swift in Sources */,
 				CEA624F62526B45C00592075 /* Method.swift in Sources */,
 				CED3D2832526E7A300561999 /* DateTypes.swift in Sources */,
+				CED3D2A02527840200561999 /* PrayerName.swift in Sources */,
 				CEA624FB2526B46C00592075 /* School.swift in Sources */,
 				CE6EAEE02526300200E688D3 /* NextPrayerView.swift in Sources */,
 			);

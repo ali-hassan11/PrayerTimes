@@ -65,8 +65,10 @@ extension PrayerTimesHomeViewModel {
         let currentTimestamp = TimeInterval(prayerTimesData.dateInfo.timestamp) ?? Date().timeIntervalSince1970 //TRY BOTH AFTER ASR
         let currentDate = Date(timeIntervalSince1970: currentTimestamp)
         
-        ["Fajr", "Sunrise", "Dhuhr", "Asr", "Maghrib", "Isha"].forEach { prayerName in
-            guard let prayerTime = prayerTimesData.timings[prayerName] else { return }
+        let prayerNames: [PrayerName] = [.fajr, .sunrise, .dhuhr, .asr, .maghrib, .isha]
+            
+        prayerNames.forEach { prayerName in
+            guard let prayerTime = prayerTimesData.timings[prayerName.capitalized()] else { return }
             
             let formatter = DateFormatter()
             let dateFormat = "dd-MM-yyyy"
@@ -93,7 +95,7 @@ extension PrayerTimesHomeViewModel {
                 }
             }
             
-            let prayer = Prayer(name: prayerName, time: Date(), formattedTime: prayerTime, isNextPrayer: isNextPrayer)
+            let prayer = Prayer(name: prayerName.capitalized(), time: Date(), formattedTime: prayerTime, isNextPrayer: isNextPrayer)
             
             prayerTimes.append(prayer)
             
