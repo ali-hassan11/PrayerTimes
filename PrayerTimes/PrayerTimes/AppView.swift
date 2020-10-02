@@ -23,8 +23,7 @@ struct AppView: View {
                     Image(systemName: "gear")
                     Text("Settings")
                 }
-        }.accentColor(Color.init(.systemPink))
-
+        }
     }
 }
 

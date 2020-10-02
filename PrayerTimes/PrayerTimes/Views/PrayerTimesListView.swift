@@ -15,19 +15,26 @@ struct PrayerTimesListView: View {
         
         VStack {
             ForEach(prayers) { prayer in
+                //Extract into PrayerTimeCell
                 HStack {
                     Text(prayer.name)
                         .font(.title3).fontWeight(.medium)
+                    Spacer()
+                    if prayer.isNextPrayer {
+                        Text("in 1 hour 24 mins")
+                            .font(.subheadline)
+                            .opacity(0.9)
+                    }
                     Spacer()
                     Text("\(prayer.formattedTime)")
                         .font(.title3).fontWeight(.medium)
                     Image(systemName: "bell.fill")
                         .padding(.leading, 20)
                 }
-                .padding(.all, 18)
-                .background(prayer.isNextPrayer ? Color.init(.systemPink) : Color.init(.systemBackground))
+                .padding(.all, 20)
+                .background(prayer.isNextPrayer ? Color.init(.systemPink) : Color.init(.tertiarySystemBackground))
                 .cornerRadius(5)
-                .foregroundColor(prayer.isNextPrayer ? Color.init(.white) : Color.init(.label))
+                .foregroundColor(prayer.isNextPrayer ? Color.init(.white) : Color.init(.label).opacity(0.8))
                 .shadow(radius: 0.1)
             }
         }
