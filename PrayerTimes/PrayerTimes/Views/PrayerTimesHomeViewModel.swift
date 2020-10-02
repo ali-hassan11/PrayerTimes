@@ -56,7 +56,11 @@ class PrayerTimesHomeViewModel: ObservableObject {
                     }
                 })
                 
-                self?.handleDate(prayerTimesResponse: prayerTimesResponse, dateType: settings.dateMode)
+                self?.handleDate(prayerTimesResponse: prayerTimesResponse, dateType: settings.dateMode,completion: { formattedDate in
+                    DispatchQueue.main.async {
+                        self?.formattedDate = formattedDate
+                    }
+                })
                                 
             case .failure(let error):
                 print(error)
@@ -94,14 +98,14 @@ extension PrayerTimesHomeViewModel {
         completion(prayerTimes)
     }
     
-    func handleDate(prayerTimesResponse: PrayerTimesResponse, dateType: DateMode) {
+    func handleDate(prayerTimesResponse: PrayerTimesResponse, dateType: DateMode, completion: @escaping (String) -> Void) {
         
         let hijri = prayerTimesResponse.prayerTimesData.dateInfo.hijriDate.readable()
         let gregorian = prayerTimesResponse.prayerTimesData.dateInfo.gergorianDate.readable()
         let date = dateType == .hijri ? hijri : gregorian
         
         DispatchQueue.main.async {
-            self.formattedDate = date
+            completion(date)
         }
     }
     
