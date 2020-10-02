@@ -17,7 +17,7 @@ class Response_DecodableTests: XCTestCase {
         
         //When
         let data = try XCTUnwrap(responseData)
-        let response = try XCTUnwrap(decoder.decode(Response.self, from: data))
+        let response = try XCTUnwrap(decoder.decode(PrayerTimesResponse.self, from: data))
         
         //Then
         XCTAssertEqual(response.status, "OK")

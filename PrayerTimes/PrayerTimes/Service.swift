@@ -17,7 +17,7 @@ class Service {
     static let shared = Service()
     private init() {}
     
-    public func fetchPrayerTimes(url: URL, completion: @escaping ((Result<Any, CustomError>) -> Void)) {
+    public func fetchPrayerTimes(url: URL, completion: @escaping ((Result<PrayerTimesResponse, CustomError>) -> Void)) {
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let _ = error {
@@ -29,10 +29,12 @@ class Service {
                 return
             }
             
-            
-            
-            completion(.success("Success"))
-            
+            do {
+                let prayerTimesResponse = try JSONDecoder().decode(PrayerTimesResponse.self, from: data)
+                completion(.success(prayerTimesResponse))
+            } catch {
+                completion(.failure(.init(title: "Error", message: "Add localized message")))
+            }
         }
         .resume()
     }

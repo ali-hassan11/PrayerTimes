@@ -21,7 +21,7 @@
 		CEA6248525265DFC00592075 /* PrayerTimeConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA6248425265DFC00592075 /* PrayerTimeConfiguration.swift */; };
 		CEA6248D25267FC900592075 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA6248C25267FC900592075 /* Service.swift */; };
 		CEA624A0252681BC00592075 /* PrayerTimesHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA6249F252681BC00592075 /* PrayerTimesHomeViewModel.swift */; };
-		CEA624B0252686F300592075 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA624AF252686F300592075 /* Response.swift */; };
+		CEA624B0252686F300592075 /* PrayerTimesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA624AF252686F300592075 /* PrayerTimesResponse.swift */; };
 		CEA624B525268AC300592075 /* Response+DecodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA624B425268AC300592075 /* Response+DecodableTests.swift */; };
 		CEA624BD252690C600592075 /* PrayerTimesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA624BC252690C600592075 /* PrayerTimesData.swift */; };
 		CEA624C22526945100592075 /* PrayerName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA624C12526945100592075 /* PrayerName.swift */; };
@@ -80,7 +80,7 @@
 		CEA6248425265DFC00592075 /* PrayerTimeConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimeConfiguration.swift; sourceTree = "<group>"; };
 		CEA6248C25267FC900592075 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		CEA6249F252681BC00592075 /* PrayerTimesHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimesHomeViewModel.swift; sourceTree = "<group>"; };
-		CEA624AF252686F300592075 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		CEA624AF252686F300592075 /* PrayerTimesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimesResponse.swift; sourceTree = "<group>"; };
 		CEA624B425268AC300592075 /* Response+DecodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Response+DecodableTests.swift"; sourceTree = "<group>"; };
 		CEA624BC252690C600592075 /* PrayerTimesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimesData.swift; sourceTree = "<group>"; };
 		CEA624C12526945100592075 /* PrayerName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerName.swift; sourceTree = "<group>"; };
@@ -149,7 +149,7 @@
 				CEA6248425265DFC00592075 /* PrayerTimeConfiguration.swift */,
 				CEA6249F252681BC00592075 /* PrayerTimesHomeViewModel.swift */,
 				CEA6248C25267FC900592075 /* Service.swift */,
-				CEA624AF252686F300592075 /* Response.swift */,
+				CEA624AF252686F300592075 /* PrayerTimesResponse.swift */,
 				CEA624BC252690C600592075 /* PrayerTimesData.swift */,
 			);
 			path = PrayerTimes;
@@ -330,7 +330,7 @@
 				CEA624C22526945100592075 /* PrayerName.swift in Sources */,
 				CEA6248D25267FC900592075 /* Service.swift in Sources */,
 				CEA624BD252690C600592075 /* PrayerTimesData.swift in Sources */,
-				CEA624B0252686F300592075 /* Response.swift in Sources */,
+				CEA624B0252686F300592075 /* PrayerTimesResponse.swift in Sources */,
 				CE28BA292526146300AAD5BD /* PrayerTimesApp.swift in Sources */,
 				CE6EAEDD25262C2300E688D3 /* PrayerTimesList.swift in Sources */,
 				CE6EAEE02526300200E688D3 /* NextPrayerView.swift in Sources */,

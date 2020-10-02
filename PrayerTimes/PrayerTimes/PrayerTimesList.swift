@@ -9,14 +9,14 @@ import SwiftUI
 
 struct PrayerTimesList: View {
     
-    let prayers: [Prayer]
+    @Binding var prayers: [Prayer]
     
     var body: some View {
         
         VStack(spacing: 0) {
             ForEach(prayers) { prayer in
                 HStack {
-                    Text(prayer.name.rawValue)
+                    Text(prayer.name)
                     Spacer()
                     Text("\(prayer.formattedTime)")
                 }
@@ -27,8 +27,8 @@ struct PrayerTimesList: View {
     }
 }
 
-struct PrayerTimesList_Previews: PreviewProvider {
-    static var previews: some View {
-        PrayerTimesList(prayers: prayers)
-    }
-}
+//struct PrayerTimesList_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PrayerTimesList(prayers: )
+//    }
+//}

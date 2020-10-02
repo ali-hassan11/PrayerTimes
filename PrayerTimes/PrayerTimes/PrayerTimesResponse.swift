@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Response {
+struct PrayerTimesResponse {
     
     let status: String
     let prayerTimesData: PrayerTimesData
@@ -23,7 +23,7 @@ struct Response {
     }
 }
 
-extension Response: Decodable {
+extension PrayerTimesResponse: Decodable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
