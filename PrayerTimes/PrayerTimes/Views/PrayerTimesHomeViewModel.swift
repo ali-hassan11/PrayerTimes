@@ -8,12 +8,6 @@
 import Foundation
 import SwiftUI
 
-//protocol PrayerTimesHomeViewModelProtocol {
-//    func fetchData(settings: SettingsConfiguration)
-//    func handlePrayerTimes(prayerTimesResponse: PrayerTimesResponse)
-//    func handleDate(prayerTimesResponse: PrayerTimesResponse, dateType: DateMode)
-//}
-
 class PrayerTimesHomeViewModel: ObservableObject {
     
     @Published var prayers: [Prayer] = [] {
