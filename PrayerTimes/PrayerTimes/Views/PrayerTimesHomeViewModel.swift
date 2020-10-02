@@ -8,13 +8,21 @@
 import Foundation
 import SwiftUI
 
+//protocol PrayerTimesHomeViewModelProtocol {
+//    func fetchData(settings: SettingsConfiguration)
+//    func handlePrayerTimes(prayerTimesResponse: PrayerTimesResponse)
+//    func handleDate(prayerTimesResponse: PrayerTimesResponse, dateType: DateMode)
+//}
+
 class PrayerTimesHomeViewModel: ObservableObject {
     
     @Published var prayers: [Prayer] = [] {
         didSet {
             prayers.forEach { prayer in
                 if prayer.isNextPrayer {
-                    nextPrayer = prayer
+                    DispatchQueue.main.async {
+                        self.nextPrayer = prayer
+                    }
                 }
             }
         }
@@ -42,19 +50,26 @@ class PrayerTimesHomeViewModel: ObservableObject {
             switch result {
             case .success(let prayerTimesResponse):
                 
-                self?.handlePrayerTimes(prayerTimesResponse: prayerTimesResponse)
+                self?.handlePrayerTimes(prayerTimesResponse: prayerTimesResponse, completion: { prayers in
+                    DispatchQueue.main.async {
+                        self?.prayers = prayers
+                    }
+                })
+                
                 self?.handleDate(prayerTimesResponse: prayerTimesResponse, dateType: settings.dateMode)
                                 
             case .failure(let error):
                 print(error)
             }
         }
+    
     }
 }
+
  
 extension PrayerTimesHomeViewModel {
     
-    private func handlePrayerTimes(prayerTimesResponse: PrayerTimesResponse) {
+    func handlePrayerTimes(prayerTimesResponse: PrayerTimesResponse, completion: @escaping (([Prayer]) -> Void)) {
         
         let prayerTimesData = prayerTimesResponse.prayerTimesData
         
@@ -74,14 +89,12 @@ extension PrayerTimesHomeViewModel {
             
             let prayer = Prayer(name: prayerName.capitalized(), timestamp: Date(), formattedTime: prayerTimeString, isNextPrayer: isNextPrayer)
             prayerTimes.append(prayer)
-            
-            DispatchQueue.main.async {
-                self.prayers = prayerTimes
-            }
         }
+        
+        completion(prayerTimes)
     }
     
-    private func handleDate(prayerTimesResponse: PrayerTimesResponse, dateType: DateMode) {
+    func handleDate(prayerTimesResponse: PrayerTimesResponse, dateType: DateMode) {
         
         let hijri = prayerTimesResponse.prayerTimesData.dateInfo.hijriDate.readable()
         let gregorian = prayerTimesResponse.prayerTimesData.dateInfo.gergorianDate.readable()
@@ -117,10 +130,18 @@ extension PrayerTimesHomeViewModel {
     
     private var formatter: DateFormatter {
         let formatter = DateFormatter()
-        let dateFormat = "dd-MM-yyyy"
+        let dateFormat = formatter.apiDateFormat()
         formatter.dateFormat = "\(dateFormat) HH:mm"
         formatter.timeZone = .current
         return formatter
+    }
+}
+
+//MOVE SOMEWHERE
+
+extension DateFormatter {
+    func apiDateFormat() -> String {
+        return "dd-MM-yyyy"
     }
 }
 

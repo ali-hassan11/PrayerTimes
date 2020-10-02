@@ -1,7 +1,7 @@
 
 import Foundation
 
-struct Prayer: Identifiable {
+struct Prayer: Identifiable, Equatable {
 
     let id = UUID()
     let name: String
