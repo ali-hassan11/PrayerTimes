@@ -9,7 +9,7 @@ import Foundation
 
 class URLBuilder {
     
-    private static let baseURLTemplate = "https://api.aladhan.com/v1/timings/{timestamp}?latitude={latitude}&longitude={longitude}&method={method}&school={school}"
+    private static let baseURLTemplate = "https://api.aladhan.com/v1/timings/{timestamp}?latitude={latitude}&longitude={longitude}&method={method}&school={school}&timezonestring=Europe/London"
     
     static func prayerTimesForDateURL(configuration: PrayerTimesConfiguration) -> URL? {
         

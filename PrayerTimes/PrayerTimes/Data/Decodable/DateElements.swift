@@ -12,7 +12,10 @@ struct DateElements: Decodable {
     let month: Month
     let year: String
     
-    func formatted() -> String {
+    let date: String
+    let format: String
+    
+    func readable() -> String {
         return "\(day) \(month.name), \(year)"
     }
 }

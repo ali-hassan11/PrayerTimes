@@ -13,7 +13,7 @@ class PrayerTimesHomeViewModel: ObservableObject {
     @Published var prayers: [Prayer] = []
     @Published var formattedDate: String = ""
     
-    @EnvironmentObject var settingsConfiguration: SettingsConfiguration
+//    @EnvironmentObject var settingsConfiguration: SettingsConfiguration
 
     init(settings: SettingsConfiguration) {
         fetchData(settings: settings)
@@ -21,7 +21,7 @@ class PrayerTimesHomeViewModel: ObservableObject {
     
     //Pass in configuration
     func fetchData(settings: SettingsConfiguration) {
-        let prayerTimesConfiguration = PrayerTimesConfiguration(timestamp: "00000000",
+        let prayerTimesConfiguration = PrayerTimesConfiguration(timestamp: Date().timestampString,
                                                                coordinates: .init(latitude: "53.5228", longitude: "1.1285"),
                                                                method: settings.method,
                                                                school: settings.school)
@@ -42,24 +42,42 @@ class PrayerTimesHomeViewModel: ObservableObject {
         }
     }
     
+    private var nextPrayerFound = false
+    
     private func handlePrayerTimes(prayerTimesResponse: PrayerTimesResponse) {
         let prayerTimesData = prayerTimesResponse.prayerTimesData
         
         var prayerTimes = [Prayer]()
-        
-//        let currentTimestamp = Date().timeIntervalSince1970
+                
+        let currentTimestamp = TimeInterval(prayerTimesData.dateInfo.timestamp) ?? Date().timeIntervalSince1970 //TRY BOTH AFTER ASR
+        let currentDate = Date(timeIntervalSince1970: currentTimestamp)
         
         ["Fajr", "Sunrise", "Dhuhr", "Asr", "Maghrib", "Isha"].forEach { prayerName in
             guard let prayerTime = prayerTimesData.timings[prayerName] else { return }
             
-            //Convert prayer time to timestamp, compare that with current
-   
-            let isNextPrayer: Bool
+            let formatter = DateFormatter()
+            let dateFormat = "dd-MM-yyyy"
+            formatter.dateFormat = "\(dateFormat) HH:mm"
+            formatter.locale = .current
             
-            if 1 > 1 {
-                isNextPrayer = true
+            let prayerDateString = prayerTimesData.dateInfo.gergorianDate.date
+            
+            let prayerTimesDate: Date
+            if let date = formatter.date(from: "\(prayerDateString) \(prayerTime)") {
+                prayerTimesDate = Date(timeIntervalSince1970: TimeInterval(date.timeIntervalSince1970))
             } else {
-                isNextPrayer = false
+                prayerTimesDate = currentDate
+            }
+            
+            var isNextPrayer = false
+            
+            if !nextPrayerFound {
+                if currentDate < prayerTimesDate {
+                    isNextPrayer = true
+                    nextPrayerFound = true
+                } else {
+                    isNextPrayer = false
+                }
             }
             
             let prayer = Prayer(name: prayerName, time: Date(), formattedTime: prayerTime, isNextPrayer: isNextPrayer)
@@ -73,12 +91,22 @@ class PrayerTimesHomeViewModel: ObservableObject {
     }
     
     private func handleDate(prayerTimesResponse: PrayerTimesResponse, dateType: DateType) {
-        let hijri = prayerTimesResponse.prayerTimesData.dateInfo.hijriDate.formatted()
-        let gregorian = prayerTimesResponse.prayerTimesData.dateInfo.gergorianDate.formatted()
+        let hijri = prayerTimesResponse.prayerTimesData.dateInfo.hijriDate.readable()
+        let gregorian = prayerTimesResponse.prayerTimesData.dateInfo.gergorianDate.readable()
         let date = dateType == .hijri ? hijri : gregorian
         
         DispatchQueue.main.async {
             self.formattedDate = date
         }
+    }
+}
+
+extension Date {
+    var timestampString: String {
+        return String(self.timeIntervalSince1970)
+    }
+    
+    var timestampPlus24HoursString: String {
+        return String(self.timeIntervalSince1970 + 86400)
     }
 }

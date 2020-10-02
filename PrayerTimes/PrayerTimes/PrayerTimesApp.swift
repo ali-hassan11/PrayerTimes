@@ -14,9 +14,11 @@ struct PrayerTimesApp: App {
         self.settingsConfiguration = SettingsConfiguration(dateType: .gregorian,
                                                            method: .muslimWorldLeague,
                                                            school: .shafi)//Get from UD/CD
+        self.viewModel = PrayerTimesHomeViewModel(settings: settingsConfiguration)
     }
     
     let settingsConfiguration: SettingsConfiguration
+    let viewModel: PrayerTimesHomeViewModel
     
     var body: some Scene {
         WindowGroup {

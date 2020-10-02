@@ -12,6 +12,7 @@ class SettingsConfiguration: ObservableObject {
     @Published var dateType: DateType
     @Published var method: Method
     @Published var school: School
+    //@Published var timeZone: TimeZone
     
     init(dateType: DateType, method: Method, school: School) {
         self.dateType = dateType
