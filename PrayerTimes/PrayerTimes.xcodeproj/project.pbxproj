@@ -27,6 +27,13 @@
 		CEA624E82526B41000592075 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA624E72526B41000592075 /* Coordinates.swift */; };
 		CEA624F62526B45C00592075 /* Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA624F52526B45C00592075 /* Method.swift */; };
 		CEA624FB2526B46C00592075 /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA624FA2526B46C00592075 /* School.swift */; };
+		CEA625062526B5A700592075 /* DateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA625052526B5A700592075 /* DateInfo.swift */; };
+		CEA625132526B6BF00592075 /* PrayerTimesData+DecodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA625122526B6BF00592075 /* PrayerTimesData+DecodableTests.swift */; };
+		CEA625182526B6DC00592075 /* DateData+DecodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA625172526B6DC00592075 /* DateData+DecodableTests.swift */; };
+		CEA625282526BB6B00592075 /* HijriDate+DecodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA625272526BB6B00592075 /* HijriDate+DecodableTests.swift */; };
+		CEA625372526BE6800592075 /* HijriDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA625362526BE6800592075 /* HijriDate.swift */; };
+		CEA6253F2526BFE300592075 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA6253E2526BFE300592075 /* Month.swift */; };
+		CEA625442526C00700592075 /* Month+DecodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA625432526C00700592075 /* Month+DecodableTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +95,13 @@
 		CEA624E72526B41000592075 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
 		CEA624F52526B45C00592075 /* Method.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Method.swift; sourceTree = "<group>"; };
 		CEA624FA2526B46C00592075 /* School.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
+		CEA625052526B5A700592075 /* DateInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateInfo.swift; sourceTree = "<group>"; };
+		CEA625122526B6BF00592075 /* PrayerTimesData+DecodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PrayerTimesData+DecodableTests.swift"; sourceTree = "<group>"; };
+		CEA625172526B6DC00592075 /* DateData+DecodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateData+DecodableTests.swift"; sourceTree = "<group>"; };
+		CEA625272526BB6B00592075 /* HijriDate+DecodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HijriDate+DecodableTests.swift"; sourceTree = "<group>"; };
+		CEA625362526BE6800592075 /* HijriDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HijriDate.swift; sourceTree = "<group>"; };
+		CEA6253E2526BFE300592075 /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
+		CEA625432526C00700592075 /* Month+DecodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Month+DecodableTests.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,7 +161,6 @@
 				CE28BA2C2526146500AAD5BD /* Assets.xcassets */,
 				CE28BA312526146500AAD5BD /* Info.plist */,
 				CE28BA2E2526146500AAD5BD /* Preview Content */,
-				CEA6249F252681BC00592075 /* PrayerTimesHomeViewModel.swift */,
 			);
 			path = PrayerTimes;
 			sourceTree = "<group>";
@@ -165,6 +178,10 @@
 			children = (
 				CE28BA3A2526146500AAD5BD /* URLBuilderTests.swift */,
 				CEA624B425268AC300592075 /* Response+DecodableTests.swift */,
+				CEA625122526B6BF00592075 /* PrayerTimesData+DecodableTests.swift */,
+				CEA625172526B6DC00592075 /* DateData+DecodableTests.swift */,
+				CEA625272526BB6B00592075 /* HijriDate+DecodableTests.swift */,
+				CEA625432526C00700592075 /* Month+DecodableTests.swift */,
 				CE28BA3C2526146500AAD5BD /* Info.plist */,
 			);
 			path = PrayerTimesTests;
@@ -192,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				CE28BA2A2526146300AAD5BD /* PrayerTimesHomeView.swift */,
+				CEA6249F252681BC00592075 /* PrayerTimesHomeViewModel.swift */,
 				CE6EAEDC25262C2300E688D3 /* PrayerTimesList.swift */,
 				CE6EAEDF2526300200E688D3 /* NextPrayerView.swift */,
 				CE6EAEE12526313800E688D3 /* DateView.swift */,
@@ -213,6 +231,9 @@
 			children = (
 				CEA624AF252686F300592075 /* PrayerTimesResponse.swift */,
 				CEA624BC252690C600592075 /* PrayerTimesData.swift */,
+				CEA625052526B5A700592075 /* DateInfo.swift */,
+				CEA625362526BE6800592075 /* HijriDate.swift */,
+				CEA6253E2526BFE300592075 /* Month.swift */,
 			);
 			path = Decodable;
 			sourceTree = "<group>";
@@ -360,6 +381,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE6EAEE22526313800E688D3 /* DateView.swift in Sources */,
+				CEA625372526BE6800592075 /* HijriDate.swift in Sources */,
+				CEA6253F2526BFE300592075 /* Month.swift in Sources */,
+				CEA625062526B5A700592075 /* DateInfo.swift in Sources */,
 				CEA6248025265D0300592075 /* URLBuilder.swift in Sources */,
 				CEA6248525265DFC00592075 /* PrayerTimesConfiguration.swift in Sources */,
 				CEA624A0252681BC00592075 /* PrayerTimesHomeViewModel.swift in Sources */,
@@ -381,7 +405,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEA625442526C00700592075 /* Month+DecodableTests.swift in Sources */,
+				CEA625132526B6BF00592075 /* PrayerTimesData+DecodableTests.swift in Sources */,
+				CEA625182526B6DC00592075 /* DateData+DecodableTests.swift in Sources */,
 				CEA624B525268AC300592075 /* Response+DecodableTests.swift in Sources */,
+				CEA625282526BB6B00592075 /* HijriDate+DecodableTests.swift in Sources */,
 				CE28BA3B2526146500AAD5BD /* URLBuilderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

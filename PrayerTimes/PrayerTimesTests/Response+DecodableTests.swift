@@ -10,7 +10,9 @@ import XCTest
 
 class Response_DecodableTests: XCTestCase {
 
-    func testDecodesCorretly() throws {
+    //Not Nil Test
+    
+    func testDecodesDataCorretly() throws {
         
         //Given
         let decoder = JSONDecoder()
@@ -28,6 +30,7 @@ class Response_DecodableTests: XCTestCase {
         XCTAssertEqual(response.prayerTimesData.timings["Asr"], "15:56")
         XCTAssertEqual(response.prayerTimesData.timings["Maghrib"], "18:37")
         XCTAssertEqual(response.prayerTimesData.timings["Isha"], "20:09")
+        //Update with Date Data
     }
 
     let responseData = """

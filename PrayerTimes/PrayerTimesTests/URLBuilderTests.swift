@@ -13,7 +13,7 @@ class URLBuilderTests: XCTestCase {
     func testURLBuilderReturnsNotNil() {
         
         //Given
-        let prayerTimeConfiguration = PrayerTimeConfiguration(timestamp: "00000000",
+        let prayerTimeConfiguration = PrayerTimesConfiguration(timestamp: "00000000",
                                                        coordinates: .init(latitude: "111", longitude: "222"),
                                                        method: .islamicSocietyOfNorthAmerica,
                                                        school: .hanafi)
@@ -28,23 +28,23 @@ class URLBuilderTests: XCTestCase {
     func testURLBuilderCreatesCorrectUrl() throws {
         
         //Given
-        let prayerTimeConfiguration1 = PrayerTimeConfiguration(timestamp: "00000000",
+        let prayerTimeConfiguration1 = PrayerTimesConfiguration(timestamp: "00000000",
                                                        coordinates: .init(latitude: "111", longitude: "222"),
                                                        method: .islamicSocietyOfNorthAmerica,
                                                        school: .hanafi)
-        let prayerTimeConfiguration2 = PrayerTimeConfiguration(timestamp: "11111111",
+        let prayerTimeConfiguration2 = PrayerTimesConfiguration(timestamp: "11111111",
                                                        coordinates: .init(latitude: "333", longitude: "444"),
                                                        method: .muslimWorldLeague,
                                                        school: .shafi)
-        let prayerTimeConfiguration3 = PrayerTimeConfiguration(timestamp: "22222222",
+        let prayerTimeConfiguration3 = PrayerTimesConfiguration(timestamp: "22222222",
                                                                coordinates: .init(latitude: "555", longitude: "666"),
                                                        method: .siyanetIsleriBaskanligiTurkey,
                                                        school: .hanafi)
-        let prayerTimeConfiguration4 = PrayerTimeConfiguration(timestamp: "33333333",
+        let prayerTimeConfiguration4 = PrayerTimesConfiguration(timestamp: "33333333",
                                                        coordinates: .init(latitude: "777", longitude: "888"),
                                                        method: .gulfRegion,
                                                        school: .shafi)
-        let prayerTimeConfiguration5 = PrayerTimeConfiguration(timestamp: "44444444",
+        let prayerTimeConfiguration5 = PrayerTimesConfiguration(timestamp: "44444444",
                                                        coordinates: .init(latitude: "999", longitude: "000"),
                                                        method: .majlisUgamaIslamSingapuraSingapore,
                                                        school: .hanafi)
