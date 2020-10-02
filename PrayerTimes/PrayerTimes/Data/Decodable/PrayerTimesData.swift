@@ -27,6 +27,7 @@ extension PrayerTimesData: Decodable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        
         let timings = try container.decode([String: String].self, forKey: .timings)
         let dateInfo = try container.decode(DateInfo.self, forKey: .dateInfo)
         

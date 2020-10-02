@@ -22,11 +22,15 @@ struct PrayerTimesHomeView: View {
             Spacer()
         }
     }
-
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        PrayerTimesHomeView(viewModel: PrayerTimesHomeViewModel(configuration: SettingsConfiguration(dateType: .gregorian)))
+        let settings = SettingsConfiguration(dateType: .hijri,
+                                           method: .muslimWorldLeague,
+                                           school: .hanafi)
+        let viewModel = PrayerTimesHomeViewModel(settings: settings)
+        PrayerTimesHomeView(viewModel: viewModel)
     }
 }

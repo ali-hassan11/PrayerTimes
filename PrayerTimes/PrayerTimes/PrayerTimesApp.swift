@@ -11,14 +11,16 @@ import SwiftUI
 struct PrayerTimesApp: App {
     
     init() {
-        self.settingsConfiguration = SettingsConfiguration(dateType: .gregorian)//Get from UD/CD
+        self.settingsConfiguration = SettingsConfiguration(dateType: .gregorian,
+                                                           method: .muslimWorldLeague,
+                                                           school: .shafi)//Get from UD/CD
     }
     
     let settingsConfiguration: SettingsConfiguration
     
     var body: some Scene {
         WindowGroup {
-            PrayerTimesHomeView(viewModel: PrayerTimesHomeViewModel(configuration: settingsConfiguration)).environmentObject(settingsConfiguration)
+            PrayerTimesHomeView(viewModel: PrayerTimesHomeViewModel(settings: settingsConfiguration)).environmentObject(settingsConfiguration)
         }
     }
 }

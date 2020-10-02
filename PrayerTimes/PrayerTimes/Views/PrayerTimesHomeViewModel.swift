@@ -15,16 +15,16 @@ class PrayerTimesHomeViewModel: ObservableObject {
     
     @EnvironmentObject var settingsConfiguration: SettingsConfiguration
 
-    init(configuration: SettingsConfiguration) {
-        fetchData(configuration: configuration)
+    init(settings: SettingsConfiguration) {
+        fetchData(settings: settings)
     }
     
     //Pass in configuration
-    func fetchData(configuration: SettingsConfiguration) {
+    func fetchData(settings: SettingsConfiguration) {
         let prayerTimesConfiguration = PrayerTimesConfiguration(timestamp: "00000000",
                                                                coordinates: .init(latitude: "53.5228", longitude: "1.1285"),
-                                                               method: .muslimWorldLeague,
-                                                               school: .hanafi)
+                                                               method: settings.method,
+                                                               school: settings.school)
         
         guard let url = URLBuilder.prayerTimesForDateURL(configuration: prayerTimesConfiguration) else { return }
         
@@ -34,7 +34,7 @@ class PrayerTimesHomeViewModel: ObservableObject {
             case .success(let prayerTimesResponse):
                 
                 self?.handlePrayerTimes(prayerTimesResponse: prayerTimesResponse)
-                self?.handleDate(prayerTimesResponse: prayerTimesResponse, dateType: configuration.dateType)
+                self?.handleDate(prayerTimesResponse: prayerTimesResponse, dateType: settings.dateType)
                                 
             case .failure(let error):
                 print(error)

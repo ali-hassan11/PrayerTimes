@@ -39,6 +39,8 @@ class Response_DecodableTests: XCTestCase {
         XCTAssertEqual(prayerTimesData.dateInfo.gergorianDate.day, "01")
         XCTAssertEqual(prayerTimesData.dateInfo.gergorianDate.month.name, "October")
         XCTAssertEqual(prayerTimesData.dateInfo.gergorianDate.year, "2020")
+        
+        XCTAssertEqual(prayerTimesData.dateInfo.timestamp, "1601510405")
     }
 
     let responseData = """
