@@ -9,19 +9,20 @@ import SwiftUI
 
 struct DateView: View {
     
-    @Binding var formattedDate: String
+    @Binding var hijriDate: String
+    @Binding var gregorianDate: String
 
     var body: some View {
-        HStack {
-            Text(formattedDate)
-            Spacer()
+        VStack {
+            Text(hijriDate).font(.largeTitle)
+            Text(gregorianDate).font(.headline)
         }
     }
 }
 
-struct DateView_Previews: PreviewProvider {
-    @State static var formattedDate: String = "Test Date"
-    static var previews: some View {
-        DateView(formattedDate: $formattedDate)
-    }
-}
+//struct DateView_Previews: PreviewProvider {
+//    @State static var formattedDate: String = "Test Date"
+//    static var previews: some View {
+//        DateView(formattedDate: $formattedDate)
+//    }
+//}

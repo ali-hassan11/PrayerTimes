@@ -22,7 +22,8 @@ class PrayerTimesHomeViewModel: ObservableObject {
         }
     }
     @Published var nextPrayer: Prayer?
-    @Published var formattedDate: String = ""
+    @Published var hijriDate: String = ""
+    @Published var gregorianDate: String = ""
     
     private var nextPrayerFound = false
     
@@ -50,9 +51,10 @@ class PrayerTimesHomeViewModel: ObservableObject {
                     }
                 })
                 
-                self?.handleDate(prayerTimesResponse: prayerTimesResponse, dateType: settings.dateMode,completion: { formattedDate in
+                self?.handleDate(prayerTimesResponse: prayerTimesResponse, dateType: settings.dateMode,completion: { hijri, gregorian in
                     DispatchQueue.main.async {
-                        self?.formattedDate = formattedDate
+                        self?.hijriDate = hijri
+                        self?.gregorianDate = gregorian
                     }
                 })
                                 
@@ -91,14 +93,13 @@ extension PrayerTimesHomeViewModel {
         completion(prayerTimes)
     }
     
-    func handleDate(prayerTimesResponse: PrayerTimesResponse, dateType: DateMode, completion: @escaping (String) -> Void) {
+    func handleDate(prayerTimesResponse: PrayerTimesResponse, dateType: DateMode, completion: @escaping (String, String) -> Void) {
         
         let hijri = prayerTimesResponse.prayerTimesData.dateInfo.hijriDate.readable()
         let gregorian = prayerTimesResponse.prayerTimesData.dateInfo.gergorianDate.readable()
-        let date = dateType == .hijri ? hijri : gregorian
         
         DispatchQueue.main.async {
-            completion(date)
+            completion(hijri, gregorian)
         }
     }
     

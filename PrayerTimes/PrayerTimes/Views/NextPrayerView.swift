@@ -24,12 +24,13 @@ struct NextPrayerView: View {
             .padding(.all, 20)
             .frame(height: 100, alignment: .center)
             .background(Color.blue)
+            .cornerRadius(20)
     }
 }
 
 struct NextPrayerView_Previews: PreviewProvider {
     
-    @State static var prayer: Prayer? = Prayer(name: "Fajr", timestamp: Date(), formattedTime: "Time", isNextPrayer: true)
+    @State static var prayer: Prayer? = Prayer(name: "Fajr", timestamp: Date(), formattedTime: "05:30", isNextPrayer: true)
     
     static var previews: some View {
         NextPrayerView(prayer: $prayer)

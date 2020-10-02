@@ -23,7 +23,7 @@ struct PrayerTimesApp: App {
     
     var body: some Scene {
         WindowGroup {
-            PrayerTimesHomeView(viewModel: PrayerTimesHomeViewModel(settings: settingsConfiguration)).environmentObject(settingsConfiguration)
+            AppView(viewModel: viewModel).environmentObject(settingsConfiguration)
         }
     }
 }

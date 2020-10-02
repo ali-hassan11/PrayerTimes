@@ -40,6 +40,8 @@
 		CED3D2932526E7E000561999 /* SettingsConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D2922526E7E000561999 /* SettingsConfigurationTests.swift */; };
 		CED3D29B25277E8000561999 /* PrayerTimesHomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D29A25277E7F00561999 /* PrayerTimesHomeViewModelTests.swift */; };
 		CED3D2A02527840200561999 /* PrayerName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D29F2527840200561999 /* PrayerName.swift */; };
+		CED3D2AE2527BF8300561999 /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D2AD2527BF8200561999 /* PreviewData.swift */; };
+		CED3D2B62527CD1F00561999 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D2B52527CD1F00561999 /* AppView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +116,8 @@
 		CED3D2922526E7E000561999 /* SettingsConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsConfigurationTests.swift; sourceTree = "<group>"; };
 		CED3D29A25277E7F00561999 /* PrayerTimesHomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimesHomeViewModelTests.swift; sourceTree = "<group>"; };
 		CED3D29F2527840200561999 /* PrayerName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerName.swift; sourceTree = "<group>"; };
+		CED3D2AD2527BF8200561999 /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
+		CED3D2B52527CD1F00561999 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,15 +169,17 @@
 		CE28BA272526146300AAD5BD /* PrayerTimes */ = {
 			isa = PBXGroup;
 			children = (
+				CED3D2B52527CD1F00561999 /* AppView.swift */,
 				CE28BA282526146300AAD5BD /* PrayerTimesApp.swift */,
 				CEA6248C25267FC900592075 /* Service.swift */,
 				CED3D2692526D07E00561999 /* SettingsConfiguration.swift */,
 				CEA624E62526B3DC00592075 /* Configuration */,
-				CEA624E42526B37000592075 /* Data */,
 				CEA624E32526B35500592075 /* Views */,
+				CEA624E42526B37000592075 /* Data */,
 				CE28BA2C2526146500AAD5BD /* Assets.xcassets */,
 				CE28BA312526146500AAD5BD /* Info.plist */,
 				CE28BA2E2526146500AAD5BD /* Preview Content */,
+				CED3D2AD2527BF8200561999 /* PreviewData.swift */,
 			);
 			path = PrayerTimes;
 			sourceTree = "<group>";
@@ -225,10 +231,10 @@
 			isa = PBXGroup;
 			children = (
 				CE28BA2A2526146300AAD5BD /* PrayerTimesHomeView.swift */,
-				CEA6249F252681BC00592075 /* PrayerTimesHomeViewModel.swift */,
 				CE6EAEDC25262C2300E688D3 /* PrayerTimesListView.swift */,
 				CE6EAEDF2526300200E688D3 /* NextPrayerView.swift */,
 				CE6EAEE12526313800E688D3 /* DateView.swift */,
+				CEA6249F252681BC00592075 /* PrayerTimesHomeViewModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -402,6 +408,7 @@
 				CEA625372526BE6800592075 /* DateElements.swift in Sources */,
 				CEA6253F2526BFE300592075 /* Month.swift in Sources */,
 				CEA625062526B5A700592075 /* DateInfo.swift in Sources */,
+				CED3D2B62527CD1F00561999 /* AppView.swift in Sources */,
 				CEA6248025265D0300592075 /* URLBuilder.swift in Sources */,
 				CEA6248525265DFC00592075 /* PrayerTimesConfiguration.swift in Sources */,
 				CEA624A0252681BC00592075 /* PrayerTimesHomeViewModel.swift in Sources */,
@@ -412,6 +419,7 @@
 				CEA624E82526B41000592075 /* Coordinates.swift in Sources */,
 				CEA624BD252690C600592075 /* PrayerTimesData.swift in Sources */,
 				CEA624B0252686F300592075 /* PrayerTimesResponse.swift in Sources */,
+				CED3D2AE2527BF8300561999 /* PreviewData.swift in Sources */,
 				CE28BA292526146300AAD5BD /* PrayerTimesApp.swift in Sources */,
 				CE6EAEDD25262C2300E688D3 /* PrayerTimesListView.swift in Sources */,
 				CEA624F62526B45C00592075 /* Method.swift in Sources */,

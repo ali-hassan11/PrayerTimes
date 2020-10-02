@@ -11,20 +11,32 @@ struct PrayerTimesHomeView: View {
     
     @ObservedObject var viewModel: PrayerTimesHomeViewModel
     @EnvironmentObject var settingsConfiguration: SettingsConfiguration
-        
+    
     var body: some View {
-                
-        VStack() {
-            Spacer()
-            DateView(formattedDate: $viewModel.formattedDate)
-            NextPrayerView(prayer: $viewModel.nextPrayer)
-            PrayerTimesListView(prayers: $viewModel.prayers)
-            Spacer()
+        
+        NavigationView {
+            Color.init(.secondarySystemBackground).overlay(
+                VStack() {
+                    Spacer()
+                    DateView(hijriDate: $viewModel.hijriDate, gregorianDate: $viewModel.gregorianDate)
+                    Spacer()
+                    PrayerTimesListView(prayers: $viewModel.prayers)
+                        .cornerRadius(25)
+                    Spacer()
+                }
+                .animation(.spring())
+                .padding(.horizontal, 20)
+            )
+            .navigationBarTitle("Hatfield, UK", displayMode: .inline)
+            .navigationBarItems(trailing: Button(action: locatePressed, label: {
+                Image(systemName: "mappin.and.ellipse")
+            }))
         }
-        .animation(.spring(response: 0.4, dampingFraction: 0.68, blendDuration: 0.5))
-        .padding(.horizontal, 20)
     }
     
+    func locatePressed() {
+        print("locatePressed")
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
