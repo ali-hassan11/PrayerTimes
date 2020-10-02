@@ -10,11 +10,13 @@ import Foundation
 struct DateInfo {
     
     let timestamp: String
-    let hijriDate: HijriDate
+    let hijriDate: DateElements
+    let gergorianDate: DateElements
 
     enum CodingKeys: String, CodingKey {
         case timestamp
         case hijriDate = "hijri"
+        case gergorianDate = "gregorian"
     }
 }
 
@@ -25,8 +27,9 @@ extension DateInfo: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         let timestamp = try container.decode(String.self, forKey: .timestamp)
-        let hijriDate = try container.decode(HijriDate.self, forKey: .hijriDate)
+        let hijriDate = try container.decode(DateElements.self, forKey: .hijriDate)
+        let gregorianDate = try container.decode(DateElements.self, forKey: .gergorianDate)
         
-        self.init(timestamp: timestamp, hijriDate: hijriDate)
+        self.init(timestamp: timestamp, hijriDate: hijriDate, gergorianDate: gregorianDate)
     }
 }

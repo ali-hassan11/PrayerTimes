@@ -7,8 +7,12 @@
 
 import Foundation
 
-struct HijriDate: Decodable {
+struct DateElements: Decodable {
     let day: String
     let month: Month
     let year: String
+    
+    func formatted() -> String {
+        return "\(day) \(month.name), \(year)"
+    }
 }

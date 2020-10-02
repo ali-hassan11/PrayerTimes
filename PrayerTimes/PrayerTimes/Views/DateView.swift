@@ -9,14 +9,11 @@ import SwiftUI
 
 struct DateView: View {
     
-    let hirjiDate: String
-    let gregorianDate: String
-    
-    let isHijri: Bool
-    
+    @Binding var formattedDate: String
+
     var body: some View {
         HStack {
-            Text(isHijri ? hijriDate : gregorianDate)
+            Text(formattedDate)
             Spacer()
         }
         .padding(.horizontal, 20)
@@ -24,7 +21,8 @@ struct DateView: View {
 }
 
 struct DateView_Previews: PreviewProvider {
+    @State static var formattedDate: String = "Test Date"
     static var previews: some View {
-        DateView(hirjiDate: "hijri date", gregorianDate: "gregorian date", isHijri: true)
+        DateView(formattedDate: $formattedDate)
     }
 }

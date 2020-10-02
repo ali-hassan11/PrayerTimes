@@ -22,15 +22,23 @@ class Response_DecodableTests: XCTestCase {
         let response = try XCTUnwrap(decoder.decode(PrayerTimesResponse.self, from: data))
         
         //Then
+        let prayerTimesData = response.prayerTimesData
         XCTAssertEqual(response.status, "OK")
-        XCTAssertEqual(response.prayerTimesData.timings.count, 9)
-        XCTAssertEqual(response.prayerTimesData.timings["Fajr"], "05:30")
-        XCTAssertEqual(response.prayerTimesData.timings["Sunrise"], "07:02")
-        XCTAssertEqual(response.prayerTimesData.timings["Dhuhr"], "12:50")
-        XCTAssertEqual(response.prayerTimesData.timings["Asr"], "15:56")
-        XCTAssertEqual(response.prayerTimesData.timings["Maghrib"], "18:37")
-        XCTAssertEqual(response.prayerTimesData.timings["Isha"], "20:09")
-        //Update with Date Data
+        XCTAssertEqual(prayerTimesData.timings.count, 9)
+        XCTAssertEqual(prayerTimesData.timings["Fajr"], "05:30")
+        XCTAssertEqual(prayerTimesData.timings["Sunrise"], "07:02")
+        XCTAssertEqual(prayerTimesData.timings["Dhuhr"], "12:50")
+        XCTAssertEqual(prayerTimesData.timings["Asr"], "15:56")
+        XCTAssertEqual(prayerTimesData.timings["Maghrib"], "18:37")
+        XCTAssertEqual(prayerTimesData.timings["Isha"], "20:09")
+        
+        XCTAssertEqual(prayerTimesData.dateInfo.hijriDate.day, "13")
+        XCTAssertEqual(prayerTimesData.dateInfo.hijriDate.month.name, "Ṣafar")
+        XCTAssertEqual(prayerTimesData.dateInfo.hijriDate.year, "1442")
+
+        XCTAssertEqual(prayerTimesData.dateInfo.gergorianDate.day, "01")
+        XCTAssertEqual(prayerTimesData.dateInfo.gergorianDate.month.name, "October")
+        XCTAssertEqual(prayerTimesData.dateInfo.gergorianDate.year, "2020")
     }
 
     let responseData = """

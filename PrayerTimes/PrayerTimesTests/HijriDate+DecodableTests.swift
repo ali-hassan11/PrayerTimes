@@ -19,7 +19,7 @@ class HijriDate_DecodableTests: XCTestCase {
         
         //When
         let data = try XCTUnwrap(hijridata)
-        let hijriDate = try XCTUnwrap(decoder.decode(HijriDate.self, from: data))
+        let hijriDate = try XCTUnwrap(decoder.decode(DateElements.self, from: data))
         
         //Then
         XCTAssertEqual(hijriDate.day, "13")
