@@ -43,18 +43,32 @@ class PrayerTimesHomeViewModel: ObservableObject {
     }
     
     private func handlePrayerTimes(prayerTimesResponse: PrayerTimesResponse) {
-        let timings = prayerTimesResponse.prayerTimesData.timings
+        let prayerTimesData = prayerTimesResponse.prayerTimesData
         
         var prayerTimes = [Prayer]()
         
-        ["Fajr", "Sunrise", "Dhuhr", "Asr", "Maghrib", "Isha"].forEach { prayerName in
-            guard let prayerTime = timings[prayerName] else { return }
-            let prayer = Prayer(name: prayerName, time: Date(), formattedTime: prayerTime, isNextPrayer: false)
-            prayerTimes.append(prayer)
-        }
+//        let currentTimestamp = Date().timeIntervalSince1970
         
-        DispatchQueue.main.async {
-            self.prayers = prayerTimes
+        ["Fajr", "Sunrise", "Dhuhr", "Asr", "Maghrib", "Isha"].forEach { prayerName in
+            guard let prayerTime = prayerTimesData.timings[prayerName] else { return }
+            
+            //Convert prayer time to timestamp, compare that with current
+   
+            let isNextPrayer: Bool
+            
+            if 1 > 1 {
+                isNextPrayer = true
+            } else {
+                isNextPrayer = false
+            }
+            
+            let prayer = Prayer(name: prayerName, time: Date(), formattedTime: prayerTime, isNextPrayer: isNextPrayer)
+            
+            prayerTimes.append(prayer)
+            
+            DispatchQueue.main.async {
+                self.prayers = prayerTimes
+            }
         }
     }
     
