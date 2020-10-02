@@ -10,7 +10,17 @@ import SwiftUI
 
 class PrayerTimesHomeViewModel: ObservableObject {
     
-    @Published var prayers: [Prayer] = []
+    @Published var prayers: [Prayer] = [] {
+        didSet {
+            prayers.forEach { prayer in
+                if prayer.isNextPrayer {
+                    nextPrayer = prayer
+                }
+            }
+        }
+    }
+    
+    @Published var nextPrayer: Prayer?
     @Published var formattedDate: String = ""
     
 //    @EnvironmentObject var settingsConfiguration: SettingsConfiguration

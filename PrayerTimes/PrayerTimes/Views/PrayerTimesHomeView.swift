@@ -17,7 +17,7 @@ struct PrayerTimesHomeView: View {
         VStack() {
             DateView(formattedDate: $viewModel.formattedDate)
             Spacer()
-            NextPrayerView()
+            NextPrayerView(prayer: $viewModel.nextPrayer)
             PrayerTimesList(prayers: $viewModel.prayers)
             Spacer()
         }

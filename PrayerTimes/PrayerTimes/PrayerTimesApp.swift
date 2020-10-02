@@ -14,7 +14,7 @@ struct PrayerTimesApp: App {
         self.settingsConfiguration = SettingsConfiguration(dateType: .gregorian,
                                                            method: .muslimWorldLeague,
                                                            school: .shafi,
-                                                           timeZone: .current)//Get from UD/CD
+                                                           timeZone: .current)//Get from UserDefaults/CoreData
         self.viewModel = PrayerTimesHomeViewModel(settings: settingsConfiguration)
     }
     
