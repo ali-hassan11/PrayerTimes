@@ -29,7 +29,8 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let settings = SettingsConfiguration(dateType: .hijri,
                                            method: .muslimWorldLeague,
-                                           school: .hanafi)
+                                           school: .hanafi,
+                                           timeZone: .current)
         let viewModel = PrayerTimesHomeViewModel(settings: settings)
         PrayerTimesHomeView(viewModel: viewModel)
     }

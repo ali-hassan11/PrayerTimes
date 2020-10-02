@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum DateType {
+enum DateMode {
     case hijri
     case gregorian
 }

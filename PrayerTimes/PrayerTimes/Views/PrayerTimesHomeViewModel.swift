@@ -24,7 +24,8 @@ class PrayerTimesHomeViewModel: ObservableObject {
         let prayerTimesConfiguration = PrayerTimesConfiguration(timestamp: Date().timestampString,
                                                                coordinates: .init(latitude: "53.5228", longitude: "1.1285"),
                                                                method: settings.method,
-                                                               school: settings.school)
+                                                               school: settings.school,
+                                                               timeZone: settings.timeZone)
         
         guard let url = URLBuilder.prayerTimesForDateURL(configuration: prayerTimesConfiguration) else { return }
         
@@ -58,7 +59,7 @@ class PrayerTimesHomeViewModel: ObservableObject {
             let formatter = DateFormatter()
             let dateFormat = "dd-MM-yyyy"
             formatter.dateFormat = "\(dateFormat) HH:mm"
-            formatter.locale = .current
+            formatter.timeZone = .current
             
             let prayerDateString = prayerTimesData.dateInfo.gergorianDate.date
             
@@ -90,7 +91,7 @@ class PrayerTimesHomeViewModel: ObservableObject {
         }
     }
     
-    private func handleDate(prayerTimesResponse: PrayerTimesResponse, dateType: DateType) {
+    private func handleDate(prayerTimesResponse: PrayerTimesResponse, dateType: DateMode) {
         let hijri = prayerTimesResponse.prayerTimesData.dateInfo.hijriDate.readable()
         let gregorian = prayerTimesResponse.prayerTimesData.dateInfo.gergorianDate.readable()
         let date = dateType == .hijri ? hijri : gregorian

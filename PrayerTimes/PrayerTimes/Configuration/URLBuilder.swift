@@ -9,7 +9,7 @@ import Foundation
 
 class URLBuilder {
     
-    private static let baseURLTemplate = "https://api.aladhan.com/v1/timings/{timestamp}?latitude={latitude}&longitude={longitude}&method={method}&school={school}&timezonestring=Europe/London"
+    private static let baseURLTemplate = "https://api.aladhan.com/v1/timings/{timestamp}?latitude={latitude}&longitude={longitude}&method={method}&school={school}&timezonestring={timeZone}"
     
     static func prayerTimesForDateURL(configuration: PrayerTimesConfiguration) -> URL? {
         
@@ -19,6 +19,7 @@ class URLBuilder {
             .replacingOccurrences(of: "{longitude}", with: configuration.coordinates.longitude)
             .replacingOccurrences(of: "{method}", with: configuration.method.toString())
             .replacingOccurrences(of: "{school}", with: configuration.school.toString())
+            .replacingOccurrences(of: "{timeZone}", with: configuration.timeZone.identifier)
         
         guard let url = URL(string: urlString) else { return nil }
         
