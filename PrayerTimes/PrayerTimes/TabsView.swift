@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AppView: View {
+struct TabsView: View {
     
     let viewModel: PrayerTimeListViewModel
     
@@ -18,7 +18,7 @@ struct AppView: View {
                     Image(systemName: "clock.fill")
                     Text("Times")
                 }
-            PrayerTimesHomeView(viewModel: viewModel)
+            PrayerTimesHomeView(viewModel: viewModel) //SettingsView
                 .tabItem {
                     Image(systemName: "gear")
                     Text("Settings")
@@ -26,9 +26,3 @@ struct AppView: View {
         }
     }
 }
-
-//struct AppView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AppView()
-//    }
-//}

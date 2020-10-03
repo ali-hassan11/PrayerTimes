@@ -10,7 +10,6 @@ import SwiftUI
 struct PrayerTimesHomeView: View {
     
     @ObservedObject var viewModel: PrayerTimeListViewModel
-    @EnvironmentObject var settingsConfiguration: SettingsConfiguration
     
     var body: some View {
         
@@ -40,19 +39,17 @@ struct PrayerTimesHomeView: View {
     }
     
     func safariPressed() {
-        print("safariPressed")
-//        viewModel.fetchData(date: viewModel.date.minus24Hours)
+        print("qiblaPressed")
     }
     
     func calendarPressed() {
         print("calendar")
-//        viewModel.fetchData(date: viewModel.date.plus24Hours)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        let viewModel = PrayerTimeListViewModel(date: Date())
-        PrayerTimesHomeView(viewModel: viewModel)
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let viewModel = PrayerTimeListViewModel
+//        PrayerTimesHomeView(viewModel: viewModel)
+//    }
+//}

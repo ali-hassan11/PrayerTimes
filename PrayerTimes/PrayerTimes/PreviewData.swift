@@ -21,6 +21,6 @@ struct PreviewData {
     let PREVIEW_SETTING_CONFIG = SettingsConfiguration.shared
     
     var prayerTimeListViewModel: PrayerTimeListViewModel {
-        return PrayerTimeListViewModel(date: Date())
+        return PrayerTimeListViewModel()
     }
 }

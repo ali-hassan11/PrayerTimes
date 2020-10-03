@@ -17,7 +17,7 @@ class SettingsConfiguration: ObservableObject {
     static let shared = SettingsConfiguration()
     
     private init() {
-        //Get all from UserDefaults
+        //Get all from UserDefaults/Core data
         dateMode = .gregorian
         method = .muslimWorldLeague
         school = .shafi

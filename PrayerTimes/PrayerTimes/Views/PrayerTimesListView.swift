@@ -12,29 +12,14 @@ struct PrayerTimesListView: View {
     @ObservedObject var viewModel: PrayerTimeListViewModel
     
     var body: some View {
-        
         VStack {
             ForEach(viewModel.prayers) { prayer in
-                //Extract into PrayerTimeCell
-                HStack {
-                    Text(prayer.name)
-                        .font(.title3).fontWeight(.medium)
-                    Spacer()
-                    Text("\(prayer.formattedTime)")
-                        .font(.title3).fontWeight(.medium)
-                    Image(systemName: "bell.fill")
-                        .padding(.leading, 20)
-                }
-                .padding(.all, 20)
-                .background(prayer.isNextPrayer ? Color.init(.systemPink) : Color.init(.tertiarySystemBackground))
-                .cornerRadius(5)
-                .foregroundColor(prayer.isNextPrayer ? Color.init(.white) : Color.init(.label).opacity(0.8))
-                .shadow(radius: 0.1)
+                PrayerTimeCell(prayer: prayer)
             }
         }
     }
 }
-//PrayerTimeCell {
+
 
 struct PrayerTimesListView_Previews: PreviewProvider {
     

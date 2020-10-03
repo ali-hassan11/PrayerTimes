@@ -15,12 +15,12 @@ struct PrayerTimesApp: App {
     
     init() {
         self.settingsConfiguration = SettingsConfiguration.shared
-        self.viewModel = PrayerTimeListViewModel(date: Date())
+        self.viewModel = PrayerTimeListViewModel()
     }
     
     var body: some Scene {
         WindowGroup {
-            AppView(viewModel: viewModel).environmentObject(settingsConfiguration)
+            TabsView(viewModel: viewModel).environmentObject(settingsConfiguration)
         }
     }
 }

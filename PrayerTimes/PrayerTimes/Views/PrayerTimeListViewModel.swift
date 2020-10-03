@@ -8,16 +8,8 @@
 import Foundation
 import SwiftUI
 
-//1. Rename to PrayerTimesListViewModel, Create MultiplePrayerTimeListViewModel that contains [PrayerTimesListViewModel]
-//2. Create MultiplePrayerListView, which populaters a list of PrayerTimesListView using a MultiplePrayerTimeListViewModel
-//2. Create separate viewModel for date - DateViewModel
 class PrayerTimeListViewModel: ObservableObject, Identifiable {
-    
-    //Try have settings config as a Environental variable here so you don't have to pass it into fetchData().
-    //Then you will be able to call fetch data from the view, when you want to see the next day times
-    
-    var date: Date = Date()
-    
+        
     @Published var prayers: [Prayer] = [] {
         didSet {
             prayers.forEach { prayer in
@@ -35,10 +27,9 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
     
     private var nextPrayerFound = false
     
-    init(date: Date) {}//REMOVE
+    init() {}
     
     func fetchData(date: Date) {
-        self.date = date
         let settings = SettingsConfiguration.shared
         let prayerTimesConfiguration = PrayerTimesConfiguration(timestamp: date.timestampString,
                                                                coordinates: .init(latitude: "53.5228", longitude: "1.1285"),
@@ -143,8 +134,7 @@ extension PrayerTimeListViewModel {
     }
 }
 
-//MOVE SOMEWHERE
-
+//MOVE TO ANOTHER FILE
 extension DateFormatter {
     func apiDateFormat() -> String {
         return "dd-MM-yyyy"
@@ -158,13 +148,5 @@ extension Date {
     
     var timestampPlus24HoursString: String {
         return String(self.timeIntervalSince1970 + 86400)
-    }
-    
-    var plus24Hours: Date {
-        return Calendar.current.date(byAdding: .day, value: 1, to: self)!
-    }
-    
-    var minus24Hours: Date {
-        return Calendar.current.date(byAdding: .day, value: -1, to: self)!
     }
 }
