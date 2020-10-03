@@ -20,12 +20,6 @@ struct PrayerTimesListView: View {
                     Text(prayer.name)
                         .font(.title3).fontWeight(.medium)
                     Spacer()
-                    if prayer.isNextPrayer {
-                        Text("in 1 hour 24 mins")
-                            .font(.subheadline)
-                            .opacity(0.9)
-                    }
-                    Spacer()
                     Text("\(prayer.formattedTime)")
                         .font(.title3).fontWeight(.medium)
                     Image(systemName: "bell.fill")

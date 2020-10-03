@@ -10,16 +10,13 @@ import SwiftUI
 @main
 struct PrayerTimesApp: App {
     
-    init() {
-        self.settingsConfiguration = SettingsConfiguration(dateType: .hijri,
-                                                           method: .muslimWorldLeague,
-                                                           school: .shafi,
-                                                           timeZone: .current)//Get from UserDefaults/CoreData
-        self.viewModel = PrayerTimeListViewModel(settings: settingsConfiguration)
-    }
-    
     let settingsConfiguration: SettingsConfiguration
     let viewModel: PrayerTimeListViewModel
+    
+    init() {
+        self.settingsConfiguration = SettingsConfiguration.shared
+        self.viewModel = PrayerTimeListViewModel(date: Date())
+    }
     
     var body: some Scene {
         WindowGroup {

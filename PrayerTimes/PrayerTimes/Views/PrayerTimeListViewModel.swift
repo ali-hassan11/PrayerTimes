@@ -13,6 +13,15 @@ import SwiftUI
 //2. Create separate viewModel for date - DateViewModel
 class PrayerTimeListViewModel: ObservableObject, Identifiable {
     
+    //Try have settings config as a Environental variable here so you don't have to pass it into fetchData().
+    //Then you will be able to call fetch data from the view, when you want to see the next day times
+    
+    var date: Date = Date() {
+        didSet {
+            fetchData(date: date)
+        }
+    }
+    
     @Published var prayers: [Prayer] = [] {
         didSet {
             prayers.forEach { prayer in
@@ -25,16 +34,17 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
         }
     }
     @Published var nextPrayer: Prayer?
-//    @Published var hijriDate: String = ""
-//    @Published var gregorianDate: String = ""
+    @Published var hijriDate: String = ""
+    @Published var gregorianDate: String = ""
     
     private var nextPrayerFound = false
     
-    init(settings: SettingsConfiguration) {
-        fetchData(settings: settings)
+    init(date: Date) {
+//        fetchData(date: date)
     }
     
-    func fetchData(settings: SettingsConfiguration) {
+    func fetchData(date: Date) {
+        let settings = SettingsConfiguration.shared
         let prayerTimesConfiguration = PrayerTimesConfiguration(timestamp: Date().timestampString,
                                                                coordinates: .init(latitude: "53.5228", longitude: "1.1285"),
                                                                method: settings.method,
@@ -54,12 +64,12 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
                     }
                 })
                 
-//                self?.handleDate(prayerTimesResponse: prayerTimesResponse, dateType: settings.dateMode,completion: { hijri, gregorian in
-//                    DispatchQueue.main.async {
-//                        self?.hijriDate = hijri
-//                        self?.gregorianDate = gregorian
-//                    }
-//                })
+                self?.handleDate(prayerTimesResponse: prayerTimesResponse, dateType: settings.dateMode,completion: { hijri, gregorian in
+                    DispatchQueue.main.async {
+                        self?.hijriDate = hijri
+                        self?.gregorianDate = gregorian
+                    }
+                })
                                 
             case .failure(let error):
                 print(error)
@@ -96,15 +106,15 @@ extension PrayerTimeListViewModel {
         completion(prayerTimes)
     }
     
-//    func handleDate(prayerTimesResponse: PrayerTimesResponse, dateType: DateMode, completion: @escaping (String, String) -> Void) {
-//
-//        let hijri = prayerTimesResponse.prayerTimesData.dateInfo.hijriDate.readable()
-//        let gregorian = prayerTimesResponse.prayerTimesData.dateInfo.gergorianDate.readable()
-//
-//        DispatchQueue.main.async {
-//            completion(hijri, gregorian)
-//        }
-//    }
+    func handleDate(prayerTimesResponse: PrayerTimesResponse, dateType: DateMode, completion: @escaping (String, String) -> Void) {
+
+        let hijri = prayerTimesResponse.prayerTimesData.dateInfo.hijriDate.readable()
+        let gregorian = prayerTimesResponse.prayerTimesData.dateInfo.gergorianDate.readable()
+
+        DispatchQueue.main.async {
+            completion(hijri, gregorian)
+        }
+    }
     
     private func prayerTimesDate(dateString: String, timeString: String, currentDate: Date) -> Date {
         

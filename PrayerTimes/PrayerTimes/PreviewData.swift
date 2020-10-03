@@ -18,16 +18,9 @@ struct PreviewData {
         Prayer(name: "Isha", timestamp: Date(), formattedTime: "20:00", isNextPrayer: false)
     ]
     
-    let PREVIEW_SETTING_CONFIG = SettingsConfiguration(dateType: .hijri,
-                                                                               method: .muslimWorldLeague,
-                                                                               school: .shafi,
-                                                                               timeZone: .current)
+    let PREVIEW_SETTING_CONFIG = SettingsConfiguration.shared
     
     var prayerTimeListViewModel: PrayerTimeListViewModel {
-        let settings = SettingsConfiguration(dateType: .hijri,
-                                                                                   method: .muslimWorldLeague,
-                                                                                   school: .shafi,
-                                                                                   timeZone: .current)
-        return PrayerTimeListViewModel(settings: settings)
+        return PrayerTimeListViewModel(date: Date())
     }
 }

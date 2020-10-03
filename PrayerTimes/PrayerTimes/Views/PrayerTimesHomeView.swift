@@ -18,9 +18,9 @@ struct PrayerTimesHomeView: View {
             Color.init(.secondarySystemBackground).overlay(
                 VStack() {
                     Spacer()
-                    //DateView(hijriDate: $viewModel.hijriDate, gregorianDate: $viewModel.gregorianDate)
+                    DateView(hijriDate: $viewModel.hijriDate, gregorianDate: $viewModel.gregorianDate)
                     Spacer()
-                    MultiplePrayerListView()
+                    PrayerTimesListView(viewModel: viewModel)
                         .cornerRadius(25)
                     Spacer()
                 }
@@ -29,29 +29,28 @@ struct PrayerTimesHomeView: View {
             )
             .navigationBarTitle("Hatfield, UK", displayMode: .inline)
             .navigationBarItems(leading: Button(action: locatePressed, label: {
-                Image(systemName: "mappin.and.ellipse")
-            }), trailing: Button(action: mapPressed, label: {
+                Image(systemName: "safari")
+            }), trailing: Button(action: compassPressed, label: {
                 Image(systemName: "calendar")
             }))
         }
+        .onAppear(perform: {
+            viewModel.fetchData(date: Date())
+        })
     }
     
     func locatePressed() {
         print("locatePressed")
     }
     
-    func mapPressed() {
-        print("mapPressed")
+    func compassPressed() {
+        print("compassPressed")
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let settings = SettingsConfiguration(dateType: .hijri,
-                                           method: .muslimWorldLeague,
-                                           school: .hanafi,
-                                           timeZone: .current)
-        let viewModel = PrayerTimeListViewModel(settings: settings)
+        let viewModel = PrayerTimeListViewModel(date: Date())
         PrayerTimesHomeView(viewModel: viewModel)
     }
 }

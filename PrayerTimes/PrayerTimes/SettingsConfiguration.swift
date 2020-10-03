@@ -14,7 +14,17 @@ class SettingsConfiguration: ObservableObject {
     @Published var school: School
     @Published var timeZone: TimeZone
     
-    init(dateType: DateMode, method: Method, school: School, timeZone: TimeZone) {
+    static let shared = SettingsConfiguration()
+    
+    private init() {
+        //Get all from UserDefaults
+        dateMode = .gregorian
+        method = .muslimWorldLeague
+        school = .shafi
+        timeZone = .current
+    }
+    
+    private init(dateType: DateMode, method: Method, school: School, timeZone: TimeZone) {
         self.dateMode = dateType
         self.method = method
         self.school = school
