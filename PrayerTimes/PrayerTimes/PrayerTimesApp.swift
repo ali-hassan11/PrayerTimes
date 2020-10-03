@@ -15,11 +15,11 @@ struct PrayerTimesApp: App {
                                                            method: .muslimWorldLeague,
                                                            school: .shafi,
                                                            timeZone: .current)//Get from UserDefaults/CoreData
-        self.viewModel = PrayerTimesHomeViewModel(settings: settingsConfiguration)
+        self.viewModel = PrayerTimeListViewModel(settings: settingsConfiguration)
     }
     
     let settingsConfiguration: SettingsConfiguration
-    let viewModel: PrayerTimesHomeViewModel
+    let viewModel: PrayerTimeListViewModel
     
     var body: some Scene {
         WindowGroup {

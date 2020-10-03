@@ -9,12 +9,12 @@ import SwiftUI
 
 struct PrayerTimesListView: View {
     
-    @Binding var prayers: [Prayer]
+    @ObservedObject var viewModel: PrayerTimeListViewModel
     
     var body: some View {
         
         VStack {
-            ForEach(prayers) { prayer in
+            ForEach(viewModel.prayers) { prayer in
                 //Extract into PrayerTimeCell
                 HStack {
                     Text(prayer.name)
@@ -40,12 +40,13 @@ struct PrayerTimesListView: View {
         }
     }
 }
+//PrayerTimeCell {
 
 struct PrayerTimesListView_Previews: PreviewProvider {
     
-    @State static var prayers = PreviewData().PREVIEW_PRAYERS
+    @State static var prayersListViewModel = PreviewData().prayerTimeListViewModel
     
     static var previews: some View {
-        PrayerTimesListView(prayers: $prayers)
+        PrayerTimesListView(viewModel: prayersListViewModel)
     }
 }

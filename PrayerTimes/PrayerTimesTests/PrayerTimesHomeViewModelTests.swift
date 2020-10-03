@@ -18,7 +18,7 @@ class PrayerTimesHomeViewModelTests: XCTestCase {
         let response = stubResponse
         
         //When a viewModel is instantiated and handlePrayerTimes is invoked
-        let viewModel = PrayerTimesHomeViewModel(settings: stubSettingsCongiguration)
+        let viewModel = PrayerTimeListViewModel(settings: stubSettingsCongiguration)
         
         viewModel.handlePrayerTimes(prayerTimesResponse: response) { prayers in
             viewModel.prayers = prayers
@@ -43,7 +43,7 @@ class PrayerTimesHomeViewModelTests: XCTestCase {
         let response = stubResponse
 
         //When handlePrayerTimes and handleDate are invkokd
-        let viewModel = PrayerTimesHomeViewModel(settings: stubSettingsCongiguration)
+        let viewModel = PrayerTimeListViewModel(settings: stubSettingsCongiguration)
         
         viewModel.handleDate(prayerTimesResponse: response, dateType: .gregorian) { formattedDate in
             viewModel.formattedDate = formattedDate

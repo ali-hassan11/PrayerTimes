@@ -20,7 +20,7 @@
 		CEA6248025265D0300592075 /* URLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA6247F25265D0300592075 /* URLBuilder.swift */; };
 		CEA6248525265DFC00592075 /* PrayerTimesConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA6248425265DFC00592075 /* PrayerTimesConfiguration.swift */; };
 		CEA6248D25267FC900592075 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA6248C25267FC900592075 /* Service.swift */; };
-		CEA624A0252681BC00592075 /* PrayerTimesHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA6249F252681BC00592075 /* PrayerTimesHomeViewModel.swift */; };
+		CEA624A0252681BC00592075 /* PrayerTimeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA6249F252681BC00592075 /* PrayerTimeListViewModel.swift */; };
 		CEA624B0252686F300592075 /* PrayerTimesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA624AF252686F300592075 /* PrayerTimesResponse.swift */; };
 		CEA624B525268AC300592075 /* Response+DecodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA624B425268AC300592075 /* Response+DecodableTests.swift */; };
 		CEA624BD252690C600592075 /* PrayerTimesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA624BC252690C600592075 /* PrayerTimesData.swift */; };
@@ -42,6 +42,8 @@
 		CED3D2A02527840200561999 /* PrayerName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D29F2527840200561999 /* PrayerName.swift */; };
 		CED3D2AE2527BF8300561999 /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D2AD2527BF8200561999 /* PreviewData.swift */; };
 		CED3D2B62527CD1F00561999 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D2B52527CD1F00561999 /* AppView.swift */; };
+		CED3D2DF2528618F00561999 /* MultiplePrayerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D2DE2528618F00561999 /* MultiplePrayerListView.swift */; };
+		CED3D2EA2528629900561999 /* MultiplePrayerTimeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D2E92528629900561999 /* MultiplePrayerTimeListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,7 +98,7 @@
 		CEA6247F25265D0300592075 /* URLBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLBuilder.swift; sourceTree = "<group>"; };
 		CEA6248425265DFC00592075 /* PrayerTimesConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimesConfiguration.swift; sourceTree = "<group>"; };
 		CEA6248C25267FC900592075 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
-		CEA6249F252681BC00592075 /* PrayerTimesHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimesHomeViewModel.swift; sourceTree = "<group>"; };
+		CEA6249F252681BC00592075 /* PrayerTimeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimeListViewModel.swift; sourceTree = "<group>"; };
 		CEA624AF252686F300592075 /* PrayerTimesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimesResponse.swift; sourceTree = "<group>"; };
 		CEA624B425268AC300592075 /* Response+DecodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Response+DecodableTests.swift"; sourceTree = "<group>"; };
 		CEA624BC252690C600592075 /* PrayerTimesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimesData.swift; sourceTree = "<group>"; };
@@ -118,6 +120,8 @@
 		CED3D29F2527840200561999 /* PrayerName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerName.swift; sourceTree = "<group>"; };
 		CED3D2AD2527BF8200561999 /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
 		CED3D2B52527CD1F00561999 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
+		CED3D2DE2528618F00561999 /* MultiplePrayerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplePrayerListView.swift; sourceTree = "<group>"; };
+		CED3D2E92528629900561999 /* MultiplePrayerTimeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplePrayerTimeListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,9 +236,11 @@
 			children = (
 				CE28BA2A2526146300AAD5BD /* PrayerTimesHomeView.swift */,
 				CE6EAEDC25262C2300E688D3 /* PrayerTimesListView.swift */,
+				CED3D2DE2528618F00561999 /* MultiplePrayerListView.swift */,
+				CED3D2E92528629900561999 /* MultiplePrayerTimeListViewModel.swift */,
 				CE6EAEDF2526300200E688D3 /* NextPrayerView.swift */,
 				CE6EAEE12526313800E688D3 /* DateView.swift */,
-				CEA6249F252681BC00592075 /* PrayerTimesHomeViewModel.swift */,
+				CEA6249F252681BC00592075 /* PrayerTimeListViewModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -411,8 +417,9 @@
 				CED3D2B62527CD1F00561999 /* AppView.swift in Sources */,
 				CEA6248025265D0300592075 /* URLBuilder.swift in Sources */,
 				CEA6248525265DFC00592075 /* PrayerTimesConfiguration.swift in Sources */,
-				CEA624A0252681BC00592075 /* PrayerTimesHomeViewModel.swift in Sources */,
+				CEA624A0252681BC00592075 /* PrayerTimeListViewModel.swift in Sources */,
 				CE6EAEDB252625CF00E688D3 /* Prayer.swift in Sources */,
+				CED3D2DF2528618F00561999 /* MultiplePrayerListView.swift in Sources */,
 				CE28BA2B2526146300AAD5BD /* PrayerTimesHomeView.swift in Sources */,
 				CEA6248D25267FC900592075 /* Service.swift in Sources */,
 				CED3D26A2526D07E00561999 /* SettingsConfiguration.swift in Sources */,
@@ -420,6 +427,7 @@
 				CEA624BD252690C600592075 /* PrayerTimesData.swift in Sources */,
 				CEA624B0252686F300592075 /* PrayerTimesResponse.swift in Sources */,
 				CED3D2AE2527BF8300561999 /* PreviewData.swift in Sources */,
+				CED3D2EA2528629900561999 /* MultiplePrayerTimeListViewModel.swift in Sources */,
 				CE28BA292526146300AAD5BD /* PrayerTimesApp.swift in Sources */,
 				CE6EAEDD25262C2300E688D3 /* PrayerTimesListView.swift in Sources */,
 				CEA624F62526B45C00592075 /* Method.swift in Sources */,

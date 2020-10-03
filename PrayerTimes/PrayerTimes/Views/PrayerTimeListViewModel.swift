@@ -8,7 +8,10 @@
 import Foundation
 import SwiftUI
 
-class PrayerTimesHomeViewModel: ObservableObject {
+//1. Rename to PrayerTimesListViewModel, Create MultiplePrayerTimeListViewModel that contains [PrayerTimesListViewModel]
+//2. Create MultiplePrayerListView, which populaters a list of PrayerTimesListView using a MultiplePrayerTimeListViewModel
+//2. Create separate viewModel for date - DateViewModel
+class PrayerTimeListViewModel: ObservableObject, Identifiable {
     
     @Published var prayers: [Prayer] = [] {
         didSet {
@@ -22,8 +25,8 @@ class PrayerTimesHomeViewModel: ObservableObject {
         }
     }
     @Published var nextPrayer: Prayer?
-    @Published var hijriDate: String = ""
-    @Published var gregorianDate: String = ""
+//    @Published var hijriDate: String = ""
+//    @Published var gregorianDate: String = ""
     
     private var nextPrayerFound = false
     
@@ -51,12 +54,12 @@ class PrayerTimesHomeViewModel: ObservableObject {
                     }
                 })
                 
-                self?.handleDate(prayerTimesResponse: prayerTimesResponse, dateType: settings.dateMode,completion: { hijri, gregorian in
-                    DispatchQueue.main.async {
-                        self?.hijriDate = hijri
-                        self?.gregorianDate = gregorian
-                    }
-                })
+//                self?.handleDate(prayerTimesResponse: prayerTimesResponse, dateType: settings.dateMode,completion: { hijri, gregorian in
+//                    DispatchQueue.main.async {
+//                        self?.hijriDate = hijri
+//                        self?.gregorianDate = gregorian
+//                    }
+//                })
                                 
             case .failure(let error):
                 print(error)
@@ -66,7 +69,7 @@ class PrayerTimesHomeViewModel: ObservableObject {
     }
 }
  
-extension PrayerTimesHomeViewModel {
+extension PrayerTimeListViewModel {
     
     func handlePrayerTimes(prayerTimesResponse: PrayerTimesResponse, completion: @escaping (([Prayer]) -> Void)) {
         
@@ -93,15 +96,15 @@ extension PrayerTimesHomeViewModel {
         completion(prayerTimes)
     }
     
-    func handleDate(prayerTimesResponse: PrayerTimesResponse, dateType: DateMode, completion: @escaping (String, String) -> Void) {
-        
-        let hijri = prayerTimesResponse.prayerTimesData.dateInfo.hijriDate.readable()
-        let gregorian = prayerTimesResponse.prayerTimesData.dateInfo.gergorianDate.readable()
-        
-        DispatchQueue.main.async {
-            completion(hijri, gregorian)
-        }
-    }
+//    func handleDate(prayerTimesResponse: PrayerTimesResponse, dateType: DateMode, completion: @escaping (String, String) -> Void) {
+//
+//        let hijri = prayerTimesResponse.prayerTimesData.dateInfo.hijriDate.readable()
+//        let gregorian = prayerTimesResponse.prayerTimesData.dateInfo.gergorianDate.readable()
+//
+//        DispatchQueue.main.async {
+//            completion(hijri, gregorian)
+//        }
+//    }
     
     private func prayerTimesDate(dateString: String, timeString: String, currentDate: Date) -> Date {
         

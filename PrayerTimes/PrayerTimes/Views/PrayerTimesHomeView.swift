@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PrayerTimesHomeView: View {
     
-    @ObservedObject var viewModel: PrayerTimesHomeViewModel
+    @ObservedObject var viewModel: PrayerTimeListViewModel
     @EnvironmentObject var settingsConfiguration: SettingsConfiguration
     
     var body: some View {
@@ -18,9 +18,9 @@ struct PrayerTimesHomeView: View {
             Color.init(.secondarySystemBackground).overlay(
                 VStack() {
                     Spacer()
-                    DateView(hijriDate: $viewModel.hijriDate, gregorianDate: $viewModel.gregorianDate)
+                    //DateView(hijriDate: $viewModel.hijriDate, gregorianDate: $viewModel.gregorianDate)
                     Spacer()
-                    PrayerTimesListView(prayers: $viewModel.prayers)
+                    MultiplePrayerListView()
                         .cornerRadius(25)
                     Spacer()
                 }
@@ -51,7 +51,7 @@ struct ContentView_Previews: PreviewProvider {
                                            method: .muslimWorldLeague,
                                            school: .hanafi,
                                            timeZone: .current)
-        let viewModel = PrayerTimesHomeViewModel(settings: settings)
+        let viewModel = PrayerTimeListViewModel(settings: settings)
         PrayerTimesHomeView(viewModel: viewModel)
     }
 }

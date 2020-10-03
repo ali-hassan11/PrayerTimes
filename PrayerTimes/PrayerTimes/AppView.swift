@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AppView: View {
     
-    let viewModel: PrayerTimesHomeViewModel
+    let viewModel: PrayerTimeListViewModel
     
     var body: some View {
         TabView {
