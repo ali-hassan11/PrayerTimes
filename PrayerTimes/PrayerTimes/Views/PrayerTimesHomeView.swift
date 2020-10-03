@@ -28,9 +28,9 @@ struct PrayerTimesHomeView: View {
                 .padding(.horizontal, 20)
             )
             .navigationBarTitle("Hatfield, UK", displayMode: .inline)
-            .navigationBarItems(leading: Button(action: locatePressed, label: {
+            .navigationBarItems(leading: Button(action: safariPressed, label: {
                 Image(systemName: "safari")
-            }), trailing: Button(action: compassPressed, label: {
+            }), trailing: Button(action: calendarPressed, label: {
                 Image(systemName: "calendar")
             }))
         }
@@ -39,12 +39,14 @@ struct PrayerTimesHomeView: View {
         })
     }
     
-    func locatePressed() {
-        print("locatePressed")
+    func safariPressed() {
+        print("safariPressed")
+//        viewModel.fetchData(date: viewModel.date.minus24Hours)
     }
     
-    func compassPressed() {
-        print("compassPressed")
+    func calendarPressed() {
+        print("calendar")
+//        viewModel.fetchData(date: viewModel.date.plus24Hours)
     }
 }
 

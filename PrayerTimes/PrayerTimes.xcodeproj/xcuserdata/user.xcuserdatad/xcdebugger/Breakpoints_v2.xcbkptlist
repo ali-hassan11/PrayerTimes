@@ -7,33 +7,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "78775E18-46B4-4745-85A1-9F927B5377EB"
+            uuid = "0FA6D4AC-81A1-4DBB-BCEE-B29FD9CE5BEA"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PrayerTimes/Views/PrayerTimeListViewModel.swift"
+            filePath = "PrayerTimes/Configuration/URLBuilder.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "fetchData(date:)"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "prayerTimesForDateURL(configuration:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0FA6D4AC-81A1-4DBB-BCEE-B29FD9CE5BEA"
-            shouldBeEnabled = "No"
+            uuid = "10122BCF-9093-445C-B0AE-576B425314EB"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PrayerTimes/Configuration/URLBuilder.swift"
+            filePath = "PrayerTimes/Views/PrayerTimeListViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "prayerTimesForDateURL(configuration:)"
-            landmarkType = "7">
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "minus24Hours"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

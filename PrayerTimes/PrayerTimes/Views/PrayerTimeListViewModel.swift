@@ -16,11 +16,7 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
     //Try have settings config as a Environental variable here so you don't have to pass it into fetchData().
     //Then you will be able to call fetch data from the view, when you want to see the next day times
     
-    var date: Date = Date() {
-        didSet {
-            fetchData(date: date)
-        }
-    }
+    var date: Date = Date()
     
     @Published var prayers: [Prayer] = [] {
         didSet {
@@ -39,13 +35,12 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
     
     private var nextPrayerFound = false
     
-    init(date: Date) {
-//        fetchData(date: date)
-    }
+    init(date: Date) {}//REMOVE
     
     func fetchData(date: Date) {
+        self.date = date
         let settings = SettingsConfiguration.shared
-        let prayerTimesConfiguration = PrayerTimesConfiguration(timestamp: Date().timestampString,
+        let prayerTimesConfiguration = PrayerTimesConfiguration(timestamp: date.timestampString,
                                                                coordinates: .init(latitude: "53.5228", longitude: "1.1285"),
                                                                method: settings.method,
                                                                school: settings.school,
@@ -163,5 +158,13 @@ extension Date {
     
     var timestampPlus24HoursString: String {
         return String(self.timeIntervalSince1970 + 86400)
+    }
+    
+    var plus24Hours: Date {
+        return Calendar.current.date(byAdding: .day, value: 1, to: self)!
+    }
+    
+    var minus24Hours: Date {
+        return Calendar.current.date(byAdding: .day, value: -1, to: self)!
     }
 }
