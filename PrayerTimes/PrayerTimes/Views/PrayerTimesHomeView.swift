@@ -28,14 +28,20 @@ struct PrayerTimesHomeView: View {
                 .padding(.horizontal, 20)
             )
             .navigationBarTitle("Hatfield, UK", displayMode: .inline)
-            .navigationBarItems(trailing: Button(action: locatePressed, label: {
+            .navigationBarItems(leading: Button(action: locatePressed, label: {
                 Image(systemName: "mappin.and.ellipse")
+            }), trailing: Button(action: mapPressed, label: {
+                Image(systemName: "calendar")
             }))
         }
     }
     
     func locatePressed() {
         print("locatePressed")
+    }
+    
+    func mapPressed() {
+        print("mapPressed")
     }
 }
 
