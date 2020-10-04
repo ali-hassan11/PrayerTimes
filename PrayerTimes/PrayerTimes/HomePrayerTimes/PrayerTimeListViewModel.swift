@@ -32,9 +32,6 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
     
     @Published var stateManager: StateManager = StateManager(prayerTimesState: .loading, displayDateState: .loading)
     
-    @Published var prayerTimesState: LoadingState = .loading
-    @Published var displayDateState: LoadingState = .loading
-    
     private var nextPrayerFound = false
     
     init() {}
@@ -43,8 +40,6 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
     func fetchData(date: Date) {
         self.date = date
         self.nextPrayerFound = false
-        prayerTimesState = .loading
-        displayDateState = .loading
         
         let settings = SettingsConfiguration.shared
         let prayerTimesConfiguration = PrayerTimesConfiguration(timestamp: date.timestampString,

@@ -48,4 +48,9 @@ class StateManager: ObservableObject { //ADD TESTS FOR THIS
         prayerTimesState = .failed
         displayDateState = .failed
     }
+    
+    func loading() {
+        prayerTimesState = .loading
+        displayDateState = .loading
+    }
 }
