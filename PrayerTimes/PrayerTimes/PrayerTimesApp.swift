@@ -10,11 +10,10 @@ import SwiftUI
 @main
 struct PrayerTimesApp: App {
     
-    let settingsConfiguration: SettingsConfiguration
+    var settingsConfiguration = SettingsConfiguration.shared
     let viewModel: PrayerTimeListViewModel
     
     init() {
-        self.settingsConfiguration = SettingsConfiguration.shared
         self.viewModel = PrayerTimeListViewModel()
     }
     

@@ -10,6 +10,7 @@ import SwiftUI
 struct PrayerTimesHomeView: View {
     
     @ObservedObject var viewModel: PrayerTimeListViewModel
+    @EnvironmentObject var settingsConfiguration: SettingsConfiguration
     
     var body: some View {
         

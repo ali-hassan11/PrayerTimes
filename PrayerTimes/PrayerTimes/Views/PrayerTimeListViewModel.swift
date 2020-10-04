@@ -9,7 +9,9 @@ import Foundation
 import SwiftUI
 
 class PrayerTimeListViewModel: ObservableObject, Identifiable {
-        
+    
+//    @Environment var settingsConfiguration: SettingsConfiguration
+    
     @Published var prayers: [Prayer] = [] {
         didSet {
             prayers.forEach { prayer in

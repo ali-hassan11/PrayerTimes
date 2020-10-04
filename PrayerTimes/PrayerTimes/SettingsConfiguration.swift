@@ -13,6 +13,7 @@ class SettingsConfiguration: ObservableObject {
     @Published var method: Method
     @Published var school: School
     @Published var timeZone: TimeZone
+    //@Published var colorScheme: UIColor
     
     static let shared = SettingsConfiguration()
     

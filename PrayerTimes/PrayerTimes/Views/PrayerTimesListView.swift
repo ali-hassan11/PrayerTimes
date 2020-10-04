@@ -10,7 +10,8 @@ import SwiftUI
 struct PrayerTimesListView: View {
     
     @ObservedObject var viewModel: PrayerTimeListViewModel
-    
+//    @Environment var settingsConfiguration: SettingsConfiguration
+
     var body: some View {
         VStack {
             ForEach(viewModel.prayers) { prayer in
