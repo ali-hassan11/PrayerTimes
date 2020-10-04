@@ -11,6 +11,14 @@ import SwiftUI
 class PrayerTimeListViewModel: ObservableObject, Identifiable {
     
 //    @Environment var settingsConfiguration: SettingsConfiguration
+    enum State {
+        case loading
+        case loaded
+        case failed//(Error)
+    }
+    
+    var date: Date = Date()
+    var state: State = .loading
     
     @Published var prayers: [Prayer] = [] {
         didSet {
@@ -32,6 +40,7 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
     init() {}
     
     func fetchData(date: Date) {
+        self.date = date
         let settings = SettingsConfiguration.shared
         let prayerTimesConfiguration = PrayerTimesConfiguration(timestamp: date.timestampString,
                                                                coordinates: .init(latitude: "53.5228", longitude: "1.1285"),
@@ -40,7 +49,7 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
                                                                timeZone: settings.timeZone)
         
         guard let url = URLBuilder.prayerTimesForDateURL(configuration: prayerTimesConfiguration) else { return }
-        
+
         Service.shared.fetchPrayerTimes(url: url) { [weak self] result in
             
             switch result {
@@ -61,6 +70,7 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
                                 
             case .failure(let error):
                 print(error)
+                self?.state = .failed
             }
         }
     
@@ -145,10 +155,18 @@ extension DateFormatter {
 
 extension Date {
     var timestampString: String {
-        return String(self.timeIntervalSince1970)
+        return String(Int(self.timeIntervalSince1970))
     }
     
     var timestampPlus24HoursString: String {
         return String(self.timeIntervalSince1970 + 86400)
+    }
+    
+    var plus24Hours: Date {
+        return self.addingTimeInterval(TimeInterval(86400))
+    }
+    
+    var minus24Hours: Date {
+        return self.addingTimeInterval(TimeInterval(-86400))
     }
 }

@@ -17,15 +17,17 @@ class Service {
     static let shared = Service()
     private init() {}
     
+    #warning("Add actual (localized?) error messages")
+    
     public func fetchPrayerTimes(url: URL, completion: @escaping ((Result<PrayerTimesResponse, CustomError>) -> Void)) {
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let _ = error {
-                completion(.failure(.init(title: "Error", message: "Add localizable error message")))
+                completion(.failure(.init(title: "Error", message: "Unable to fetch data")))
             }
             
             guard let data = data else {
-                completion(.failure(.init(title: "Error", message: "Add localizable error message")))
+                completion(.failure(.init(title: "Error", message: "No date found from request")))
                 return
             }
             
@@ -33,7 +35,7 @@ class Service {
                 let prayerTimesResponse = try JSONDecoder().decode(PrayerTimesResponse.self, from: data)
                 completion(.success(prayerTimesResponse))
             } catch {
-                completion(.failure(.init(title: "Error", message: "Add localized message")))
+                completion(.failure(.init(title: "Error", message: "Unable to decode response")))
             }
         }
         .resume()

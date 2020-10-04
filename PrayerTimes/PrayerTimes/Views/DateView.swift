@@ -9,20 +9,41 @@ import SwiftUI
 
 struct DateView: View {
     
-    @Binding var hijriDate: String
-    @Binding var gregorianDate: String
+    @ObservedObject var viewModel: PrayerTimeListViewModel
 
     var body: some View {
-        VStack {
-            Text(hijriDate).font(.largeTitle)
-            Text(gregorianDate).font(.headline)
+        
+        HStack {
+            switch viewModel.state {
+            case .loaded:
+                Button(action: {
+
+                }) {
+                    Image(systemName: "chevron.backward")
+                }
+                VStack {
+                    Text(viewModel.hijriDate).font(.largeTitle)
+                    Text(viewModel.gregorianDate).font(.headline)
+                }
+                Button(action: {
+
+                }) {
+                    Image(systemName: "chevron.forward")
+                }
+            case .loading:
+                Text("Loading")
+            case .failed:
+                Text("Failed")
+            }
+            
+           
         }
     }
 }
 
-//struct DateView_Previews: PreviewProvider {
-//    @State static var formattedDate: String = "Test Date"
-//    static var previews: some View {
-//        DateView(formattedDate: $formattedDate)
-//    }
-//}
+struct DateView_Previews: PreviewProvider {
+    @State static var viewModel = PreviewData().prayerTimeListViewModel
+    static var previews: some View {
+        DateView(viewModel: viewModel)
+    }
+}
