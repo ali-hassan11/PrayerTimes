@@ -38,11 +38,7 @@ struct PrayerTimesHomeView: View {
                 .animation(.spring())
                 .padding(.horizontal, 20)
                 
-                
-                
-                
-                
-                
+      
             )
             .navigationBarTitle("Hatfield, UK", displayMode: .inline)
             .navigationBarItems(leading: Button(action: {}, label: {
@@ -54,16 +50,6 @@ struct PrayerTimesHomeView: View {
         .onAppear(perform: {
             viewModel.fetchData(date: Date())
         })
-    }
-    
-    func safariPressed() {
-        print("qiblaPressed")
-        viewModel.fetchData(date: viewModel.date.minus24Hours)
-    }
-    
-    func calendarPressed() {
-        print("calendar")
-        viewModel.fetchData(date: viewModel.date.plus24Hours)
     }
 }
 

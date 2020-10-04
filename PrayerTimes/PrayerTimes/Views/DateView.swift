@@ -15,19 +15,19 @@ struct DateView: View {
         
         HStack {
             Button(action: {
-                viewModel.fetchData(date: viewModel.date.minus24Hours)
+                viewModel.fetchData(date: viewModel.date.minusOneDay)
             }) {
                 Image(systemName: "chevron.backward")
-            }
+            }.padding()
             VStack {
-                Text(viewModel.hijriDate).font(.largeTitle)
-                Text(viewModel.gregorianDate).font(.headline)
+                Text(viewModel.hijriDate).font(.largeTitle).multilineTextAlignment(.center)
+                Text(viewModel.gregorianDate).font(.headline).multilineTextAlignment(.center)
             }
             Button(action: {
-                viewModel.fetchData(date: viewModel.date.plus24Hours)
+                viewModel.fetchData(date: viewModel.date.plusOneDay)
             }) {
                 Image(systemName: "chevron.forward")
-            }    
+            }.padding()
         }
     }
 }

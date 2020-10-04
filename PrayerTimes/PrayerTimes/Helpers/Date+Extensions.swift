@@ -12,15 +12,11 @@ extension Date {
         return String(Int(self.timeIntervalSince1970))
     }
     
-    var timestampPlus24HoursString: String {
-        return String(self.timeIntervalSince1970 + 86400)
-    }
-    
-    var plus24Hours: Date {
+    var plusOneDay: Date {
         return self.addingTimeInterval(TimeInterval(86400))
     }
     
-    var minus24Hours: Date {
+    var minusOneDay: Date {
         return self.addingTimeInterval(TimeInterval(-86400))
     }
 }

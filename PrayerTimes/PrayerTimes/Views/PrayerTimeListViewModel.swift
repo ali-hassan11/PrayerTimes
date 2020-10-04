@@ -41,6 +41,7 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
     
     func fetchData(date: Date) {
         self.date = date
+        self.nextPrayerFound = false
         prayerTimesState = .loading
         displayDateState = .loading
         
@@ -90,8 +91,7 @@ extension PrayerTimeListViewModel {
         
         var prayerTimes = [Prayer]()
                 
-        let currentTimestamp = TimeInterval(prayerTimesData.dateInfo.timestamp) ?? Date().timeIntervalSince1970
-        let currentDate = Date(timeIntervalSince1970: currentTimestamp)
+        let currentDate = Date()
         
         let prayerNames: [PrayerName] = [.fajr, .sunrise, .dhuhr, .asr, .maghrib, .isha]
             
@@ -129,6 +129,10 @@ extension PrayerTimeListViewModel {
     }
     
     private func isNextPrayer(prayerTimesDate: Date, currentDate: Date) -> Bool {
+        
+        if prayerTimesDate.timeIntervalSince1970 - currentDate.timeIntervalSince1970 >= 86400 {
+            return false
+        }
         
         if nextPrayerFound {
             return false
