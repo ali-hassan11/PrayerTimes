@@ -42,18 +42,18 @@ class StateManager: ObservableObject { //ADD TESTS FOR THIS
         self.displayDateState = displayDateState
     }
     
-//    mutating func prayerTimesLoaded() {
-//        prayerTimesState = .loaded
-//    }
-//
-//    mutating func datesLoaded() {
-//        displayDateState = .loaded
-//    }
+    func prayerTimesLoaded() {
+        prayerTimesState = .loaded
+    }
+
+    func datesLoaded() {
+        displayDateState = .loaded
+    }
     
-//    mutating func failed() {
-//        prayerTimesState = .failed
-//        displayDateState = .failed
-//    }
+    func failed() {
+        prayerTimesState = .failed
+        displayDateState = .failed
+    }
 }
 
 class PrayerTimeListViewModel: ObservableObject, Identifiable {
@@ -78,7 +78,7 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
     @Published var gregorianDate: String = ""
     
     
-//    @Published var stateManager: StateManager = StateManager(prayerTimesState: .loading, displayDateState: .loading)
+    @Published var stateManager: StateManager = StateManager(prayerTimesState: .loading, displayDateState: .loading)
     
     @Published var prayerTimesState: loadingState = .loading
     @Published var displayDateState: loadingState = .loading
@@ -106,7 +106,7 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
                 self?.handlePrayerTimes(prayerTimesResponse: prayerTimesResponse, completion: { prayers in
                     DispatchQueue.main.async {
                         self?.prayers = prayers
-                        self?.prayerTimesState = .loaded
+                        self?.stateManager.prayerTimesLoaded()
                     }
                 })
                 
@@ -114,15 +114,13 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
                     DispatchQueue.main.async {
                         self?.hijriDate = hijri
                         self?.gregorianDate = gregorian
-                        self?.displayDateState = .loaded
+                        self?.stateManager.datesLoaded()
                     }
                 })
                                 
             case .failure(let error):
                 print(error)
-                
-                self?.prayerTimesState = .failed
-                self?.displayDateState = .failed
+                self?.stateManager.failed()
             }
         }
     

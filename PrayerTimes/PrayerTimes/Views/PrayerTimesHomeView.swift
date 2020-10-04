@@ -18,8 +18,8 @@ struct PrayerTimesHomeView: View {
                 
                 VStack() {
                     
-                    switch (viewModel.prayerTimesState, viewModel.displayDateState) {
-                    case (.loaded, .loaded):
+                    switch (viewModel.stateManager.state) {
+                    case (.loaded):
                         
                         Spacer()
                         DateView(viewModel: viewModel)
@@ -27,7 +27,7 @@ struct PrayerTimesHomeView: View {
                         PrayerTimesListView(viewModel: viewModel).cornerRadius(25)
                         Spacer()
                         
-                    case (.failed, .failed):
+                    case (.failed):
                         Text("Failed")
                     
                     default :
