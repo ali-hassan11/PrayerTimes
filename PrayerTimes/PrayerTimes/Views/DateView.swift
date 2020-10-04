@@ -18,7 +18,8 @@ struct DateView: View {
                 viewModel.fetchData(date: viewModel.date.minusOneDay)
             }) {
                 Image(systemName: "chevron.backward")
-            }.padding()
+                    .font(Font.system(size: 25, weight: .semibold))
+            }.padding(.all, 25)
             VStack {
                 Text(viewModel.hijriDate).font(.largeTitle).multilineTextAlignment(.center)
                 Text(viewModel.gregorianDate).font(.headline).multilineTextAlignment(.center)
@@ -27,7 +28,8 @@ struct DateView: View {
                 viewModel.fetchData(date: viewModel.date.plusOneDay)
             }) {
                 Image(systemName: "chevron.forward")
-            }.padding()
+                    .font(Font.system(size: 25, weight: .semibold))
+            }.padding(.all, 25)
         }
     }
 }
