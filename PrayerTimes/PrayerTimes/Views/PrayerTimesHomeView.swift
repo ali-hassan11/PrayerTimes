@@ -9,23 +9,40 @@ import SwiftUI
 
 struct PrayerTimesHomeView: View {
     
-    @State var viewModel: PrayerTimeListViewModel
+    @ObservedObject var viewModel: PrayerTimeListViewModel
     @EnvironmentObject var settingsConfiguration: SettingsConfiguration
     
     var body: some View {
-        
         NavigationView {
             Color.init(.secondarySystemBackground).overlay(
+                
                 VStack() {
-                    Spacer()
-                    DateView(viewModel: viewModel)
-                    Spacer()
-                    PrayerTimesListView(viewModel: viewModel)
-                        .cornerRadius(25)
-                    Spacer()
+                    
+                    switch (viewModel.prayerTimesState, viewModel.displayDateState) {
+                    case (.loaded, .loaded):
+                        
+                        Spacer()
+                        DateView(viewModel: viewModel)
+                        Spacer()
+                        PrayerTimesListView(viewModel: viewModel).cornerRadius(25)
+                        Spacer()
+                        
+                    case (.failed, .failed):
+                        Text("Failed")
+                    
+                    default :
+                        Text("Loading")
+                    }
+                    
                 }
                 .animation(.spring())
                 .padding(.horizontal, 20)
+                
+                
+                
+                
+                
+                
             )
             .navigationBarTitle("Hatfield, UK", displayMode: .inline)
             .navigationBarItems(leading: Button(action: safariPressed, label: {

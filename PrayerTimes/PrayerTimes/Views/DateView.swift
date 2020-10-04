@@ -14,29 +14,20 @@ struct DateView: View {
     var body: some View {
         
         HStack {
-            switch viewModel.state {
-            case .loaded:
-                Button(action: {
-
-                }) {
-                    Image(systemName: "chevron.backward")
-                }
-                VStack {
-                    Text(viewModel.hijriDate).font(.largeTitle)
-                    Text(viewModel.gregorianDate).font(.headline)
-                }
-                Button(action: {
-
-                }) {
-                    Image(systemName: "chevron.forward")
-                }
-            case .loading:
-                Text("Loading")
-            case .failed:
-                Text("Failed")
+            Button(action: {
+                
+            }) {
+                Image(systemName: "chevron.backward")
             }
-            
-           
+            VStack {
+                Text(viewModel.hijriDate).font(.largeTitle)
+                Text(viewModel.gregorianDate).font(.headline)
+            }
+            Button(action: {
+                
+            }) {
+                Image(systemName: "chevron.forward")
+            }    
         }
     }
 }

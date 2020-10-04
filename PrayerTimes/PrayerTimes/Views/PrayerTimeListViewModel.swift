@@ -8,17 +8,59 @@
 import Foundation
 import SwiftUI
 
+struct CustomError: Error {
+    let title: String
+    let message: String
+}
+
+enum loadingState: Equatable {
+    case loading
+    case loaded
+    case failed
+}
+
+class StateManager: ObservableObject { //ADD TESTS FOR THIS
+   
+    @Published var prayerTimesState: loadingState
+    @Published var displayDateState: loadingState
+    
+    var state: loadingState {
+        
+        if prayerTimesState == .loaded && displayDateState == .loaded {
+            return .loaded
+        }
+        
+        if prayerTimesState == .failed || displayDateState == .failed {
+            return .failed
+        }
+        
+        return .loading
+    }
+    
+    init(prayerTimesState: loadingState, displayDateState: loadingState) {
+        self.prayerTimesState = prayerTimesState
+        self.displayDateState = displayDateState
+    }
+    
+//    mutating func prayerTimesLoaded() {
+//        prayerTimesState = .loaded
+//    }
+//
+//    mutating func datesLoaded() {
+//        displayDateState = .loaded
+//    }
+    
+//    mutating func failed() {
+//        prayerTimesState = .failed
+//        displayDateState = .failed
+//    }
+}
+
 class PrayerTimeListViewModel: ObservableObject, Identifiable {
     
 //    @Environment var settingsConfiguration: SettingsConfiguration
-    enum State {
-        case loading
-        case loaded
-        case failed//(Error)
-    }
-    
+            
     var date: Date = Date()
-    var state: State = .loading
     
     @Published var prayers: [Prayer] = [] {
         didSet {
@@ -34,6 +76,12 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
     @Published var nextPrayer: Prayer?
     @Published var hijriDate: String = ""
     @Published var gregorianDate: String = ""
+    
+    
+//    @Published var stateManager: StateManager = StateManager(prayerTimesState: .loading, displayDateState: .loading)
+    
+    @Published var prayerTimesState: loadingState = .loading
+    @Published var displayDateState: loadingState = .loading
     
     private var nextPrayerFound = false
     
@@ -58,6 +106,7 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
                 self?.handlePrayerTimes(prayerTimesResponse: prayerTimesResponse, completion: { prayers in
                     DispatchQueue.main.async {
                         self?.prayers = prayers
+                        self?.prayerTimesState = .loaded
                     }
                 })
                 
@@ -65,12 +114,15 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
                     DispatchQueue.main.async {
                         self?.hijriDate = hijri
                         self?.gregorianDate = gregorian
+                        self?.displayDateState = .loaded
                     }
                 })
                                 
             case .failure(let error):
                 print(error)
-                self?.state = .failed
+                
+                self?.prayerTimesState = .failed
+                self?.displayDateState = .failed
             }
         }
     

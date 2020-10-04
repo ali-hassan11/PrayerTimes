@@ -7,11 +7,6 @@
 
 import Foundation
 
-struct CustomError: Error {
-    let title: String
-    let message: String
-}
-
 class Service {
     
     static let shared = Service()
