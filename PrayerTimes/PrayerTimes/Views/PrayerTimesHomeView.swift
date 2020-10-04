@@ -45,9 +45,9 @@ struct PrayerTimesHomeView: View {
                 
             )
             .navigationBarTitle("Hatfield, UK", displayMode: .inline)
-            .navigationBarItems(leading: Button(action: safariPressed, label: {
+            .navigationBarItems(leading: Button(action: {}, label: {
                 Image(systemName: "safari")
-            }), trailing: Button(action: calendarPressed, label: {
+            }), trailing: Button(action: {}, label: {
                 Image(systemName: "calendar")
             }))
         }

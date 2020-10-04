@@ -15,7 +15,7 @@ struct DateView: View {
         
         HStack {
             Button(action: {
-                
+                viewModel.fetchData(date: viewModel.date.minus24Hours)
             }) {
                 Image(systemName: "chevron.backward")
             }
@@ -24,7 +24,7 @@ struct DateView: View {
                 Text(viewModel.gregorianDate).font(.headline)
             }
             Button(action: {
-                
+                viewModel.fetchData(date: viewModel.date.plus24Hours)
             }) {
                 Image(systemName: "chevron.forward")
             }    

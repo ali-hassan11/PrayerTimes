@@ -41,6 +41,9 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
     
     func fetchData(date: Date) {
         self.date = date
+        prayerTimesState = .loading
+        displayDateState = .loading
+        
         let settings = SettingsConfiguration.shared
         let prayerTimesConfiguration = PrayerTimesConfiguration(timestamp: date.timestampString,
                                                                coordinates: .init(latitude: "53.5228", longitude: "1.1285"),
