@@ -13,16 +13,17 @@ struct TabsView: View {
     
     var body: some View {
         TabView {
+            SettingsView()
+                .tabItem {
+                    Image(systemName: "gear")
+                    Text("Settings")
+                }
             PrayerTimesHomeView(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "clock.fill")
                     Text("Times")
                 }
-            PrayerTimesHomeView(viewModel: viewModel) //SettingsView
-                .tabItem {
-                    Image(systemName: "gear")
-                    Text("Settings")
-                }
+            
         }
     }
 }
