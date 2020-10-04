@@ -8,54 +8,6 @@
 import Foundation
 import SwiftUI
 
-struct CustomError: Error {
-    let title: String
-    let message: String
-}
-
-enum loadingState: Equatable {
-    case loading
-    case loaded
-    case failed
-}
-
-class StateManager: ObservableObject { //ADD TESTS FOR THIS
-   
-    @Published var prayerTimesState: loadingState
-    @Published var displayDateState: loadingState
-    
-    var state: loadingState {
-        
-        if prayerTimesState == .loaded && displayDateState == .loaded {
-            return .loaded
-        }
-        
-        if prayerTimesState == .failed || displayDateState == .failed {
-            return .failed
-        }
-        
-        return .loading
-    }
-    
-    init(prayerTimesState: loadingState, displayDateState: loadingState) {
-        self.prayerTimesState = prayerTimesState
-        self.displayDateState = displayDateState
-    }
-    
-    func prayerTimesLoaded() {
-        prayerTimesState = .loaded
-    }
-
-    func datesLoaded() {
-        displayDateState = .loaded
-    }
-    
-    func failed() {
-        prayerTimesState = .failed
-        displayDateState = .failed
-    }
-}
-
 class PrayerTimeListViewModel: ObservableObject, Identifiable {
     
 //    @Environment var settingsConfiguration: SettingsConfiguration
@@ -80,8 +32,8 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
     
     @Published var stateManager: StateManager = StateManager(prayerTimesState: .loading, displayDateState: .loading)
     
-    @Published var prayerTimesState: loadingState = .loading
-    @Published var displayDateState: loadingState = .loading
+    @Published var prayerTimesState: LoadingState = .loading
+    @Published var displayDateState: LoadingState = .loading
     
     private var nextPrayerFound = false
     
@@ -147,7 +99,7 @@ extension PrayerTimeListViewModel {
             let prayerTimesDate = self.prayerTimesDate(dateString: prayerDateString, timeString: prayerTimeString, currentDate: currentDate)
             let isNextPrayer = self.isNextPrayer(prayerTimesDate: prayerTimesDate, currentDate: currentDate)
             
-            let prayer = Prayer(name: prayerName.capitalized(), timestamp: Date(), formattedTime: prayerTimeString, isNextPrayer: isNextPrayer)
+            let prayer = Prayer(name: prayerName.capitalized(), formattedTime: prayerTimeString, isNextPrayer: isNextPrayer)
             prayerTimes.append(prayer)
         }
         
@@ -193,30 +145,5 @@ extension PrayerTimeListViewModel {
         formatter.dateFormat = "\(dateFormat) HH:mm"
         formatter.timeZone = .current
         return formatter
-    }
-}
-
-//MOVE TO ANOTHER FILE
-extension DateFormatter {
-    func apiDateFormat() -> String {
-        return "dd-MM-yyyy"
-    }
-}
-
-extension Date {
-    var timestampString: String {
-        return String(Int(self.timeIntervalSince1970))
-    }
-    
-    var timestampPlus24HoursString: String {
-        return String(self.timeIntervalSince1970 + 86400)
-    }
-    
-    var plus24Hours: Date {
-        return self.addingTimeInterval(TimeInterval(86400))
-    }
-    
-    var minus24Hours: Date {
-        return self.addingTimeInterval(TimeInterval(-86400))
     }
 }
