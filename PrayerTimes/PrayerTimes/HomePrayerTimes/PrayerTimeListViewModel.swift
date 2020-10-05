@@ -135,13 +135,14 @@ extension PrayerTimeListViewModel {
     
     private func isNextPrayer(prayerTimesDate: Date, currentDate: Date) -> Bool {
         
-        if prayerTimesDate.timeIntervalSince1970 - currentDate.timeIntervalSince1970 >= 86400 {
+        if !isToday(date: prayerTimesDate) {
             return false
         }
         
         if nextPrayerFound {
             return false
         }
+        
         formatter.dateStyle = .full
         if currentDate < prayerTimesDate {
             nextPrayerFound = true
