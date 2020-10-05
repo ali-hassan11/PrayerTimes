@@ -10,10 +10,12 @@ import SwiftUI
 
 class PrayerTimeListViewModel: ObservableObject, Identifiable {
     
-//    @Environment var settingsConfiguration: SettingsConfiguration
-            
-    var date: Date = Date()
-        
+    var date: Date = Date() {
+        didSet {
+            fetchData(date: date)
+        }
+    }
+    
     @Published var hijriDate: String = ""
     @Published var gregorianDate: String = ""
     
@@ -62,7 +64,6 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
     
     //PASS IN SETTINGS HERE AS WE WILL ACCESS TO IT FROM THE VIEW
     func fetchData(date: Date) {
-        self.date = date
         self.nextPrayerFound = false
         stateManager.loading()
         
@@ -103,6 +104,18 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
                 }
             }
         }
+    }
+    
+    func retryFetchData() {
+        fetchData(date: date)
+    }
+    
+    func plusOneDay() {
+        date = date.plusOneDay
+    }
+    
+    func minusOneDay() {
+        date = date.minusOneDay
     }
     
     func isToday(date: Date) -> Bool {

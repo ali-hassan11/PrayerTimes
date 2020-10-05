@@ -15,7 +15,7 @@ struct DateView: View {
         
         HStack {
             Button(action: {
-                viewModel.fetchData(date: viewModel.date.minusOneDay)
+                viewModel.minusOneDay()
             }) {
                 Image(systemName: "chevron.backward")
                     .font(Font.system(size: 25, weight: .semibold))
@@ -34,16 +34,14 @@ struct DateView: View {
                     .minimumScaleFactor(0.5)
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color(UIColor.label))
-                Text(viewModel.gregorianDate).font(.headline).lineLimit(1).minimumScaleFactor(0.4)
-                    .font(Font.system(size: 20, weight: .medium))
-                    .lineLimit(2)
-                    .minimumScaleFactor(0.5)
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(Color(UIColor.label)).opacity(0.8)
+                
+                DatePicker("", selection: $viewModel.date, displayedComponents: .date)
+                    .datePickerStyle(DefaultDatePickerStyle())
+                    .labelsHidden()
             }
             Spacer()
             Button(action: {
-                viewModel.fetchData(date: viewModel.date.plusOneDay)
+                viewModel.plusOneDay()
             }) {
                 Image(systemName: "chevron.forward")
                     .font(Font.system(size: 25, weight: .semibold))
@@ -54,9 +52,9 @@ struct DateView: View {
     }
 }
 
-struct DateView_Previews: PreviewProvider {
-    @State static var viewModel = PreviewData().prayerTimeListViewModel
-    static var previews: some View {
-        DateView(viewModel: viewModel)
-    }
-}
+//struct DateView_Previews: PreviewProvider {
+//    @State static var viewModel = PreviewData().prayerTimeListViewModel
+//    static var previews: some View {
+//        DateView(viewModel: viewModel)
+//    }
+//}

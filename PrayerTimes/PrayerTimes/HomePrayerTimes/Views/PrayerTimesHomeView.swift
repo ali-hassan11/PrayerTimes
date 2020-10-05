@@ -11,25 +11,24 @@ struct PrayerTimesHomeView: View {
     
     @ObservedObject var viewModel: PrayerTimeListViewModel
     @EnvironmentObject var settingsConfiguration: SettingsConfiguration
-
+    
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-
     
     var body: some View {
+        
         NavigationView {
-            Color.init(.secondarySystemBackground).overlay(
-                
+            
+            Color(.secondarySystemBackground).overlay(
                 VStack() {
                     
                     switch (viewModel.stateManager.state) {
                     case (.loaded):
-
+                        
                         Spacer()
                         DateView(viewModel: viewModel)
-                        Spacer()
+                            .padding(.bottom, 8)
                         PrayerTimesListView(viewModel: viewModel)
                             .cornerRadius(25)
-//                            .shadow(color: Color(UIColor.systemGroupedBackground.withAlphaComponent(0.5)), radius: 1.5)
                         Spacer()
                         
                     case (.failed):
@@ -39,7 +38,7 @@ struct PrayerTimesHomeView: View {
                             .font(Font.body)
                             .multilineTextAlignment(.center)
                             .padding(.all, 20)
-                        Button(action: { viewModel.fetchData(date: viewModel.date) }) {
+                        Button(action: { viewModel.retryFetchData() }) {
                             Image(systemName: "arrow.clockwise")
                                 .font(Font.system(size: 25, weight: .semibold))
                         }
@@ -51,22 +50,20 @@ struct PrayerTimesHomeView: View {
                 }
                 .animation(.linear)
                 .padding(.horizontal, 20)
-
+                .navigationBarTitle("Hatfield, UK", displayMode: .inline)
+                .navigationBarItems(trailing: Button(action: { }, label: {
+                    Image(systemName: "safari")
+                }))
             )
-            .navigationBarTitle("Hatfield, UK", displayMode: .inline)
-            .navigationBarItems(leading: Button(action: {}, label: {
-                Image(systemName: "safari")
-            }), trailing: Button(action: {}, label: {
-                Image(systemName: "calendar")
-            }))
+            
         }
         .gesture(DragGesture(minimumDistance: 25, coordinateSpace: .local)
                     .onEnded({ value in
                         if value.translation.width < 0 && value.translation.height > -30 && value.translation.height < 30 {
-                            viewModel.fetchData(date: viewModel.date.plusOneDay)
+                            viewModel.plusOneDay()
                         }
                         if value.translation.width > 0 && value.translation.height > -30 && value.translation.height < 30 {
-                            viewModel.fetchData(date: viewModel.date.minusOneDay)
+                            viewModel.minusOneDay()
                         }
                     }))
     }
