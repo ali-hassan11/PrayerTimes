@@ -26,7 +26,7 @@ struct DateView: View {
                 if viewModel.isToday(date: viewModel.date) {
                     Text("Today")
                         .font(Font.headline)
-                        .foregroundColor(Color(UIColor.systemPink)).opacity(0.8)
+                        .foregroundColor(Color(UIColor.systemPink)).opacity(0.9)
                 }
                 Text(viewModel.hijriDate)
                     .font(Font.system(size: 24, weight: .semibold))

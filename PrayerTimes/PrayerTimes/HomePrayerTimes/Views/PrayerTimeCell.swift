@@ -24,13 +24,13 @@ struct PrayerTimeCell:  View {
                     .font(.subheadline)
                     .lineLimit(2)
                     .multilineTextAlignment(.center)
-                    .padding(.horizontal, 10)
-                    .minimumScaleFactor(0.8)
+                    .minimumScaleFactor(0.5)
+                Spacer()
             }
             Text("\(prayer.formattedTime)")
                 .font(.title3).fontWeight(.medium)
             Image(systemName: "bell.fill")
-                .padding(.leading, 20)
+                .padding(.leading, 10)
         }
         .padding(.all, 20)
         .background(prayer.isNextPrayer ? Color(UIColor.systemPink) : Color(UIColor.tertiarySystemBackground))

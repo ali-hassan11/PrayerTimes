@@ -46,7 +46,7 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
             
             let (h,m,s) = secondsToHoursMinutesSeconds(seconds: timeRemainingTimestamp)
             
-            timeRemainingString = "begins in \(h)h \(m)m \(s)s"
+            timeRemainingString = "Begins in:\n\(h)h \(m)m \(s)s"
         }
     }
 
