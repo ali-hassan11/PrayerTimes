@@ -58,9 +58,6 @@ struct PrayerTimesHomeView: View {
                 Image(systemName: "calendar")
             }))
         }
-        .onAppear(perform: {
-            viewModel.fetchData(date: Date())
-        })
         .gesture(DragGesture(minimumDistance: 25, coordinateSpace: .local)
                     .onEnded({ value in
                         if value.translation.width < 0 && value.translation.height > -30 && value.translation.height < 30 {

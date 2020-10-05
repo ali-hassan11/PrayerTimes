@@ -34,7 +34,9 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
     
     private var nextPrayerFound = false
     
-    init() {}
+    init() {
+        fetchData(date: Date())
+    }
     
     //PASS IN SETTINGS HERE AS WE WILL ACCESS TO IT FROM THE VIEW
     func fetchData(date: Date) {
