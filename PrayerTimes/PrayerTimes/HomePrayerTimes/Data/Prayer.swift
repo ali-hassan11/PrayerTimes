@@ -5,11 +5,13 @@ struct Prayer: Identifiable, Equatable {
 
     let id = UUID()
     let name: String
+    let prayerDateString: String
     let formattedTime: String
     let isNextPrayer: Bool
     
-    init(name: String, formattedTime: String, isNextPrayer: Bool = false) {
+    init(name: String, prayerDateString: String, formattedTime: String, isNextPrayer: Bool = false) {
         self.name = name
+        self.prayerDateString = prayerDateString
         self.formattedTime = formattedTime
         self .isNextPrayer = isNextPrayer
     }

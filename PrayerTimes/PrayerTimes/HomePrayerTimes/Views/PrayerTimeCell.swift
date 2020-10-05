@@ -37,8 +37,11 @@ struct PrayerTimeCell:  View {
         .cornerRadius(5)
         .foregroundColor(prayer.isNextPrayer ? Color(UIColor.white) : Color(UIColor.label).opacity(0.8))
         .onReceive(timer) { time in
+            guard viewModel.timeRemaining != nil else { return }
             if viewModel.timeRemaining! > 0 {
                 viewModel.timeRemaining! -= 1
+            } else {
+                viewModel.timeRemaining = 0
             }
         }
     }

@@ -29,11 +29,27 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
         }
     }
     @Published var nextPrayer: Prayer?
-    var timeRemaining: Int? = 100 {
+    
+    var timeRemaining: Int? = 0 {
         didSet {
-            timeRemainingString = "begins in 1h 2m \(timeRemaining!)s"
+            
+            guard let nextPrayer = nextPrayer else { return }
+            
+            guard let prayerTimeString = prayers.filter({ $0.name == nextPrayer.name }).first else { return }
+            
+            let currentDate = Date()
+            guard let nextPrayerDate = self.prayerTimesDate(dateString: nextPrayer.prayerDateString,
+                                                      timeString: prayerTimeString.formattedTime,
+                                                      currentDate: currentDate) else { return }
+            
+            let timeRemainingTimestamp = nextPrayerDate.timeIntervalSince(currentDate)
+            
+            let (h,m,s) = secondsToHoursMinutesSeconds(seconds: timeRemainingTimestamp)
+            
+            timeRemainingString = "begins in \(h)h \(m)m \(s)s"
         }
     }
+
     @Published var timeRemainingString: String = ""
 
     @Published var stateManager: StateManager = StateManager(prayerTimesState: .loading, displayDateState: .loading)
@@ -111,9 +127,15 @@ extension PrayerTimeListViewModel {
             let prayerDateString = prayerTimesData.dateInfo.gergorianDate.date
             
             let prayerTimesDate = self.prayerTimesDate(dateString: prayerDateString, timeString: prayerTimeString, currentDate: currentDate)
-            let isNextPrayer = self.isNextPrayer(prayerTimesDate: prayerTimesDate, currentDate: currentDate)
             
-            let prayer = Prayer(name: prayerName.capitalized(), formattedTime: prayerTimeString, isNextPrayer: isNextPrayer)
+            let isNextPrayer: Bool
+            if let prayerTimesDate = prayerTimesDate {
+                isNextPrayer = self.isNextPrayer(prayerTimesDate: prayerTimesDate, currentDate: currentDate)
+            } else {
+                isNextPrayer = false
+            }
+            
+            let prayer = Prayer(name: prayerName.capitalized(), prayerDateString: prayerDateString, formattedTime: prayerTimeString, isNextPrayer: isNextPrayer)
             prayerTimes.append(prayer)
         }
         
@@ -130,12 +152,12 @@ extension PrayerTimeListViewModel {
         }
     }
     
-    private func prayerTimesDate(dateString: String, timeString: String, currentDate: Date) -> Date {
+    private func prayerTimesDate(dateString: String, timeString: String, currentDate: Date) -> Date? {
         
         if let date = formatter.date(from: "\(dateString) \(timeString)") {
             return Date(timeIntervalSince1970: TimeInterval(date.timeIntervalSince1970))
         } else {
-            return currentDate
+            return nil
         }
     }
     
@@ -164,5 +186,11 @@ extension PrayerTimeListViewModel {
         formatter.dateFormat = "\(dateFormat) HH:mm"
         formatter.timeZone = .current
         return formatter
+    }
+    
+    private func secondsToHoursMinutesSeconds (seconds : Double) -> (Int, Int, Int) {
+      let (hr,  minf) = modf (seconds / 3600)
+      let (min, secf) = modf (60 * minf)
+      return (Int(hr), Int(min), Int(60 * secf))
     }
 }
