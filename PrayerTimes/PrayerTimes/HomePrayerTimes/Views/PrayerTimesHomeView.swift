@@ -27,7 +27,7 @@ struct PrayerTimesHomeView: View {
                         Spacer()
                         PrayerTimesListView(viewModel: viewModel)
                             .cornerRadius(25)
-                            .shadow(color: Color(UIColor.systemGroupedBackground.withAlphaComponent(0.5)), radius: 2)
+                            .shadow(color: Color(UIColor.systemGroupedBackground.withAlphaComponent(0.5)), radius: 1.5)
                         Spacer()
                         
                     case (.failed):
@@ -61,6 +61,15 @@ struct PrayerTimesHomeView: View {
         .onAppear(perform: {
             viewModel.fetchData(date: Date())
         })
+        .gesture(DragGesture(minimumDistance: 25, coordinateSpace: .local)
+                    .onEnded({ value in
+                        if value.translation.width < 0 && value.translation.height > -30 && value.translation.height < 30 {
+                            viewModel.fetchData(date: viewModel.date.plusOneDay)
+                        }
+                        if value.translation.width > 0 && value.translation.height > -30 && value.translation.height < 30 {
+                            viewModel.fetchData(date: viewModel.date.minusOneDay)
+                        }
+                    }))
     }
 }
 
