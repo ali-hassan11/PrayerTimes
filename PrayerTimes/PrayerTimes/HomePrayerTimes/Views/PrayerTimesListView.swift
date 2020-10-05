@@ -15,7 +15,7 @@ struct PrayerTimesListView: View {
     var body: some View {
         VStack {
             ForEach(viewModel.prayers) { prayer in
-                PrayerTimeCell(prayer: prayer)
+                PrayerTimeCell(prayer: prayer, viewModel: viewModel)
             }
         }
     }

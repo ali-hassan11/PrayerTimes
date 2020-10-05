@@ -11,7 +11,9 @@ struct PrayerTimesHomeView: View {
     
     @ObservedObject var viewModel: PrayerTimeListViewModel
     @EnvironmentObject var settingsConfiguration: SettingsConfiguration
-    @State private var showingAlert = false
+
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
     
     var body: some View {
         NavigationView {
@@ -49,7 +51,7 @@ struct PrayerTimesHomeView: View {
                 }
                 .animation(.linear)
                 .padding(.horizontal, 20)
-                
+
             )
             .navigationBarTitle("Hatfield, UK", displayMode: .inline)
             .navigationBarItems(leading: Button(action: {}, label: {

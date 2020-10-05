@@ -29,6 +29,12 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
         }
     }
     @Published var nextPrayer: Prayer?
+    var timeRemaining: Int? = 100 {
+        didSet {
+            timeRemainingString = "begins in 1h 2m \(timeRemaining!)s"
+        }
+    }
+    @Published var timeRemainingString: String = ""
 
     @Published var stateManager: StateManager = StateManager(prayerTimesState: .loading, displayDateState: .loading)
     
@@ -133,7 +139,7 @@ extension PrayerTimeListViewModel {
         }
     }
     
-    private func isNextPrayer(prayerTimesDate: Date, currentDate: Date) -> Bool {
+    func isNextPrayer(prayerTimesDate: Date, currentDate: Date) -> Bool {
         
         if !isToday(date: prayerTimesDate) {
             return false
