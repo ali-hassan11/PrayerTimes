@@ -25,7 +25,7 @@ struct DateView: View {
             VStack {
                 if viewModel.isToday(date: viewModel.date) {
                     Text("Today")
-                        .font(Font.subheadline)
+                        .font(Font.headline)
                         .foregroundColor(Color(UIColor.systemPink)).opacity(0.8)
                 }
                 Text(viewModel.hijriDate).font(.largeTitle).lineLimit(1).minimumScaleFactor(0.5)
@@ -40,6 +40,7 @@ struct DateView: View {
             }
             .padding(.all, 25)
         }
+        .frame(minHeight: 110)
     }
 }
 
