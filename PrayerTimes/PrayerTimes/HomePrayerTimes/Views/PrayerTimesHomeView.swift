@@ -25,13 +25,15 @@ struct PrayerTimesHomeView: View {
                         Spacer()
                         DateView(viewModel: viewModel)
                         Spacer()
-                        PrayerTimesListView(viewModel: viewModel).cornerRadius(25)
+                        PrayerTimesListView(viewModel: viewModel)
+                            .cornerRadius(25)
+                            .shadow(color: Color(UIColor.systemGroupedBackground.withAlphaComponent(0.5)), radius: 2)
                         Spacer()
                         
                     case (.failed):
                         
                         
-                        Text("Failed to load prayer times, please check your internet connection")
+                        Text("Failed to load prayer times, please check your internet connection and try again")
                             .font(Font.body)
                             .multilineTextAlignment(.center)
                             .padding(.all, 20)

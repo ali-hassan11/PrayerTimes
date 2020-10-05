@@ -22,9 +22,8 @@ struct PrayerTimeCell:  View {
                 .padding(.leading, 20)
         }
         .padding(.all, 20)
-        .background(prayer.isNextPrayer ? Color.init(.systemPink) : Color.init(.tertiarySystemBackground))
+        .background(prayer.isNextPrayer ? Color(UIColor.systemPink) : Color(UIColor.tertiarySystemBackground))
         .cornerRadius(5)
-        .foregroundColor(prayer.isNextPrayer ? Color.init(.white) : Color.init(.label).opacity(0.8))
-        .shadow(radius: 0.1)
+        .foregroundColor(prayer.isNextPrayer ? Color(UIColor.white) : Color(UIColor.label).opacity(0.8))
     }
 }
