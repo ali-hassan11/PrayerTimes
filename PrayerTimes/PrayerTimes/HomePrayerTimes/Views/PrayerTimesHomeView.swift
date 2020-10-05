@@ -27,7 +27,7 @@ struct PrayerTimesHomeView: View {
                         Spacer()
                         PrayerTimesListView(viewModel: viewModel)
                             .cornerRadius(25)
-                            .shadow(color: Color(UIColor.systemGroupedBackground.withAlphaComponent(0.5)), radius: 1.5)
+//                            .shadow(color: Color(UIColor.systemGroupedBackground.withAlphaComponent(0.5)), radius: 1.5)
                         Spacer()
                         
                     case (.failed):
