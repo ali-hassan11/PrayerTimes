@@ -11,6 +11,7 @@ struct PrayerTimesHomeView: View {
     
     @ObservedObject var viewModel: PrayerTimeListViewModel
     @EnvironmentObject var settingsConfiguration: SettingsConfiguration
+    @State private var showingAlert = false
     
     var body: some View {
         NavigationView {
@@ -20,7 +21,7 @@ struct PrayerTimesHomeView: View {
                     
                     switch (viewModel.stateManager.state) {
                     case (.loaded):
-                        
+
                         Spacer()
                         DateView(viewModel: viewModel)
                         Spacer()
@@ -28,17 +29,25 @@ struct PrayerTimesHomeView: View {
                         Spacer()
                         
                     case (.failed):
-                        Text("Failed")
-                    
+                        
+                        
+                        Text("Failed to load prayer times, please check your internet connection")
+                            .font(Font.body)
+                            .multilineTextAlignment(.center)
+                            .padding(.all, 20)
+                        Button(action: { viewModel.fetchData(date: viewModel.date) }) {
+                            Image(systemName: "arrow.clockwise")
+                                .font(Font.system(size: 25, weight: .semibold))
+                        }
+                        
                     default :
-                        Text("Loading")
+                        ProgressView()//Add time out
                     }
                     
                 }
-                .animation(.spring())
+                .animation(.linear)
                 .padding(.horizontal, 20)
                 
-      
             )
             .navigationBarTitle("Hatfield, UK", displayMode: .inline)
             .navigationBarItems(leading: Button(action: {}, label: {

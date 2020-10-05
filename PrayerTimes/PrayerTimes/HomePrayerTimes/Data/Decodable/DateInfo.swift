@@ -12,6 +12,11 @@ struct DateInfo {
     let timestamp: String
     let hijriDate: DateElements
     let gergorianDate: DateElements
+    
+    var date: Date? {
+        guard let timestampInt = TimeInterval(timestamp) else { return nil }
+        return Date(timeIntervalSince1970: timestampInt)
+    }
 
     enum CodingKeys: String, CodingKey {
         case timestamp

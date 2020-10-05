@@ -13,6 +13,9 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
 //    @Environment var settingsConfiguration: SettingsConfiguration
             
     var date: Date = Date()
+        
+    @Published var hijriDate: String = ""
+    @Published var gregorianDate: String = ""
     
     @Published var prayers: [Prayer] = [] {
         didSet {
@@ -26,10 +29,7 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
         }
     }
     @Published var nextPrayer: Prayer?
-    @Published var hijriDate: String = ""
-    @Published var gregorianDate: String = ""
-    
-    
+
     @Published var stateManager: StateManager = StateManager(prayerTimesState: .loading, displayDateState: .loading)
     
     private var nextPrayerFound = false
@@ -40,6 +40,7 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
     func fetchData(date: Date) {
         self.date = date
         self.nextPrayerFound = false
+        stateManager.loading()
         
         let settings = SettingsConfiguration.shared
         let prayerTimesConfiguration = PrayerTimesConfiguration(timestamp: date.timestampString,
@@ -72,10 +73,16 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
                                 
             case .failure(let error):
                 print(error)
-                self?.stateManager.failed()
+                DispatchQueue.main.async {
+                    self?.prayers = []
+                    self?.stateManager.failed()
+                }
             }
         }
+    }
     
+    func isToday(date: Date) -> Bool {
+        return Calendar.current.isDate(self.date, inSameDayAs: Date())
     }
 }
  
