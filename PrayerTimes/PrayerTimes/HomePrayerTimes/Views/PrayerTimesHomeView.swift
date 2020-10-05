@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 struct PrayerTimesHomeView: View {
     
@@ -33,15 +34,7 @@ struct PrayerTimesHomeView: View {
                         
                     case (.failed):
                         
-                        
-                        Text("Failed to load prayer times, please check your internet connection and try again")
-                            .font(Font.body)
-                            .multilineTextAlignment(.center)
-                            .padding(.all, 20)
-                        Button(action: { viewModel.retryFetchData() }) {
-                            Image(systemName: "arrow.clockwise")
-                                .font(Font.system(size: 25, weight: .semibold))
-                        }
+                        ErrorView(action: { viewModel.retryFetchData() })
                         
                     default :
                         ProgressView()//Add time out

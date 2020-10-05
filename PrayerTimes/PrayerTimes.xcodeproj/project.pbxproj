@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE196A86252BBDE10078D63A /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE196A85252BBDE10078D63A /* ErrorView.swift */; };
 		CE28BA292526146300AAD5BD /* PrayerTimesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28BA282526146300AAD5BD /* PrayerTimesApp.swift */; };
 		CE28BA2B2526146300AAD5BD /* PrayerTimesHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28BA2A2526146300AAD5BD /* PrayerTimesHomeView.swift */; };
 		CE28BA2D2526146500AAD5BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE28BA2C2526146500AAD5BD /* Assets.xcassets */; };
@@ -83,6 +84,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CE196A85252BBDE10078D63A /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		CE28BA252526146300AAD5BD /* PrayerTimes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrayerTimes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE28BA282526146300AAD5BD /* PrayerTimesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimesApp.swift; sourceTree = "<group>"; };
 		CE28BA2A2526146300AAD5BD /* PrayerTimesHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimesHomeView.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				CE4A6365252919CE000D5CA9 /* PrayerTimeCell.swift */,
 				CE6EAEDF2526300200E688D3 /* NextPrayerView.swift */,
 				CE6EAEE12526313800E688D3 /* DateView.swift */,
+				CE196A85252BBDE10078D63A /* ErrorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				CEA6248D25267FC900592075 /* Service.swift in Sources */,
 				CED3D26A2526D07E00561999 /* SettingsConfiguration.swift in Sources */,
 				CEA624E82526B41000592075 /* Coordinates.swift in Sources */,
+				CE196A86252BBDE10078D63A /* ErrorView.swift in Sources */,
 				CE7CB07E252A93BA00158CAF /* ChooseColorCell.swift in Sources */,
 				CEA624BD252690C600592075 /* PrayerTimesData.swift in Sources */,
 				CEA624B0252686F300592075 /* PrayerTimesResponse.swift in Sources */,
