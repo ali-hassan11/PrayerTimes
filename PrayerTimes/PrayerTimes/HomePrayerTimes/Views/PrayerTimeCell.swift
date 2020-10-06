@@ -33,8 +33,8 @@ struct PrayerTimeCell:  View {
                 .padding(.leading, 10)
         }
         .padding(.all, 20)
-        .background(prayer.isNextPrayer ? Color(UIColor.systemPink) : Color(UIColor.tertiarySystemBackground))
-        .cornerRadius(5)
+        .background(prayer.isNextPrayer ? Color(UIColor.systemPink) : Color(UIColor.tertiarySystemFill))
+//        .cornerRadius(5)
         .foregroundColor(prayer.isNextPrayer ? Color(UIColor.white) : Color(UIColor.label).opacity(0.8))
         .onReceive(timer) { time in
             guard viewModel.timeRemaining != nil else { return }

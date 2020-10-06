@@ -20,35 +20,39 @@ struct DateView: View {
                 Image(systemName: "chevron.backward")
                     .font(Font.system(size: 25, weight: .semibold))
             }
-            .padding(.all, 20)
+            .padding(.horizontal, 20)
+            
             Spacer()
-            VStack {
+            
+            VStack(spacing: 0) {
                 if viewModel.isToday(date: viewModel.date) {
                     Text("Today")
                         .font(Font.headline)
                         .foregroundColor(Color(UIColor.systemPink)).opacity(0.9)
+                        .padding(.top, 12)
                 }
+                
                 Text(viewModel.hijriDate)
                     .font(Font.system(size: 24, weight: .semibold))
-                    .lineLimit(2)
-                    .minimumScaleFactor(0.5)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color(UIColor.label))
-                
-                DatePicker("", selection: $viewModel.date, displayedComponents: .date)
-                    .datePickerStyle(DefaultDatePickerStyle())
-                    .labelsHidden()
+                    .padding(.bottom, 12)
+                    .padding(.top, viewModel.isToday(date: viewModel.date) ? 0 : 12)
             }
+            
             Spacer()
+            
             Button(action: {
                 viewModel.plusOneDay()
             }) {
                 Image(systemName: "chevron.forward")
                     .font(Font.system(size: 25, weight: .semibold))
             }
-            .padding(.all, 20)
+            .padding(.horizontal, 20)
         }
-        .frame(minHeight: 110)
+        .background(Color(UIColor.tertiarySystemFill))
     }
 }
 

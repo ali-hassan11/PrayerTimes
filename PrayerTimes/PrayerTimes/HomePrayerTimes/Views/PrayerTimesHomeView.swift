@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import UserNotifications
 
 struct PrayerTimesHomeView: View {
     
@@ -19,25 +18,39 @@ struct PrayerTimesHomeView: View {
         
         NavigationView {
             
-            Color(.secondarySystemBackground).overlay(
-                VStack() {
+            Color(.systemBackground).overlay(
+                VStack(spacing: 16) {
                     
                     switch (viewModel.stateManager.state) {
                     case (.loaded):
                         
                         Spacer()
                         DateView(viewModel: viewModel)
-                            .padding(.bottom, 8)
+                            .cornerRadius(25)
+                        
+                        HStack {
+                            Spacer()
+                            Text("Select date:")
+                            DatePicker("", selection: $viewModel.date, displayedComponents: .date)
+                                .datePickerStyle(CompactDatePickerStyle())
+                                .labelsHidden()
+                            
+                            Spacer()
+
+                        }
+                        
                         PrayerTimesListView(viewModel: viewModel)
                             .cornerRadius(25)
                         Spacer()
-                        
+
                     case (.failed):
                         
                         ErrorView(action: { viewModel.retryFetchData() })
                         
                     default :
+                        
                         ProgressView()//Add time out
+                    
                     }
                     
                 }
@@ -61,10 +74,3 @@ struct PrayerTimesHomeView: View {
                     }))
     }
 }
-
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let viewModel = PrayerTimeListViewModel
-//        PrayerTimesHomeView(viewModel: viewModel)
-//    }
-//}

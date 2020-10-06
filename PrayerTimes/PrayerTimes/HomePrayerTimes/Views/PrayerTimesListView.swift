@@ -13,9 +13,10 @@ struct PrayerTimesListView: View {
 //    @Environment var settingsConfiguration: SettingsConfiguration
 
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             ForEach(viewModel.prayers) { prayer in
                 PrayerTimeCell(prayer: prayer, viewModel: viewModel)
+                Divider()
             }
         }
     }
