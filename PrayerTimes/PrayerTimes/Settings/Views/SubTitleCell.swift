@@ -24,5 +24,10 @@ struct SubTitleCell: View {
             Image(systemName: imageName)
                 .foregroundColor(Color.init(.systemPink))
         }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            action()
+        }
+
     }
 }

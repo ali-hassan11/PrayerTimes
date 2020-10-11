@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct SettingsView: View {
+    
+    @State private var isLocationSearchPresented = false
+    @Binding var date: Date //(Here -> viewModel property in TabsView)
+    
     var body: some View {
         
         NavigationView {
@@ -20,7 +24,13 @@ struct SettingsView: View {
                     SubTitleCell(title: "Location",
                                  subTitle: "Hatfield",
                                  imageName: "chevron.forward",
-                                 action: {})
+                                 action: {
+                                    isLocationSearchPresented.toggle()
+                                    print("TAPPED")
+                                 })
+                        .sheet(isPresented: $isLocationSearchPresented) {
+                            LocationPicker(date: $date)
+                        }
                 }
                 
                 Section {
@@ -41,11 +51,5 @@ struct SettingsView: View {
             .listStyle(InsetGroupedListStyle())
             .navigationBarTitle("Settings")
         }
-    }
-}
-
-struct SettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsView()
     }
 }
