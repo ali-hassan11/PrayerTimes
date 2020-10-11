@@ -11,7 +11,14 @@ enum School: Int {
     case shafi
     case hanafi
     
+    var indexString: Int {
+        return rawValue
+    }
+    
     func toString() -> String {
-        return String(rawValue)
+        switch self {
+        case .shafi: return "Shafi"
+        case .hanafi: return "Hanafi"
+        }
     }
 }

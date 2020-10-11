@@ -16,6 +16,8 @@ struct SettingsView: View {
     var body: some View {
         
         NavigationView {
+            let settings = SettingsConfiguration.shared
+
             List {
                 Section {
                     ChooseColorCell(title: "Color Scheme", action: {})
@@ -36,11 +38,11 @@ struct SettingsView: View {
                 
                 Section {
                     SubTitleCell(title: "Prayer Time Convention",
-                                 subTitle: "Muslim World League",
+                                 subTitle: settings.method.toString(),
                                  imageName: "chevron.forward",
                                  action: {})
                     SubTitleCell(title: "Asr Calculation Method",
-                                 subTitle: "Hanafi",
+                                 subTitle: settings.school.toString(),
                                  imageName: "chevron.forward",
                                  action: {})
                     SubTitleCell(title: "High Latitude Adjustment",

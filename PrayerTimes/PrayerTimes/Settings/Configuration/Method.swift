@@ -24,7 +24,27 @@ enum Method: Int {
     case siyanetIsleriBaskanligiTurkey
     case spiritualAdministrationOfMuslimsOfRussia
     
-    func toString() -> String {
+    var indexString: String {
         return String(rawValue)
+    }
+    
+    func toString() -> String {
+        switch self {
+        case .shiaIthnaAnsari: return "Shia Ithna-Ansari"
+        case .universityOfIslamicSciencesKarachi: return "University of Islamic Sciences, Karachi"
+        case .islamicSocietyOfNorthAmerica: return "Islamic Society of North America"
+        case .muslimWorldLeague: return "Muslim World League"
+        case .ummAlQuraUniversityMakkah: return "Umm Al-Qura University, Makkah"
+        case .egyptianGeneralAuthorityOfSurvey: return "Egyptian General Authority of Survey"
+        case .DONT_USE: return ""
+        case .InstituteOfGeophysicsUniversityOfTehran: return "Institute of Geophysics, University of Tehran"
+        case .gulfRegion: return "Gulf Region"
+        case .kuwait: return "Kuwait"
+        case .qatar: return "Qatar"
+        case .majlisUgamaIslamSingapuraSingapore: return "Majlis Ugama Islam Singapura, Singapore"
+        case .unionOrganizationIslamicDeFrance: return "Union Organization islamic de France"
+        case .siyanetIsleriBaskanligiTurkey: return "Diyanet İşleri Başkanlığı, Turkey"
+        case .spiritualAdministrationOfMuslimsOfRussia: return "Spiritual Administration of Muslims of Russia"
+        }
     }
 }
