@@ -17,9 +17,12 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
     }
     
     private let locationManager : CLLocationManager
-    private var nextPrayerFound = false
     @Published var locationName = ""
+
+    
+    private var nextPrayerFound = false
     @Published var nextPrayer: Prayer?
+
     @Published var hijriDate: String = ""
     @Published var gregorianDate: String = ""
     

@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingsView: View {
     
     @State private var isLocationSearchPresented = false
+//    @Binding var locationName: String
     @Binding var date: Date //(Here -> viewModel property in TabsView)
     
     var body: some View {
@@ -22,7 +23,7 @@ struct SettingsView: View {
                 
                 Section {
                     SubTitleCell(title: "Location",
-                                 subTitle: "Hatfield",
+                                 subTitle: SettingsConfiguration.shared.locationInfo.locationName,
                                  imageName: "chevron.forward",
                                  action: {
                                     isLocationSearchPresented.toggle()
