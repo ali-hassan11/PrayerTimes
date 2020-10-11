@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4251F173695C34491057806C /* Pods_PrayerTimesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57B044C2EEE2E46EAC54464 /* Pods_PrayerTimesTests.framework */; };
+		4AC73D532B6BB5374B894E0C /* Pods_PrayerTimes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13021D2E819F4FE0BA931D17 /* Pods_PrayerTimes.framework */; };
+		C1D3E1BAD0F31684CAAFB93A /* Pods_PrayerTimes_PrayerTimesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C4D57CBBDD920CD830F90FA /* Pods_PrayerTimes_PrayerTimesUITests.framework */; };
 		CE196A86252BBDE10078D63A /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE196A85252BBDE10078D63A /* ErrorView.swift */; };
 		CE28BA292526146300AAD5BD /* PrayerTimesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28BA282526146300AAD5BD /* PrayerTimesApp.swift */; };
 		CE28BA2B2526146300AAD5BD /* PrayerTimesHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28BA2A2526146300AAD5BD /* PrayerTimesHomeView.swift */; };
@@ -52,6 +55,9 @@
 		CED3D2AE2527BF8300561999 /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D2AD2527BF8200561999 /* PreviewData.swift */; };
 		CED3D2B62527CD1F00561999 /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D2B52527CD1F00561999 /* TabsView.swift */; };
 		CEE6099825321912009DD0C1 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6099725321912009DD0C1 /* LocationManager.swift */; };
+		CEE6099D25328C55009DD0C1 /* LocationPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6099C25328C55009DD0C1 /* LocationPicker.swift */; };
+		CEE609A92532A5DD009DD0C1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE609A82532A5DD009DD0C1 /* Constants.swift */; };
+		CEE609B92532B393009DD0C1 /* GeocoderWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE609B82532B393009DD0C1 /* GeocoderWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +91,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0871BE8CED9C1E6E077067C6 /* Pods-PrayerTimes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrayerTimes.debug.xcconfig"; path = "Target Support Files/Pods-PrayerTimes/Pods-PrayerTimes.debug.xcconfig"; sourceTree = "<group>"; };
+		13021D2E819F4FE0BA931D17 /* Pods_PrayerTimes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrayerTimes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		148D656EB2E7B95C2BA06E24 /* Pods-PrayerTimes-PrayerTimesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrayerTimes-PrayerTimesUITests.debug.xcconfig"; path = "Target Support Files/Pods-PrayerTimes-PrayerTimesUITests/Pods-PrayerTimes-PrayerTimesUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		320C22C81650AEE6791DD222 /* Pods-PrayerTimes-PrayerTimesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrayerTimes-PrayerTimesUITests.release.xcconfig"; path = "Target Support Files/Pods-PrayerTimes-PrayerTimesUITests/Pods-PrayerTimes-PrayerTimesUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7C4D57CBBDD920CD830F90FA /* Pods_PrayerTimes_PrayerTimesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrayerTimes_PrayerTimesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		87F60D538768076286EC1932 /* Pods-PrayerTimesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrayerTimesTests.debug.xcconfig"; path = "Target Support Files/Pods-PrayerTimesTests/Pods-PrayerTimesTests.debug.xcconfig"; sourceTree = "<group>"; };
+		950AF3A0438C23C93C7B4230 /* Pods-PrayerTimes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrayerTimes.release.xcconfig"; path = "Target Support Files/Pods-PrayerTimes/Pods-PrayerTimes.release.xcconfig"; sourceTree = "<group>"; };
+		A57B044C2EEE2E46EAC54464 /* Pods_PrayerTimesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrayerTimesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A75DB2E1D953862834202CA8 /* Pods-PrayerTimesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrayerTimesTests.release.xcconfig"; path = "Target Support Files/Pods-PrayerTimesTests/Pods-PrayerTimesTests.release.xcconfig"; sourceTree = "<group>"; };
 		CE196A85252BBDE10078D63A /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		CE28BA252526146300AAD5BD /* PrayerTimes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrayerTimes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE28BA282526146300AAD5BD /* PrayerTimesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimesApp.swift; sourceTree = "<group>"; };
@@ -138,6 +153,9 @@
 		CED3D2AD2527BF8200561999 /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
 		CED3D2B52527CD1F00561999 /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
 		CEE6099725321912009DD0C1 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		CEE6099C25328C55009DD0C1 /* LocationPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPicker.swift; sourceTree = "<group>"; };
+		CEE609A82532A5DD009DD0C1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CEE609B82532B393009DD0C1 /* GeocoderWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeocoderWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +163,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AC73D532B6BB5374B894E0C /* Pods_PrayerTimes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +171,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4251F173695C34491057806C /* Pods_PrayerTimesTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,6 +179,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1D3E1BAD0F31684CAAFB93A /* Pods_PrayerTimes_PrayerTimesUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +194,7 @@
 				CE28BA442526146500AAD5BD /* PrayerTimesUITests */,
 				CE6EAEE825263BCE00E688D3 /* Frameworks */,
 				CE28BA262526146300AAD5BD /* Products */,
+				D157F641AAFBB9B8F47D51EB /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -191,7 +213,9 @@
 			children = (
 				CED3D2B52527CD1F00561999 /* TabsView.swift */,
 				CE28BA282526146300AAD5BD /* PrayerTimesApp.swift */,
+				CEE609A82532A5DD009DD0C1 /* Constants.swift */,
 				CE4CBA0D252A7A2400A42E1E /* HomePrayerTimes */,
+				CEE609A42532A596009DD0C1 /* LocationPicker */,
 				CE4CBA0E252A7A3900A42E1E /* Settings */,
 				CE4CB9F7252A727400A42E1E /* Extensions */,
 				CEA6248C25267FC900592075 /* Service.swift */,
@@ -250,7 +274,6 @@
 			isa = PBXGroup;
 			children = (
 				CEA6249F252681BC00592075 /* PrayerTimeListViewModel.swift */,
-				CEE6099725321912009DD0C1 /* LocationManager.swift */,
 				CE4CBA15252A7A7E00A42E1E /* Views */,
 				CEA624E42526B37000592075 /* Data */,
 				CE4CBA19252A7B0100A42E1E /* Helpers */,
@@ -318,6 +341,9 @@
 			children = (
 				CE6EAEE925263BCE00E688D3 /* WidgetKit.framework */,
 				CE6EAEEB25263BCE00E688D3 /* SwiftUI.framework */,
+				13021D2E819F4FE0BA931D17 /* Pods_PrayerTimes.framework */,
+				7C4D57CBBDD920CD830F90FA /* Pods_PrayerTimes_PrayerTimesUITests.framework */,
+				A57B044C2EEE2E46EAC54464 /* Pods_PrayerTimesTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -344,6 +370,29 @@
 			path = Decodable;
 			sourceTree = "<group>";
 		};
+		CEE609A42532A596009DD0C1 /* LocationPicker */ = {
+			isa = PBXGroup;
+			children = (
+				CEE6099C25328C55009DD0C1 /* LocationPicker.swift */,
+				CEE6099725321912009DD0C1 /* LocationManager.swift */,
+				CEE609B82532B393009DD0C1 /* GeocoderWrapper.swift */,
+			);
+			path = LocationPicker;
+			sourceTree = "<group>";
+		};
+		D157F641AAFBB9B8F47D51EB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0871BE8CED9C1E6E077067C6 /* Pods-PrayerTimes.debug.xcconfig */,
+				950AF3A0438C23C93C7B4230 /* Pods-PrayerTimes.release.xcconfig */,
+				148D656EB2E7B95C2BA06E24 /* Pods-PrayerTimes-PrayerTimesUITests.debug.xcconfig */,
+				320C22C81650AEE6791DD222 /* Pods-PrayerTimes-PrayerTimesUITests.release.xcconfig */,
+				87F60D538768076286EC1932 /* Pods-PrayerTimesTests.debug.xcconfig */,
+				A75DB2E1D953862834202CA8 /* Pods-PrayerTimesTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -351,10 +400,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE28BA4A2526146500AAD5BD /* Build configuration list for PBXNativeTarget "PrayerTimes" */;
 			buildPhases = (
+				66416F545A97C6B225F30B10 /* [CP] Check Pods Manifest.lock */,
 				CE28BA212526146300AAD5BD /* Sources */,
 				CE28BA222526146300AAD5BD /* Frameworks */,
 				CE28BA232526146300AAD5BD /* Resources */,
 				CE6EAEFC25263BD100E688D3 /* Embed App Extensions */,
+				3280AE0A2DA332704D3BA165 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -369,6 +420,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE28BA4D2526146500AAD5BD /* Build configuration list for PBXNativeTarget "PrayerTimesTests" */;
 			buildPhases = (
+				CD913E0F14E2DE3F012580BE /* [CP] Check Pods Manifest.lock */,
 				CE28BA322526146500AAD5BD /* Sources */,
 				CE28BA332526146500AAD5BD /* Frameworks */,
 				CE28BA342526146500AAD5BD /* Resources */,
@@ -387,9 +439,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE28BA502526146500AAD5BD /* Build configuration list for PBXNativeTarget "PrayerTimesUITests" */;
 			buildPhases = (
+				F7A2E148130DA8A5B6CDEF7F /* [CP] Check Pods Manifest.lock */,
 				CE28BA3D2526146500AAD5BD /* Sources */,
 				CE28BA3E2526146500AAD5BD /* Frameworks */,
 				CE28BA3F2526146500AAD5BD /* Resources */,
+				FEB91504677419F0FE78B709 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -469,6 +523,109 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3280AE0A2DA332704D3BA165 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PrayerTimes/Pods-PrayerTimes-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PrayerTimes/Pods-PrayerTimes-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PrayerTimes/Pods-PrayerTimes-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		66416F545A97C6B225F30B10 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PrayerTimes-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD913E0F14E2DE3F012580BE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PrayerTimesTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F7A2E148130DA8A5B6CDEF7F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PrayerTimes-PrayerTimesUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FEB91504677419F0FE78B709 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PrayerTimes-PrayerTimesUITests/Pods-PrayerTimes-PrayerTimesUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PrayerTimes-PrayerTimesUITests/Pods-PrayerTimes-PrayerTimesUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PrayerTimes-PrayerTimesUITests/Pods-PrayerTimes-PrayerTimesUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CE28BA212526146300AAD5BD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -489,6 +646,7 @@
 				CEA6248D25267FC900592075 /* Service.swift in Sources */,
 				CED3D26A2526D07E00561999 /* SettingsConfiguration.swift in Sources */,
 				CEE6099825321912009DD0C1 /* LocationManager.swift in Sources */,
+				CEE6099D25328C55009DD0C1 /* LocationPicker.swift in Sources */,
 				CEA624E82526B41000592075 /* Coordinates.swift in Sources */,
 				CE196A86252BBDE10078D63A /* ErrorView.swift in Sources */,
 				CE7CB07E252A93BA00158CAF /* ChooseColorCell.swift in Sources */,
@@ -498,6 +656,8 @@
 				CE4CBA1D252A7B5400A42E1E /* SettingsView.swift in Sources */,
 				CE7CB079252A938300158CAF /* SubTitleCell.swift in Sources */,
 				CED3D2AE2527BF8300561999 /* PreviewData.swift in Sources */,
+				CEE609B92532B393009DD0C1 /* GeocoderWrapper.swift in Sources */,
+				CEE609A92532A5DD009DD0C1 /* Constants.swift in Sources */,
 				CE28BA292526146300AAD5BD /* PrayerTimesApp.swift in Sources */,
 				CE6EAEDD25262C2300E688D3 /* PrayerTimesListView.swift in Sources */,
 				CE4CBA06252A738200A42E1E /* CustomError.swift in Sources */,
@@ -668,6 +828,7 @@
 		};
 		CE28BA4B2526146500AAD5BD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0871BE8CED9C1E6E077067C6 /* Pods-PrayerTimes.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -690,6 +851,7 @@
 		};
 		CE28BA4C2526146500AAD5BD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 950AF3A0438C23C93C7B4230 /* Pods-PrayerTimes.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -712,6 +874,7 @@
 		};
 		CE28BA4E2526146500AAD5BD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 87F60D538768076286EC1932 /* Pods-PrayerTimesTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -734,6 +897,7 @@
 		};
 		CE28BA4F2526146500AAD5BD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A75DB2E1D953862834202CA8 /* Pods-PrayerTimesTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -756,6 +920,7 @@
 		};
 		CE28BA512526146500AAD5BD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 148D656EB2E7B95C2BA06E24 /* Pods-PrayerTimes-PrayerTimesUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -776,6 +941,7 @@
 		};
 		CE28BA522526146500AAD5BD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 320C22C81650AEE6791DD222 /* Pods-PrayerTimes-PrayerTimesUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
