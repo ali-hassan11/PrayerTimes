@@ -25,7 +25,7 @@ class GeocoderWrapper {
                                           message: "There was a problem finding your location. Please try again.")))
                 return
             }
-            let locationInfo = LocationInfo(cityName: "\(placeName), \(country)", lat: location.coordinate.latitude, long: location.coordinate.longitude)
+            let locationInfo = LocationInfo(locationName: "\(placeName), \(country)", lat: location.coordinate.latitude, long: location.coordinate.longitude)
 
             completion(.success((locationInfo, timeZone)))
         }
