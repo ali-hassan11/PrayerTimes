@@ -56,21 +56,21 @@ struct PrayerTimesHomeView: View {
                 }
                 .animation(.linear)
                 .padding(.horizontal, 20)
-                .navigationBarTitle("Hatfield, UK", displayMode: .inline)
-                .navigationBarItems(trailing: Button(action: { }, label: {
-                    Image(systemName: "safari")
-                }))
+                .navigationBarTitle(viewModel.locationName, displayMode: .inline)
+//                .navigationBarItems(trailing: Button(action: { }, label: {
+//                    Image(systemName: "safari")
+//                }))
             )
             
         }
-        .gesture(DragGesture(minimumDistance: 25, coordinateSpace: .local)
-                    .onEnded({ value in
-                        if value.translation.width < 0 && value.translation.height > -30 && value.translation.height < 30 {
-                            viewModel.plusOneDay()
-                        }
-                        if value.translation.width > 0 && value.translation.height > -30 && value.translation.height < 30 {
-                            viewModel.minusOneDay()
-                        }
-                    }))
+//        .gesture(DragGesture(minimumDistance: 25, coordinateSpace: .local)
+//                    .onEnded({ value in
+//                        if value.translation.width < 0 && value.translation.height > -30 && value.translation.height < 30 {
+//                            viewModel.plusOneDay()
+//                        }
+//                        if value.translation.width > 0 && value.translation.height > -30 && value.translation.height < 30 {
+//                            viewModel.minusOneDay()
+//                        }
+//                    }))
     }
 }

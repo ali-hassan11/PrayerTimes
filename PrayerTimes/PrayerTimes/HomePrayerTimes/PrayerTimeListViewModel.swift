@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import CoreLocation
 
 class PrayerTimeListViewModel: ObservableObject, Identifiable {
     
@@ -16,9 +17,14 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
         }
     }
     
+    private let locationManager : CLLocationManager
+    private var nextPrayerFound = false
+    @Published var locationName = ""
+    @Published var nextPrayer: Prayer?
     @Published var hijriDate: String = ""
     @Published var gregorianDate: String = ""
-    
+    @Published var timeRemainingString: String = ""
+    @Published var stateManager: StateManager = StateManager(prayerTimesState: .loading, displayDateState: .loading)
     @Published var prayers: [Prayer] = [] {
         didSet {
             prayers.forEach { prayer in
@@ -30,36 +36,53 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
             }
         }
     }
-    @Published var nextPrayer: Prayer?
     
     var timeRemaining: Int? = 0 {
         didSet {
-            
             guard let nextPrayer = nextPrayer else { return }
-            
+
+            if timeRemaining == 0 {
+                
+                //Set next prayer to the one after
+                //Calc & set time remaining
+                return
+            }
+                        
             guard let prayerTimeString = prayers.filter({ $0.name == nextPrayer.name }).first else { return }
             
             let currentDate = Date()
             guard let nextPrayerDate = self.prayerTimesDate(dateString: nextPrayer.prayerDateString,
                                                       timeString: prayerTimeString.formattedTime,
                                                       currentDate: currentDate) else { return }
-            
-            let timeRemainingTimestamp = nextPrayerDate.timeIntervalSince(currentDate)
-            
-            let (h,m,s) = secondsToHoursMinutesSeconds(seconds: timeRemainingTimestamp)
-            
-            timeRemainingString = "Begins in:\n\(h)h \(m)m \(s)s"
+        
+            timeRemainingString = formattedTimeRemaining(seconds: nextPrayerDate.timeIntervalSince(currentDate))
         }
     }
-
-    @Published var timeRemainingString: String = ""
-
-    @Published var stateManager: StateManager = StateManager(prayerTimesState: .loading, displayDateState: .loading)
     
-    private var nextPrayerFound = false
+    private func formattedTimeRemaining(seconds: TimeInterval) -> String {
+        let (h,m,s) = secondsToHoursMinutesSeconds(seconds: seconds)
+        
+        return "Begins in:\n\(h)h \(m)m \(s)s"
+    }
     
     init() {
-        fetchData(date: Date())
+        self.locationManager = CLLocationManager()
+        let locationManagerdelegate = LocationManagerDelegate(completion: { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success((let locationInfo, let timeZone)):
+                self.updateSettings(with: locationInfo, and: timeZone)
+                self.fetchData(date: self.date)
+            case .failure(let error):
+                print(error)
+                self.stateManager.failed()
+            }
+            
+        })
+        locationManager.delegate = locationManagerdelegate
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
     }
     
     //PASS IN SETTINGS HERE AS WE WILL ACCESS TO IT FROM THE VIEW
@@ -68,8 +91,9 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
         stateManager.loading()
         
         let settings = SettingsConfiguration.shared
+        let coordinaties = Coordinates(latitude: String(settings.locationInfo.lat), longitude: String(settings.locationInfo.long))
         let prayerTimesConfiguration = PrayerTimesConfiguration(timestamp: date.timestampString,
-                                                               coordinates: .init(latitude: "53.5228", longitude: "1.1285"),
+                                                               coordinates: coordinaties,
                                                                method: settings.method,
                                                                school: settings.school,
                                                                timeZone: settings.timeZone)
@@ -84,6 +108,7 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
                 self?.handlePrayerTimes(prayerTimesResponse: prayerTimesResponse, completion: { prayers in
                     DispatchQueue.main.async {
                         self?.prayers = prayers
+                        self?.locationName = settings.locationInfo.cityName
                         self?.stateManager.prayerTimesLoaded()
                     }
                 })
@@ -205,5 +230,10 @@ extension PrayerTimeListViewModel {
       let (hr,  minf) = modf (seconds / 3600)
       let (min, secf) = modf (60 * minf)
       return (Int(hr), Int(min), Int(60 * secf))
+    }
+    
+    private func updateSettings(with locationInfo: LocationInfo, and timeZone: TimeZone) {
+        SettingsConfiguration.shared.locationInfo = locationInfo
+        SettingsConfiguration.shared.timeZone = timeZone
     }
 }

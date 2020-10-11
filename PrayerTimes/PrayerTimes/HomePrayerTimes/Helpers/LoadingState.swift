@@ -15,9 +15,9 @@ enum LoadingState: Equatable {
 
 class StateManager: ObservableObject { //ADD TESTS FOR THIS
    
-    @Published var prayerTimesState: LoadingState
     @Published var displayDateState: LoadingState
-    
+    @Published var prayerTimesState: LoadingState
+
     var state: LoadingState {
         
         if prayerTimesState == .loaded && displayDateState == .loaded {

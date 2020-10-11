@@ -45,5 +45,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Allow locations so that we can show your local prayer times</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Allow locations so that we can show your local prayer times</string>
 </dict>
 </plist>

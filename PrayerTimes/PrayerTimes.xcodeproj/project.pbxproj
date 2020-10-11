@@ -51,6 +51,7 @@
 		CED3D2A02527840200561999 /* PrayerName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D29F2527840200561999 /* PrayerName.swift */; };
 		CED3D2AE2527BF8300561999 /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D2AD2527BF8200561999 /* PreviewData.swift */; };
 		CED3D2B62527CD1F00561999 /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D2B52527CD1F00561999 /* TabsView.swift */; };
+		CEE6099825321912009DD0C1 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6099725321912009DD0C1 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +137,7 @@
 		CED3D29F2527840200561999 /* PrayerName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerName.swift; sourceTree = "<group>"; };
 		CED3D2AD2527BF8200561999 /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
 		CED3D2B52527CD1F00561999 /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
+		CEE6099725321912009DD0C1 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				CEA6249F252681BC00592075 /* PrayerTimeListViewModel.swift */,
+				CEE6099725321912009DD0C1 /* LocationManager.swift */,
 				CE4CBA15252A7A7E00A42E1E /* Views */,
 				CEA624E42526B37000592075 /* Data */,
 				CE4CBA19252A7B0100A42E1E /* Helpers */,
@@ -485,6 +488,7 @@
 				CE28BA2B2526146300AAD5BD /* PrayerTimesHomeView.swift in Sources */,
 				CEA6248D25267FC900592075 /* Service.swift in Sources */,
 				CED3D26A2526D07E00561999 /* SettingsConfiguration.swift in Sources */,
+				CEE6099825321912009DD0C1 /* LocationManager.swift in Sources */,
 				CEA624E82526B41000592075 /* Coordinates.swift in Sources */,
 				CE196A86252BBDE10078D63A /* ErrorView.swift in Sources */,
 				CE7CB07E252A93BA00158CAF /* ChooseColorCell.swift in Sources */,
