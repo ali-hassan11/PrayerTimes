@@ -14,15 +14,12 @@ struct TabsView: View {
     
     var body: some View {
         TabView {
-            
-            LocationPicker(date: $viewModel.date)
-            
             PrayerTimesHomeView(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "clock.fill")
                     Text("Times")
                 }
-            SettingsView()
+            SettingsView(date: $viewModel.date)
                 .tabItem {
                     Image(systemName: "gear")
                     Text("Settings")

@@ -15,7 +15,7 @@ struct ErrorView: View {
         Text("Failed to load prayer times, please check your internet connection and try again")
             .font(Font.body)
             .multilineTextAlignment(.center)
-            .padding(.all, 20)
+            .padding(.all, 40)
         Button(action: { action() }) {
             Image(systemName: "arrow.clockwise")
                 .font(Font.system(size: 25, weight: .semibold))

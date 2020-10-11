@@ -16,7 +16,7 @@ struct LocationPicker: UIViewControllerRepresentable {
         Coordinator(self)
     }
     @Environment(\.presentationMode) var presentationMode
-    @Binding var date: Date
+    @Binding var date: Date //(Here <- SettingsView <- viewModel property in TabsView)
 
     func makeUIViewController(context: UIViewControllerRepresentableContext<LocationPicker>) -> GMSAutocompleteViewController {
         GMSPlacesClient.provideAPIKey(Constants.googlePlacesApiKey)
