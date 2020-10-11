@@ -25,7 +25,7 @@ class SettingsConfiguration: ObservableObject {
         method = .muslimWorldLeague
         school = .shafi
         timeZone = .current
-        locationInfo = LocationInfo(locationName: "Donnayyyy", lat: 53.5228, long: 1.1285) //
+        locationInfo = LocationInfo(cityName: "Donnayyyy", lat: 53.5228, long: 1.1285) //
     }
     
     private init(dateType: DateMode, method: Method, school: School, timeZone: TimeZone, locationInfo: LocationInfo) {

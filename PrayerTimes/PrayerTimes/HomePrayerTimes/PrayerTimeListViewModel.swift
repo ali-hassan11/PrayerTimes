@@ -23,71 +23,46 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
     @Published var nextPrayer: Prayer?
     @Published var hijriDate: String = ""
     @Published var gregorianDate: String = ""
-    
     @Published var timeRemainingString: String = ""
-    private var timeRemaining: Int = 0
-
     @Published var stateManager: StateManager = StateManager(prayerTimesState: .loading, displayDateState: .loading)
-    
     @Published var prayers: [Prayer] = [] {
         didSet {
             prayers.forEach { prayer in
                 if prayer.isNextPrayer {
-                    DispatchQueue.main.async { [weak self] in
-                        self?.nextPrayer = prayer
-                        self?.updateTimeRemaining()
+                    DispatchQueue.main.async {
+                        self.nextPrayer = prayer
                     }
                 }
             }
         }
     }
     
-    func updateTimeRemaining() {
-        guard let nextPrayer = nextPrayer else { return }
-        guard let prayerTimeString = prayers.filter({ $0.name == nextPrayer.name }).first else { return }
-        
-        guard let nextPrayerDate = self.prayerTimesDate(dateString: nextPrayer.prayerDateString,
-                                                  timeString: prayerTimeString.formattedTime) else { return }
-    
-        let currentDate = Date()
-        let secondsRemaining = nextPrayerDate.timeIntervalSince(currentDate)
-        
-        if secondsRemaining > 0 {
-            updateTimeRemaining(with: secondsRemaining)
-            return
-        }
-        
-        //IF TIME IS > 0:
-        
-        //Get index of current next prayer
-        var currentNextPrayerIndex = Int()
-        for (index, prayer) in prayers.enumerated() {
-            if prayer == nextPrayer {
-                currentNextPrayerIndex = index
-                break
-            }
-        }
- 
-        //Set the isNextPrayer for new next prayer to true
-        prayers[currentNextPrayerIndex].isNextPrayer = false
-        prayers[currentNextPrayerIndex + 1].isNextPrayer = true
-        
-        //Get time remaining until new next prayer
-        let newNextPrayer = prayers[currentNextPrayerIndex + 1] //If Isha will crash....
-        guard let newNextPrayerDate = prayerTimesDate(dateString: newNextPrayer.prayerDateString,
-                                                      timeString: newNextPrayer.formattedTime) else { return }
-        let newSecondsRemaining = newNextPrayerDate.timeIntervalSince(currentDate)
+    var timeRemaining: Int? = 0 {
+        didSet {
+            guard let nextPrayer = nextPrayer else { return }
 
-        //Update time remaining
-        updateTimeRemaining(with: newSecondsRemaining)
+            if timeRemaining == 0 {
+                
+                //Set next prayer to the one after
+                //Calc & set time remaining
+                return
+            }
+                        
+            guard let prayerTimeString = prayers.filter({ $0.name == nextPrayer.name }).first else { return }
+            
+            let currentDate = Date()
+            guard let nextPrayerDate = self.prayerTimesDate(dateString: nextPrayer.prayerDateString,
+                                                      timeString: prayerTimeString.formattedTime,
+                                                      currentDate: currentDate) else { return }
+        
+            timeRemainingString = formattedTimeRemaining(seconds: nextPrayerDate.timeIntervalSince(currentDate))
+        }
     }
     
-    private func updateTimeRemaining(with remainingTime: TimeInterval) {
-        let (h,m,s) = secondsToHoursMinutesSeconds(seconds: remainingTime)
-        let formattedTimeString = "Begins in:\n\(h)h \(m)m \(s)s"
+    private func formattedTimeRemaining(seconds: TimeInterval) -> String {
+        let (h,m,s) = secondsToHoursMinutesSeconds(seconds: seconds)
         
-        timeRemaining = Int(remainingTime)
-        timeRemainingString = formattedTimeString
+        return "Begins in:\n\(h)h \(m)m \(s)s"
     }
     
     init() {
@@ -133,7 +108,7 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
                 self?.handlePrayerTimes(prayerTimesResponse: prayerTimesResponse, completion: { prayers in
                     DispatchQueue.main.async {
                         self?.prayers = prayers
-                        self?.locationName = settings.locationInfo.locationName
+                        self?.locationName = settings.locationInfo.cityName
                         self?.stateManager.prayerTimesLoaded()
                     }
                 })
@@ -189,7 +164,7 @@ extension PrayerTimeListViewModel {
             guard let prayerTimeString = prayerTimesData.timings[prayerName.capitalized()] else { return }
             let prayerDateString = prayerTimesData.dateInfo.gergorianDate.date
             
-            let prayerTimesDate = self.prayerTimesDate(dateString: prayerDateString, timeString: prayerTimeString)
+            let prayerTimesDate = self.prayerTimesDate(dateString: prayerDateString, timeString: prayerTimeString, currentDate: currentDate)
             
             let isNextPrayer: Bool
             if let prayerTimesDate = prayerTimesDate {
@@ -215,7 +190,7 @@ extension PrayerTimeListViewModel {
         }
     }
     
-    private func prayerTimesDate(dateString: String, timeString: String) -> Date? {
+    private func prayerTimesDate(dateString: String, timeString: String, currentDate: Date) -> Date? {
         
         if let date = formatter.date(from: "\(dateString) \(timeString)") {
             return Date(timeIntervalSince1970: TimeInterval(date.timeIntervalSince1970))

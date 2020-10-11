@@ -22,10 +22,11 @@ struct SettingsView: View {
                 
                 Section {
                     SubTitleCell(title: "Location",
-                                 subTitle: SettingsConfiguration.shared.locationInfo.locationName,
+                                 subTitle: "Hatfield",
                                  imageName: "chevron.forward",
                                  action: {
                                     isLocationSearchPresented.toggle()
+                                    print("TAPPED")
                                  })
                         .sheet(isPresented: $isLocationSearchPresented) {
                             LocationPicker(date: $date)
