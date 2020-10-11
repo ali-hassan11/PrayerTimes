@@ -11,7 +11,7 @@ import CoreLocation
 
 class PrayerTimeListViewModel: ObservableObject, Identifiable {
     
-    var date: Date = Date() {
+    @Published var date: Date = Date() {
         didSet {
             fetchData(date: date)
         }

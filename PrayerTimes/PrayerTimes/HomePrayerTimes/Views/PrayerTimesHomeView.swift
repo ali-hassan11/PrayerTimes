@@ -57,9 +57,6 @@ struct PrayerTimesHomeView: View {
                 .animation(.linear)
                 .padding(.horizontal, 20)
                 .navigationBarTitle(viewModel.locationName, displayMode: .inline)
-//                .navigationBarItems(trailing: Button(action: { }, label: {
-//                    Image(systemName: "safari")
-//                }))
             )
             
         }

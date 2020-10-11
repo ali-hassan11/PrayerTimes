@@ -11,8 +11,9 @@ import BackgroundTasks
 @main
 struct PrayerTimesApp: App {
     
-    var settingsConfiguration = SettingsConfiguration.shared
     let viewModel: PrayerTimeListViewModel
+    
+    @State var address: String = ""
     
     init() {
         self.viewModel = PrayerTimeListViewModel()
@@ -20,7 +21,7 @@ struct PrayerTimesApp: App {
     
     var body: some Scene {
         WindowGroup {
-            TabsView(viewModel: viewModel).environmentObject(settingsConfiguration)
+            TabsView(viewModel: viewModel, address: address)
         }
     }
 }

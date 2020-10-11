@@ -9,10 +9,14 @@ import SwiftUI
 
 struct TabsView: View {
     
-    let viewModel: PrayerTimeListViewModel
+    @ObservedObject var viewModel: PrayerTimeListViewModel
+    @State var address: String
     
     var body: some View {
         TabView {
+            
+            LocationPicker(date: $viewModel.date)
+            
             PrayerTimesHomeView(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "clock.fill")
