@@ -19,7 +19,10 @@ struct LocationPicker: UIViewControllerRepresentable {
     @Binding var date: Date //(Here <- SettingsView <- viewModel property in TabsView)
 
     func makeUIViewController(context: UIViewControllerRepresentableContext<LocationPicker>) -> GMSAutocompleteViewController {
-        GMSPlacesClient.provideAPIKey(Constants.googlePlacesApiKey)
+        
+        GMSPlacesClient.provideAPIKey("AIzaSyAgIjIKhiEllBtS2f_OSGTxZyHSJI-lXpg")
+
+//        GMSPlacesClient.provideAPIKey(Constants.googlePlacesApiKey)
 
         let autocompleteController = GMSAutocompleteViewController()
         autocompleteController.delegate = context.coordinator
@@ -55,18 +58,18 @@ struct LocationPicker: UIViewControllerRepresentable {
                 for place in place.addressComponents! {
                     print(place)
                 }
-                //Update settings
-                let newLocationInfo = LocationInfo(cityName: "\(place.name!), \( 123)",
-                                                lat: place.coordinate.latitude,
-                                                long: place.coordinate.longitude)
-                SettingsConfiguration.shared.locationInfo = newLocationInfo
                 
-                //Trigger fetch data
-                let date = self.parent.date
-                self.parent.date = date
-                
-                //Dismiss
-                self.parent.presentationMode.wrappedValue.dismiss()
+                let location = CLLocation(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
+                GeocoderWrapper().locationInfo(for: location) { [weak self] result in
+                    
+                    switch result {
+                    case .success((let locationInfo, let timeZone)):
+                        self?.handleSuccess(with: locationInfo, and: timeZone)
+                        
+                    case .failure(let error):
+                        print(error.message) //TO-DO: Handle error
+                    }
+                }
             }
         }
 
@@ -78,5 +81,16 @@ struct LocationPicker: UIViewControllerRepresentable {
             parent.presentationMode.wrappedValue.dismiss()
         }
 
+        private func handleSuccess(with locationInfo: LocationInfo, and timeZone: TimeZone) {
+            SettingsConfiguration.shared.locationInfo = locationInfo
+            SettingsConfiguration.shared.timeZone = timeZone
+
+            //Trigger fetch data
+            let date = self.parent.date
+            self.parent.date = date
+            
+            //Dismiss
+            self.parent.presentationMode.wrappedValue.dismiss()
+        }
     }
 }

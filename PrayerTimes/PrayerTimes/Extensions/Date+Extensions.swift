@@ -19,4 +19,12 @@ extension Date {
     var minusOneDay: Date {
         return self.addingTimeInterval(TimeInterval(-86400))
     }
+    
+    func convertToTimeZone(to desiredTimeZone: TimeZone, from currentimeZone: TimeZone) -> Date {
+        let delta = TimeInterval(currentimeZone.secondsFromGMT(for: self) - desiredTimeZone.secondsFromGMT(for: self))
+        print(delta)
+        print(desiredTimeZone)
+        print(currentimeZone)
+        return addingTimeInterval(delta)
+    }
 }

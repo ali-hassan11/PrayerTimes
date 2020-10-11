@@ -7,7 +7,7 @@ struct Prayer: Identifiable, Equatable {
     let name: String
     let prayerDateString: String
     let formattedTime: String
-    let isNextPrayer: Bool
+    var isNextPrayer: Bool
     
     init(name: String, prayerDateString: String, formattedTime: String, isNextPrayer: Bool = false) {
         self.name = name

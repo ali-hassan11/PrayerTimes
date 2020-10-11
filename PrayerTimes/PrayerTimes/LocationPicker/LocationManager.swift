@@ -9,7 +9,7 @@ import Foundation
 import CoreLocation
 
 struct LocationInfo {
-    let cityName: String
+    let locationName: String
     let lat: Double
     let long: Double
 }
