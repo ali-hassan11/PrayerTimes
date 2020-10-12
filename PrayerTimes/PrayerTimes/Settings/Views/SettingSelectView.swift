@@ -10,29 +10,29 @@ import SwiftUI
 struct SettingSelectView: View {
     
     var type: SettingType
+    var title: String
     
     var body: some View {
         
-        switch type {
-        case .method:
+        NavigationView {
             List {
-                ForEach(Method.allCases, id: \.hashValue) { item in
-                    if item.index != 6 {
+                switch type {
+                case .method:
+                    ForEach(Method.allCases, id: \.hashValue) { item in
+                        if item.index != 6 {
+                            Text(item.toString)
+                        }
+                    }
+                case .school:
+                    ForEach(School.allCases, id: \.hashValue) { item in
                         Text(item.toString)
                     }
+                case .highLatitudeAdjustment:
+                    Text("Hi")
                 }
             }
-        case .school:
-            List {
-                ForEach(School.allCases, id: \.hashValue) { item in
-                    Text(item.toString)
-                }
-            }
-        case .highLatitudeAdjustment:
-            Text("Hi")
+            .navigationBarTitle(title, displayMode: .inline)
         }
-        
-        
     }
 }
 

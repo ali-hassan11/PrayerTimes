@@ -19,7 +19,7 @@ struct SettingsView: View {
         
         NavigationView {
             let settings = SettingsConfiguration.shared
-
+            
             List {
                 Section {
                     ChooseColorCell(title: "Color Scheme", action: {})
@@ -45,10 +45,7 @@ struct SettingsView: View {
                                     isMethodSelectViewPresentated.toggle()
                                  })
                         .sheet(isPresented: $isMethodSelectViewPresentated) {
-                            NavigationView {
-                                SettingSelectView(type: .method)
-                            }
-                            .navigationTitle("Prayer Time Calculation")
+                            SettingSelectView(type: .method, title: "Prayer Time Calculation")
                         }
                     
                     SubTitleCell(title: "Asr Calculation Method",
@@ -58,11 +55,10 @@ struct SettingsView: View {
                                     isSchoolSelectViewPresentated.toggle()
                                  })
                         .sheet(isPresented: $isSchoolSelectViewPresentated) {
-                            NavigationView {
-                                SettingSelectView(type: .school)
-                            }
-                            .navigationTitle("Prayer Time Calculation")
+                            SettingSelectView(type: .school, title: "Asr Calculation Method")
+                                .navigationBarTitle("Asr Calculation Method", displayMode: .inline)
                         }
+                    
                     SubTitleCell(title: "High Latitude Adjustment",
                                  subTitle: "Angle-based method",
                                  imageName: "chevron.forward",
@@ -70,15 +66,12 @@ struct SettingsView: View {
                                     isHighLattitudeSelectViewPresentated.toggle()
                                  })
                         .sheet(isPresented: $isHighLattitudeSelectViewPresentated) {
-                            NavigationView {
-                                SettingSelectView(type: .highLatitudeAdjustment)
-                            }
-                            .navigationTitle("High Latitude Adjustment")
+                            SettingSelectView(type: .highLatitudeAdjustment, title: "High Latitude Adjustment")
                         }
                 }
             }
-            .listStyle(InsetGroupedListStyle())
             .navigationBarTitle("Settings")
         }
+        .listStyle(InsetGroupedListStyle())
     }
 }
