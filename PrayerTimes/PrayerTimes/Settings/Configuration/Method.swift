@@ -6,8 +6,12 @@
 //
 
 import Foundation
+//protocol SettingOption: CaseIterable {
+//    var index: Int { get }
+//    var toString: String { get }
+//}
 
-enum Method: Int {
+enum Method: Int, CaseIterable {
     case shiaIthnaAnsari
     case universityOfIslamicSciencesKarachi
     case islamicSocietyOfNorthAmerica
@@ -24,11 +28,11 @@ enum Method: Int {
     case siyanetIsleriBaskanligiTurkey
     case spiritualAdministrationOfMuslimsOfRussia
     
-    var indexString: String {
-        return String(rawValue)
+    var index:  Int {
+        return rawValue
     }
     
-    func toString() -> String {
+    var toString: String {
         switch self {
         case .shiaIthnaAnsari: return "Shia Ithna-Ansari"
         case .universityOfIslamicSciencesKarachi: return "University of Islamic Sciences, Karachi"

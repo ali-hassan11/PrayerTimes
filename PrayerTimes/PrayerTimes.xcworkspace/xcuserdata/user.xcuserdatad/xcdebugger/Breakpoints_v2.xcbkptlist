@@ -3,4 +3,118 @@
    uuid = "809EB222-E277-40E3-A8A3-86F79D22C8F1"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1A40BB33-A996-444A-AA33-9FFB30CE50B1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PrayerTimes/Settings/Views/SettingSelectView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "1A40BB33-A996-444A-AA33-9FFB30CE50B1 - a8df8ae0175ea8c2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PrayerTimes.SettingSelectView.body.getter : some"
+                  moduleName = "PrayerTimes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Documents/iOS-dev/iOS-Projects/PrayerTimes/PrayerTimes/PrayerTimes/Settings/Views/SettingSelectView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "1500">
+               </Location>
+               <Location
+                  uuid = "1A40BB33-A996-444A-AA33-9FFB30CE50B1 - 6395f6f18f6f85cd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;PrayerTimes.School&gt;, Swift.Int, SwiftUI.Text&gt; in PrayerTimes.SettingSelectView.body.getter : some"
+                  moduleName = "PrayerTimes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Documents/iOS-dev/iOS-Projects/PrayerTimes/PrayerTimes/PrayerTimes/Settings/Views/SettingSelectView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "320">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3517E2FE-7F16-42A5-96FA-93F3D682AE7A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PrayerTimes/Settings/Views/SettingSelectView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DAE4E55F-8B92-427D-985E-72876A41BC10"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PrayerTimes/Settings/Views/SettingSelectView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "DAE4E55F-8B92-427D-985E-72876A41BC10 - a8df8ae0175eab88"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PrayerTimes.SettingSelectView.body.getter : some"
+                  moduleName = "PrayerTimes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Documents/iOS-dev/iOS-Projects/PrayerTimes/PrayerTimes/PrayerTimes/Settings/Views/SettingSelectView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "1132">
+               </Location>
+               <Location
+                  uuid = "DAE4E55F-8B92-427D-985E-72876A41BC10 - 71f6176fcb7568bf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Array&lt;PrayerTimes.Method&gt;, Swift.Int, SwiftUI.Text&gt; in PrayerTimes.SettingSelectView.body.getter : some"
+                  moduleName = "PrayerTimes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Documents/iOS-dev/iOS-Projects/PrayerTimes/PrayerTimes/PrayerTimes/Settings/Views/SettingSelectView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "320">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

@@ -7,15 +7,15 @@
 
 import Foundation
 
-enum School: Int {
+enum School: Int, CaseIterable {
     case shafi
     case hanafi
     
-    var indexString: Int {
+    var index: Int {
         return rawValue
     }
     
-    func toString() -> String {
+    var toString: String {
         switch self {
         case .shafi: return "Shafi"
         case .hanafi: return "Hanafi"

@@ -17,6 +17,7 @@
 		CE28BA302526146500AAD5BD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE28BA2F2526146500AAD5BD /* Preview Assets.xcassets */; };
 		CE28BA3B2526146500AAD5BD /* URLBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28BA3A2526146500AAD5BD /* URLBuilderTests.swift */; };
 		CE28BA462526146500AAD5BD /* PrayerTimesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE28BA452526146500AAD5BD /* PrayerTimesUITests.swift */; };
+		CE49B71D2533C79300E8294E /* SettingSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE49B71C2533C79300E8294E /* SettingSelectView.swift */; };
 		CE4A6366252919CE000D5CA9 /* PrayerTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4A6365252919CE000D5CA9 /* PrayerTimeCell.swift */; };
 		CE4CB9F0252A71D400A42E1E /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4CB9EF252A71D400A42E1E /* LoadingState.swift */; };
 		CE4CB9F9252A728600A42E1E /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4CB9F8252A728600A42E1E /* Date+Extensions.swift */; };
@@ -113,6 +114,7 @@
 		CE28BA412526146500AAD5BD /* PrayerTimesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PrayerTimesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE28BA452526146500AAD5BD /* PrayerTimesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimesUITests.swift; sourceTree = "<group>"; };
 		CE28BA472526146500AAD5BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE49B71C2533C79300E8294E /* SettingSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSelectView.swift; sourceTree = "<group>"; };
 		CE4A6365252919CE000D5CA9 /* PrayerTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimeCell.swift; sourceTree = "<group>"; };
 		CE4CB9EF252A71D400A42E1E /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
 		CE4CB9F8252A728600A42E1E /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 				CE4CBA1C252A7B5400A42E1E /* SettingsView.swift */,
 				CE7CB078252A938300158CAF /* SubTitleCell.swift */,
 				CE7CB07D252A93BA00158CAF /* ChooseColorCell.swift */,
+				CE49B71C2533C79300E8294E /* SettingSelectView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -665,6 +668,7 @@
 				CED3D2832526E7A300561999 /* DateTypes.swift in Sources */,
 				CED3D2A02527840200561999 /* PrayerName.swift in Sources */,
 				CE4CB9F0252A71D400A42E1E /* LoadingState.swift in Sources */,
+				CE49B71D2533C79300E8294E /* SettingSelectView.swift in Sources */,
 				CEA624FB2526B46C00592075 /* School.swift in Sources */,
 				CE6EAEE02526300200E688D3 /* NextPrayerView.swift in Sources */,
 			);
