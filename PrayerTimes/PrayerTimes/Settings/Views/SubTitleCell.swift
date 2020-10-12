@@ -10,7 +10,7 @@ import SwiftUI
 struct SubTitleCell: View {
     
     var title: String
-    var subTitle: String
+    var subTitle: String?
     var imageName: String
     var action: () -> Void
     
@@ -18,7 +18,9 @@ struct SubTitleCell: View {
         HStack {
             VStack(alignment: .leading) {
                 Text(title).font(.body)
-                Text(subTitle).font(.footnote).foregroundColor(Color.init(.label)).opacity(0.7)
+                if let subTitle = subTitle {
+                    Text(subTitle).font(.footnote).foregroundColor(Color.init(.label)).opacity(0.7)
+                }
             }
             Spacer()
             Image(systemName: imageName)

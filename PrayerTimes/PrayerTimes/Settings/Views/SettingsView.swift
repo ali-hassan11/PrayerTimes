@@ -10,6 +10,8 @@ import SwiftUI
 struct SettingsView: View {
     
     @State private var isLocationSearchPresented = false
+    @State private var isLocationLocateMePresented = false
+    
     @State private var isMethodSelectViewPresentated = false
     @State private var isSchoolSelectViewPresentated = false
     @State private var isHighLattitudeSelectViewPresentated = false
@@ -25,10 +27,18 @@ struct SettingsView: View {
                     ChooseColorCell(title: "Color Scheme", action: {})
                 }
                 
-                Section {
-                    SubTitleCell(title: "Location",
-                                 subTitle: SettingsConfiguration.shared.locationInfo.locationName,
-                                 imageName: "chevron.forward",
+                Section(header: Text(SettingsConfiguration.shared.locationInfo.locationName)) {
+                    SubTitleCell(title: "Locate Me",
+                                 imageName: "location.fill",
+                                 action: {
+                                    isLocationLocateMePresented.toggle()
+                                 })
+                        .sheet(isPresented: $isLocationLocateMePresented) {
+
+                        }
+                    
+                    SubTitleCell(title: "Search",
+                                 imageName: "magnifyingglass",
                                  action: {
                                     isLocationSearchPresented.toggle()
                                  })
