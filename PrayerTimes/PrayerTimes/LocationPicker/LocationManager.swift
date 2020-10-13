@@ -22,26 +22,25 @@ class LocationManagerDelegate: NSObject, CLLocationManagerDelegate {
         self.locationUpdatedCompletion = completion
     }
     
-    
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        print("Did change")
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch manager.authorizationStatus {
         
-        switch status {
-        case .restricted, .denied:
-            print("Restricted/Denied")
-            
         case .authorizedAlways, .authorizedWhenInUse: //Happy path
             manager.startUpdatingLocation()
-
+            
         case .notDetermined:
-            print("Always in use")
+            manager.requestAlwaysAuthorization()
+
+        case .restricted, .denied:
+            print("Location restricted or denied")
 
         default:
             print("default")
         }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Error")
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

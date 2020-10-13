@@ -4,6 +4,11 @@
 //
 //  Created by user on 01/10/2020.
 //
+
+👇     👇     👇     👇     👇     👇     👇     👇     👇     👇     👇     👇     👇     👇     👇     👇     👇     👇     👇     👇     👇     👇     👇
+// // // // // // // WHENEVER LOCATION IS SET, SAVE TO USERDEFAULTS..... WHENEVER LOAD APP, LOAD FOR LAST SAVED LOCATION // // // // // // // // //
+☝️     ☝️     ☝️     ☝️     ☝️     ☝️     ☝️     ☝️     ☝️     ☝️     ☝️     ☝️     ☝️     ☝️     ☝️     ☝️     ☝️     ☝️     ☝️     ☝️     ☝️     ☝️     ☝️
+
 import Foundation
 import SwiftUI
 import CoreLocation
@@ -128,7 +133,7 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
             
         })
         locationManager.delegate = locationManagerdelegate
-        locationManager.requestAlwaysAuthorization()
+
         locationManager.startUpdatingLocation()
     }
     
