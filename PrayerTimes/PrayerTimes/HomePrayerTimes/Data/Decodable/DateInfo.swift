@@ -26,7 +26,7 @@ struct DateInfo {
 }
 
 
-extension DateInfo: Decodable {
+extension DateInfo: Codable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)

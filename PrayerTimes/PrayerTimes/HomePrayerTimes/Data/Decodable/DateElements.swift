@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DateElements: Decodable {
+struct DateElements: Codable {
     let day: String
     let month: Month
     let year: String

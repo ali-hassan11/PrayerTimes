@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PrayerTimesResponse {
+class PrayerTimesResponse: Codable {
     
     let status: String
     let prayerTimesData: PrayerTimesData
@@ -21,11 +21,9 @@ struct PrayerTimesResponse {
         self.status = status
         self.prayerTimesData = prayerTimesData
     }
-}
-
-extension PrayerTimesResponse: Decodable {
     
-    init(from decoder: Decoder) throws {
+    
+    required convenience init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         let status = try container.decode(String.self, forKey: .status)

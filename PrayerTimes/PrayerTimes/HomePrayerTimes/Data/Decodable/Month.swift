@@ -15,7 +15,7 @@ struct Month {
     }
 }
 
-extension Month: Decodable {
+extension Month: Codable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let name = try container.decode(String.self, forKey: .name)
