@@ -17,7 +17,8 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
     
     @Published var date: Date = Date() {
         didSet {
-            fetchData(date: date)
+            guard let locationInfo = SettingsConfiguration.getLocationInfoSetting() else { return }
+            fetchData(date: date, locationInfo: locationInfo)
         }
     }
     
@@ -47,6 +48,95 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
                 }
             }
         }
+    }
+    
+    init() {
+        self.locationManager = CLLocationManager()
+        let locationManagerdelegate = LocationManagerDelegate(completion: { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let locationInfo):
+                
+                SettingsConfiguration.shared.updateLocationSetting(locationInfo)
+                self.fetchData(date: self.date, locationInfo: locationInfo)
+            case .failure(let error):
+                print(error)
+                self.stateManager.failed()
+            }
+            
+        })
+        locationManager.delegate = locationManagerdelegate
+
+        if let locationInfo = SettingsConfiguration.getLocationInfoSetting() {
+            fetchData(date: date, locationInfo: locationInfo)
+        } else {
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+
+    //PASS IN SETTINGS HERE AS WE WILL ACCESS TO IT FROM THE VIEW
+    func fetchData(date: Date, locationInfo: LocationInfo) {
+
+        self.nextPrayerFound = false
+        stateManager.loading()
+        
+        let settings = SettingsConfiguration.shared
+        let coordinaties = Coordinates(latitude: String(settings.locationInfo.lat), longitude: String(settings.locationInfo.long))
+        let prayerTimesConfiguration = PrayerTimesConfiguration(timestamp: date.timestampString,
+                                                               coordinates: coordinaties,
+                                                               method: settings.method,
+                                                               school: settings.school)
+        
+        guard let url = URLBuilder.prayerTimesForDateURL(configuration: prayerTimesConfiguration) else { return }
+
+        Service.shared.fetchPrayerTimes(url: url) { [weak self] result in
+            
+            switch result {
+            case .success(let prayerTimesResponse):
+                
+                self?.handlePrayerTimes(prayerTimesResponse: prayerTimesResponse, completion: { prayers in
+                    DispatchQueue.main.async {
+                        self?.prayers = prayers
+                        self?.locationName = settings.locationInfo.locationName
+                        self?.stateManager.prayerTimesLoaded()
+                    }
+                })
+                
+                self?.handleDate(prayerTimesResponse: prayerTimesResponse, dateType: settings.dateMode,completion: { hijri, gregorian in
+                    DispatchQueue.main.async {
+                        self?.hijriDate = hijri
+                        self?.gregorianDate = gregorian
+                        self?.stateManager.datesLoaded()
+                    }
+                })
+                                
+            case .failure(let error):
+                print(error)
+                DispatchQueue.main.async {
+                    self?.prayers = []
+                    self?.stateManager.failed()
+                }
+            }
+        }
+    }
+    
+    func retryFetchData() {
+        guard let locationInfo = SettingsConfiguration.getLocationInfoSetting() else { return }
+        fetchData(date: date, locationInfo: locationInfo)
+    }
+    
+    func plusOneDay() {
+        date = date.plusOneDay
+    }
+    
+    func minusOneDay() {
+        date = date.minusOneDay
+    }
+    
+    func isToday(date: Date) -> Bool {
+        return Calendar.current.isDate(self.date, inSameDayAs: Date())
     }
     
     func updateTimeRemaining() {
@@ -115,91 +205,6 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
         
         timeRemaining = Int(remainingTime)
         timeRemainingString = formattedTimeString
-    }
-    
-    init() {
-        self.locationManager = CLLocationManager()
-        let locationManagerdelegate = LocationManagerDelegate(completion: { [weak self] result in
-            guard let self = self else { return }
-            
-            switch result {
-            case .success((let locationInfo, let timeZone)):
-                self.updateSettings(with: locationInfo, and: timeZone)
-                self.fetchData(date: self.date)
-            case .failure(let error):
-                print(error)
-                self.stateManager.failed()
-            }
-            
-        })
-        locationManager.delegate = locationManagerdelegate
-
-        locationManager.startUpdatingLocation()
-    }
-    
-
-    //PASS IN SETTINGS HERE AS WE WILL ACCESS TO IT FROM THE VIEW
-    func fetchData(date: Date) {
-        
-        
-        self.nextPrayerFound = false
-        stateManager.loading()
-        
-        let settings = SettingsConfiguration.shared
-        let coordinaties = Coordinates(latitude: String(settings.locationInfo.lat), longitude: String(settings.locationInfo.long))
-        let prayerTimesConfiguration = PrayerTimesConfiguration(timestamp: date.timestampString,
-                                                               coordinates: coordinaties,
-                                                               method: settings.method,
-                                                               school: settings.school,
-                                                               timeZone: settings.timeZone)
-        
-        guard let url = URLBuilder.prayerTimesForDateURL(configuration: prayerTimesConfiguration) else { return }
-
-        Service.shared.fetchPrayerTimes(url: url) { [weak self] result in
-            
-            switch result {
-            case .success(let prayerTimesResponse):
-                
-                self?.handlePrayerTimes(prayerTimesResponse: prayerTimesResponse, completion: { prayers in
-                    DispatchQueue.main.async {
-                        self?.prayers = prayers
-                        self?.locationName = settings.locationInfo.locationName
-                        self?.stateManager.prayerTimesLoaded()
-                    }
-                })
-                
-                self?.handleDate(prayerTimesResponse: prayerTimesResponse, dateType: settings.dateMode,completion: { hijri, gregorian in
-                    DispatchQueue.main.async {
-                        self?.hijriDate = hijri
-                        self?.gregorianDate = gregorian
-                        self?.stateManager.datesLoaded()
-                    }
-                })
-                                
-            case .failure(let error):
-                print(error)
-                DispatchQueue.main.async {
-                    self?.prayers = []
-                    self?.stateManager.failed()
-                }
-            }
-        }
-    }
-    
-    func retryFetchData() {
-        fetchData(date: date)
-    }
-    
-    func plusOneDay() {
-        date = date.plusOneDay
-    }
-    
-    func minusOneDay() {
-        date = date.minusOneDay
-    }
-    
-    func isToday(date: Date) -> Bool {
-        return Calendar.current.isDate(self.date, inSameDayAs: Date())
     }
 }
  
@@ -285,10 +290,5 @@ extension PrayerTimeListViewModel {
       let (hr,  minf) = modf (seconds / 3600)
       let (min, secf) = modf (60 * minf)
       return (Int(hr), Int(min), Int(60 * secf))
-    }
-    
-    private func updateSettings(with locationInfo: LocationInfo, and timeZone: TimeZone) {
-        SettingsConfiguration.shared.locationInfo = locationInfo
-        SettingsConfiguration.shared.timeZone = timeZone
     }
 }
