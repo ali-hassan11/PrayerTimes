@@ -141,7 +141,6 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
     //PASS IN SETTINGS HERE AS WE WILL ACCESS TO IT FROM THE VIEW
     func fetchData(date: Date) {
         
-        let date = date.convertToTimeZone(to: SettingsConfiguration.shared.timeZone, from: TimeZone.current)
         
         self.nextPrayerFound = false
         stateManager.loading()
