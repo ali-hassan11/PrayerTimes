@@ -8,7 +8,7 @@
 import Foundation
 import CoreLocation
 
-struct LocationInfo {
+struct LocationInfo: Codable {
     let locationName: String
     let lat: Double
     let long: Double
@@ -16,9 +16,9 @@ struct LocationInfo {
 
 class LocationManagerDelegate: NSObject, CLLocationManagerDelegate {
     
-    let locationUpdatedCompletion: (Result<(LocationInfo, TimeZone), CustomError>) -> Void
+    let locationUpdatedCompletion: (Result<LocationInfo, CustomError>) -> Void
     
-    init(completion: @escaping (Result<(LocationInfo, TimeZone), CustomError>) -> Void) {
+    init(completion: @escaping (Result<LocationInfo, CustomError>) -> Void) {
         self.locationUpdatedCompletion = completion
     }
     
@@ -50,8 +50,8 @@ class LocationManagerDelegate: NSObject, CLLocationManagerDelegate {
 
         geocoder.locationInfo(for: locations.first) { result in
             switch result {
-            case .success((let locationInfo, let timeZone)):
-                self.locationUpdatedCompletion(.success((locationInfo, timeZone)))
+            case .success(let locationInfo):
+                self.locationUpdatedCompletion(.success(locationInfo))
             case .failure(let error):
                 self.locationUpdatedCompletion(.failure(error))
             }

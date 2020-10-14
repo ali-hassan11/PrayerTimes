@@ -63,8 +63,8 @@ struct LocationPicker: UIViewControllerRepresentable {
                 GeocoderWrapper().locationInfo(for: location) { [weak self] result in
                     
                     switch result {
-                    case .success((let locationInfo, let timeZone)):
-                        self?.handleSuccess(with: locationInfo, and: timeZone)
+                    case .success(let locationInfo):
+                        self?.handleSuccess(with: locationInfo)
                         
                     case .failure(let error):
                         print(error.message) //TO-DO: Handle error
@@ -81,9 +81,8 @@ struct LocationPicker: UIViewControllerRepresentable {
             parent.presentationMode.wrappedValue.dismiss()
         }
 
-        private func handleSuccess(with locationInfo: LocationInfo, and timeZone: TimeZone) {
-            SettingsConfiguration.shared.locationInfo = locationInfo
-            SettingsConfiguration.shared.timeZone = timeZone
+        private func handleSuccess(with locationInfo: LocationInfo) {
+            SettingsConfiguration.shared.updateLocationSetting(locationInfo)
 
             //Trigger fetch data
             let date = self.parent.date

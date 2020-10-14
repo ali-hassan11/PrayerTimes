@@ -12,7 +12,6 @@ class SettingsConfiguration: ObservableObject {
     @Published var dateMode: DateMode
     @Published var method: Method
     @Published var school: School
-    @Published var timeZone: TimeZone
     @Published var locationInfo: LocationInfo
 
     //@Published var colorScheme: UIColor
@@ -28,11 +27,10 @@ class SettingsConfiguration: ObservableObject {
         locationInfo = LocationInfo(locationName: "Donnayyyy", lat: 53.5228, long: 1.1285) //
     }
     
-    private init(dateType: DateMode, method: Method, school: School, timeZone: TimeZone, locationInfo: LocationInfo) {
+    private init(dateType: DateMode, method: Method, school: School, locationInfo: LocationInfo) {
         self.dateMode = dateType
         self.method = method
         self.school = school
-        self.timeZone = timeZone
         self.locationInfo = locationInfo
     }
 }
