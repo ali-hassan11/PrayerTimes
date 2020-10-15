@@ -6,10 +6,10 @@
 //
 
 import Foundation
-//protocol SettingOption: CaseIterable {
-//    var index: Int { get }
-//    var toString: String { get }
-//}
+protocol SettingOption: CaseIterable {
+    var index: Int { get }
+    var toString: String { get }
+}
 
 enum Method: Int, CaseIterable {
     case shiaIthnaAnsari

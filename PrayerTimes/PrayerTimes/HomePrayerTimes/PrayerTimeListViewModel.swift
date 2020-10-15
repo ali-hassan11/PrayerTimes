@@ -54,7 +54,7 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
             switch result {
             case .success(let locationInfo):
                 
-                SettingsConfiguration.shared.updateLocationSetting(locationInfo)
+                SettingsConfiguration.shared.saveLocationSetting(locationInfo)
                 self.fetchData(date: self.date, locationInfo: locationInfo)
             case .failure(let error):
                 print(error)

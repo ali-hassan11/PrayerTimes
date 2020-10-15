@@ -13,6 +13,7 @@ struct SettingsView: View {
     //Dependencies
     @Binding var date: Date
     @Binding var colorScheme: Color
+    @Binding var method: Method
     let locationManager: CLLocationManager
     
     @State private var isLocationSearchPresented = false
@@ -28,10 +29,12 @@ struct SettingsView: View {
             let settings = SettingsConfiguration.shared
             
             List {
+                //MARK: Color
                 Section {
-                    ChooseColorCell(title: "Color Scheme", colorScheme: $colorScheme, action: {})
+                    ChooseColorCell(colorScheme: $colorScheme, title: "Color Scheme", action: {})
                 }
                 
+                //MARK: Locate Me
                 Section(header: Text(SettingsConfiguration.shared.locationInfo.locationName)) {
                     SettingCell(colorScheme: $colorScheme,
                                 title: "Locate Me",
@@ -40,9 +43,10 @@ struct SettingsView: View {
                                 //locationManager.startUpdatingLocation()
                                 })
                         .sheet(isPresented: $isLocationLocateMePresented) {
-                            
+                            Text("Locate me!")
                         }
                     
+                    //MARK: Locate Search
                     SettingCell(colorScheme: $colorScheme,
                                 title: "Search",
                                 imageName: "magnifyingglass",
@@ -54,6 +58,7 @@ struct SettingsView: View {
                         }
                 }
                 
+                //MARK: Method
                 Section {
                     SettingCell(colorScheme: $colorScheme,
                                 title: "Prayer Time Calculation",
@@ -63,9 +68,10 @@ struct SettingsView: View {
                                     isMethodSelectViewPresentated.toggle()
                                 })
                         .sheet(isPresented: $isMethodSelectViewPresentated) {
-                            SettingSelectView(type: .method, title: "Prayer Time Calculation")
+                            SettingSelectView(isOptionSelectViewPresented: $isMethodSelectViewPresentated, type: .method, title: "Prayer Time Calculation")
                         }
                     
+                    //MARK: School
                     SettingCell(colorScheme: $colorScheme,
                                 title: "Asr Calculation Method",
                                 subTitle: settings.school.toString,
@@ -74,10 +80,11 @@ struct SettingsView: View {
                                     isSchoolSelectViewPresentated.toggle()
                                 })
                         .sheet(isPresented: $isSchoolSelectViewPresentated) {
-                            SettingSelectView(type: .school, title: "Asr Calculation Method")
+                            SettingSelectView(isOptionSelectViewPresented: $isSchoolSelectViewPresentated, type: .school, title: "Asr Calculation Method")
                                 .navigationBarTitle("Asr Calculation Method", displayMode: .inline)
                         }
                     
+                    //MARK: Latitude
                     SettingCell(colorScheme: $colorScheme,
                                 title: "High Latitude Adjustment",
                                 subTitle: settings.latitudeAdjustmentMethod.toString,
@@ -86,7 +93,7 @@ struct SettingsView: View {
                                     isHighLattitudeSelectViewPresentated.toggle()
                                 })
                         .sheet(isPresented: $isHighLattitudeSelectViewPresentated) {
-                            SettingSelectView(type: .latitudeAdjustmentMethod, title: "High Latitude Adjustment")
+                            SettingSelectView(isOptionSelectViewPresented: $isHighLattitudeSelectViewPresentated, type: .latitudeAdjustmentMethod, title: "High Latitude Adjustment")
                         }
                 }
             }

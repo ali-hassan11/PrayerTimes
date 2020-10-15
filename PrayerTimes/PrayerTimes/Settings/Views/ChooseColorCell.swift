@@ -9,8 +9,9 @@ import SwiftUI
 
 struct ChooseColorCell: View {
     
-    var title: String
     @Binding var colorScheme: Color
+
+    var title: String
     var action: () -> Void
     
     @State var isColorPickerPresented = false

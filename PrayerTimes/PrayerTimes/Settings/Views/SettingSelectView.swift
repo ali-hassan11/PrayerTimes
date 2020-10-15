@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SettingSelectView: View {
     
+    @Binding var isOptionSelectViewPresented: Bool
+    
     enum SettingType {
         case method
         case school
@@ -20,6 +22,7 @@ struct SettingSelectView: View {
     
     var body: some View {
         
+        // / //*** ANYTIME ONE OF THESE SETTINGS ARE CHANGED, MUST SAVE IT, THEN FETCH NEW PRAYER TIMES DATA... (AND RESET NOTIFICATIONS) ***\\ \ \\
         NavigationView {
             List {
                 switch type {
@@ -30,13 +33,23 @@ struct SettingSelectView: View {
                         }
                     }
                 case .school:
-                    ForEach(School.allCases, id: \.hashValue) { item in
-                        Text(item.toString)
+                    ForEach(School.allCases, id: \.hashValue) { school in
+                        Text(school.toString)
+                            .onTapGesture(perform: {
+                                // Save
+                                isOptionSelectViewPresented.toggle()
+                                // Reload/Trigger reload of prayer times
+                            })
                     }
                     
                 case .latitudeAdjustmentMethod:
-                    ForEach(LatitudeAdjustmentMethod.allCases, id: \.hashValue) { item in
-                        Text(item.toString)
+                    ForEach(LatitudeAdjustmentMethod.allCases, id: \.hashValue) { latitudeMethod in
+                        Text(latitudeMethod.toString)
+                            .onTapGesture(perform: {
+                                // Save
+                                isOptionSelectViewPresented.toggle()
+                                // Reload/Trigger reload of prayer times
+                            })
                     }
                 }
             }

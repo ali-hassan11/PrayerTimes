@@ -84,7 +84,7 @@ struct LocationPicker: UIViewControllerRepresentable {
         private func handleSuccess(with locationInfo: LocationInfo) {
 
             //Save to UserDefaults...
-            SettingsConfiguration.shared.updateLocationSetting(locationInfo)
+            SettingsConfiguration.shared.saveLocationSetting(locationInfo)
 
             //... then trigger fetch data
             let date = self.parent.date

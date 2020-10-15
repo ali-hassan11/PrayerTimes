@@ -11,6 +11,7 @@ import SwiftUI
 //MOVE
 let LOCATIONKEY = "locationkKey"
 let COLORKEY = "colorKey"
+let METHODKEY = "methodKey"
 class SettingsConfiguration: ObservableObject {
     
     @Published var method: Method
@@ -23,11 +24,11 @@ class SettingsConfiguration: ObservableObject {
     
     private init() {
         //Get all from UserDefaults/Core data
-        method = .muslimWorldLeague
+        method = Self.getMethodSetting() ?? .muslimWorldLeague
         school = .shafi
         latitudeAdjustmentMethod = .angleBased
-        locationInfo = SettingsConfiguration.getLocationInfoSetting() ?? LocationInfo(locationName: "Manchester, England", lat: 53.4808, long: 2.2426)
-        colorScheme = SettingsConfiguration.getColorSetting()
+        locationInfo = Self.getLocationInfoSetting() ?? LocationInfo(locationName: "Manchester, England", lat: 53.4808, long: 2.2426)
+        colorScheme = Self.getColorSetting() ?? .init(.systemPink)
     }
     
     private init(method: Method, school: School, latitudeAdjustmentMethod: LatitudeAdjustmentMethod, locationInfo: LocationInfo, colorScheme: Color) {
@@ -41,7 +42,7 @@ class SettingsConfiguration: ObservableObject {
 
 //MARK: Location Info
 extension SettingsConfiguration {
-    func updateLocationSetting(_ locationInfo: LocationInfo) {
+    func saveLocationSetting(_ locationInfo: LocationInfo) {
         self.locationInfo = locationInfo
         do {
             let data = try JSONEncoder().encode(locationInfo)
@@ -66,13 +67,28 @@ extension SettingsConfiguration {
 
 //MARK: Color Scheme
 extension SettingsConfiguration {
-    func updateColorSetting(_ newColor: Color) {
+    
+    func saveColorSetting(_ newColor: Color) {
         self.colorScheme = newColor
         UserDefaults.standard.setValue(newColor.toString(), forKey: COLORKEY)
     }
     
-    static func getColorSetting() -> Color {
-        guard let colorName = UserDefaults.standard.string(forKey: COLORKEY) else { return .init(.systemPink) }
+    private static func getColorSetting() -> Color? {
+        guard let colorName = UserDefaults.standard.string(forKey: COLORKEY) else { return nil }
         return Color(colorName: colorName)
+    }
+}
+
+//MARK: Method
+extension SettingsConfiguration {
+    
+    func saveMethodSetting(_ method: Method) {
+        self.method = method
+        UserDefaults.standard.setValue(method.rawValue, forKey: METHODKEY)
+    }
+    
+    private static func getMethodSetting() -> Method? {
+        guard let methodIndex = UserDefaults.standard.object(forKey: METHODKEY) as? Int else { return nil }
+        return Method(rawValue: methodIndex)
     }
 }
