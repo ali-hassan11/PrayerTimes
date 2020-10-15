@@ -27,9 +27,16 @@ struct SettingSelectView: View {
             List {
                 switch type {
                 case .method:
-                    ForEach(Method.allCases, id: \.hashValue) { item in
-                        if item.index != 6 {
-                            Text(item.toString)
+                    ForEach(Method.allCases, id: \.hashValue) { method in
+                        if method.index != 6 {
+                            Button(action: {
+                                SettingsConfiguration.shared.saveMethodSetting(method)
+                                isOptionSelectViewPresented.toggle()
+                                // Reload/Trigger reload of prayer times
+                            }) {
+                                Text(method.toString)
+                            }
+                            .foregroundColor(Color.init(.label))
                         }
                     }
                 case .school:
