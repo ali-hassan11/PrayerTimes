@@ -100,7 +100,7 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
                     }
                 })
                 
-                self?.handleDate(prayerTimesResponse: prayerTimesResponse, dateType: settings.dateMode,completion: { hijri, gregorian in
+                self?.handleDate(prayerTimesResponse: prayerTimesResponse, completion: { hijri, gregorian in
                     DispatchQueue.main.async {
                         self?.hijriDate = hijri
                         self?.gregorianDate = gregorian
@@ -236,7 +236,7 @@ extension PrayerTimeListViewModel {
         completion(prayerTimes)
     }
     
-    func handleDate(prayerTimesResponse: PrayerTimesResponse, dateType: DateMode, completion: @escaping (String, String) -> Void) {
+    func handleDate(prayerTimesResponse: PrayerTimesResponse, completion: @escaping (String, String) -> Void) {
 
         let hijri = prayerTimesResponse.prayerTimesData.dateInfo.hijriDate.readable()
         let gregorian = prayerTimesResponse.prayerTimesData.dateInfo.gergorianDate.readable()

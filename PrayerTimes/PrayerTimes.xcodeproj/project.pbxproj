@@ -51,7 +51,6 @@
 		CEA625442526C00700592075 /* Month+DecodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA625432526C00700592075 /* Month+DecodableTests.swift */; };
 		CED3D26A2526D07E00561999 /* SettingsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D2692526D07E00561999 /* SettingsConfiguration.swift */; };
 		CED3D2752526E16600561999 /* DateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D2742526E16600561999 /* DateTests.swift */; };
-		CED3D2832526E7A300561999 /* DateTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D2822526E7A300561999 /* DateTypes.swift */; };
 		CED3D2932526E7E000561999 /* SettingsConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D2922526E7E000561999 /* SettingsConfigurationTests.swift */; };
 		CED3D29B25277E8000561999 /* PrayerTimesHomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D29A25277E7F00561999 /* PrayerTimesHomeViewModelTests.swift */; };
 		CED3D2A02527840200561999 /* PrayerName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D29F2527840200561999 /* PrayerName.swift */; };
@@ -152,7 +151,6 @@
 		CEA625432526C00700592075 /* Month+DecodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Month+DecodableTests.swift"; sourceTree = "<group>"; };
 		CED3D2692526D07E00561999 /* SettingsConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsConfiguration.swift; sourceTree = "<group>"; };
 		CED3D2742526E16600561999 /* DateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTests.swift; sourceTree = "<group>"; };
-		CED3D2822526E7A300561999 /* DateTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTypes.swift; sourceTree = "<group>"; };
 		CED3D2922526E7E000561999 /* SettingsConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsConfigurationTests.swift; sourceTree = "<group>"; };
 		CED3D29A25277E7F00561999 /* PrayerTimesHomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimesHomeViewModelTests.swift; sourceTree = "<group>"; };
 		CED3D29F2527840200561999 /* PrayerName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerName.swift; sourceTree = "<group>"; };
@@ -320,7 +318,6 @@
 				CEA624E72526B41000592075 /* Coordinates.swift */,
 				CEA624F52526B45C00592075 /* Method.swift */,
 				CEA624FA2526B46C00592075 /* School.swift */,
-				CED3D2822526E7A300561999 /* DateTypes.swift */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -665,7 +662,6 @@
 				CE6EAEDD25262C2300E688D3 /* PrayerTimesListView.swift in Sources */,
 				CE4CBA06252A738200A42E1E /* CustomError.swift in Sources */,
 				CEA624F62526B45C00592075 /* Method.swift in Sources */,
-				CED3D2832526E7A300561999 /* DateTypes.swift in Sources */,
 				CED3D2A02527840200561999 /* PrayerName.swift in Sources */,
 				CE4CB9F0252A71D400A42E1E /* LoadingState.swift in Sources */,
 				CE49B71D2533C79300E8294E /* SettingSelectView.swift in Sources */,

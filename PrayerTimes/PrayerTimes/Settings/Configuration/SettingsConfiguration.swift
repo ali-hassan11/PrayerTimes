@@ -13,7 +13,6 @@ let LOCATIONKEY = "locationkKey"
 let COLORKEY = "colorKey"
 class SettingsConfiguration: ObservableObject {
     
-    @Published var dateMode: DateMode
     @Published var method: Method
     @Published var school: School
     
@@ -24,15 +23,13 @@ class SettingsConfiguration: ObservableObject {
     
     private init() {
         //Get all from UserDefaults/Core data
-        dateMode = .gregorian
         method = .muslimWorldLeague
         school = .shafi
         locationInfo = SettingsConfiguration.getLocationInfoSetting() ?? LocationInfo(locationName: "Manchester, England", lat: 53.4808, long: 2.2426)
         colorScheme = SettingsConfiguration.getColorSetting()
     }
     
-    private init(dateType: DateMode, method: Method, school: School, locationInfo: LocationInfo, colorScheme: Color) {
-        self.dateMode = dateType
+    private init(method: Method, school: School, locationInfo: LocationInfo, colorScheme: Color) {
         self.method = method
         self.school = school
         self.locationInfo = locationInfo
