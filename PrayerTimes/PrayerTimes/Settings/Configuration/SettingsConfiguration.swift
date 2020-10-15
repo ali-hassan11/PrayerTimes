@@ -15,7 +15,7 @@ class SettingsConfiguration: ObservableObject {
     
     @Published var method: Method
     @Published var school: School
-    
+    @Published var latitudeAdjustmentMethod: LatitudeAdjustmentMethod
     @Published var locationInfo: LocationInfo //Make optional
     @Published var colorScheme: Color
         
@@ -25,13 +25,15 @@ class SettingsConfiguration: ObservableObject {
         //Get all from UserDefaults/Core data
         method = .muslimWorldLeague
         school = .shafi
+        latitudeAdjustmentMethod = .angleBased
         locationInfo = SettingsConfiguration.getLocationInfoSetting() ?? LocationInfo(locationName: "Manchester, England", lat: 53.4808, long: 2.2426)
         colorScheme = SettingsConfiguration.getColorSetting()
     }
     
-    private init(method: Method, school: School, locationInfo: LocationInfo, colorScheme: Color) {
+    private init(method: Method, school: School, latitudeAdjustmentMethod: LatitudeAdjustmentMethod, locationInfo: LocationInfo, colorScheme: Color) {
         self.method = method
         self.school = school
+        self.latitudeAdjustmentMethod = latitudeAdjustmentMethod
         self.locationInfo = locationInfo
         self.colorScheme = colorScheme
     }

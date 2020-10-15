@@ -9,6 +9,12 @@ import SwiftUI
 
 struct SettingSelectView: View {
     
+    enum SettingType {
+        case method
+        case school
+        case latitudeAdjustmentMethod
+    }
+
     var type: SettingType
     var title: String
     
@@ -27,19 +33,14 @@ struct SettingSelectView: View {
                     ForEach(School.allCases, id: \.hashValue) { item in
                         Text(item.toString)
                     }
-                case .highLatitudeAdjustment:
-                    Text("Hi")
+                    
+                case .latitudeAdjustmentMethod:
+                    ForEach(LatitudeAdjustmentMethod.allCases, id: \.hashValue) { item in
+                        Text(item.toString)
+                    }
                 }
             }
             .navigationBarTitle(title, displayMode: .inline)
         }
     }
-}
-
-
-
-enum SettingType {
-    case method
-    case school
-    case highLatitudeAdjustment
 }

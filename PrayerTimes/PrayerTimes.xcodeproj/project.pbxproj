@@ -26,6 +26,7 @@
 		CE4CBA1D252A7B5400A42E1E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4CBA1C252A7B5400A42E1E /* SettingsView.swift */; };
 		CE4E87B225388313007C8973 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E87B125388312007C8973 /* ColorPickerView.swift */; };
 		CE4E87BA2538D1CC007C8973 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E87B92538D1CC007C8973 /* Color+Extension.swift */; };
+		CE4E87C22538D715007C8973 /* LatitudeAdjustmentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E87C12538D715007C8973 /* LatitudeAdjustmentMethod.swift */; };
 		CE6EAEDB252625CF00E688D3 /* Prayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6EAEDA252625CF00E688D3 /* Prayer.swift */; };
 		CE6EAEDD25262C2300E688D3 /* PrayerTimesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6EAEDC25262C2300E688D3 /* PrayerTimesListView.swift */; };
 		CE6EAEE02526300200E688D3 /* NextPrayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6EAEDF2526300200E688D3 /* NextPrayerView.swift */; };
@@ -124,6 +125,7 @@
 		CE4CBA1C252A7B5400A42E1E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		CE4E87B125388312007C8973 /* ColorPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 		CE4E87B92538D1CC007C8973 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		CE4E87C12538D715007C8973 /* LatitudeAdjustmentMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatitudeAdjustmentMethod.swift; sourceTree = "<group>"; };
 		CE6EAEDA252625CF00E688D3 /* Prayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prayer.swift; sourceTree = "<group>"; };
 		CE6EAEDC25262C2300E688D3 /* PrayerTimesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimesListView.swift; sourceTree = "<group>"; };
 		CE6EAEDF2526300200E688D3 /* NextPrayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextPrayerView.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 				CEA624E72526B41000592075 /* Coordinates.swift */,
 				CEA624F52526B45C00592075 /* Method.swift */,
 				CEA624FA2526B46C00592075 /* School.swift */,
+				CE4E87C12538D715007C8973 /* LatitudeAdjustmentMethod.swift */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -641,6 +644,7 @@
 				CEA624A0252681BC00592075 /* PrayerTimeListViewModel.swift in Sources */,
 				CE4E87B225388313007C8973 /* ColorPickerView.swift in Sources */,
 				CE6EAEDB252625CF00E688D3 /* Prayer.swift in Sources */,
+				CE4E87C22538D715007C8973 /* LatitudeAdjustmentMethod.swift in Sources */,
 				CE28BA2B2526146300AAD5BD /* PrayerTimesHomeView.swift in Sources */,
 				CEA6248D25267FC900592075 /* Service.swift in Sources */,
 				CED3D26A2526D07E00561999 /* SettingsConfiguration.swift in Sources */,

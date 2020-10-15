@@ -12,5 +12,5 @@ struct PrayerTimesConfiguration {
     let coordinates: Coordinates
     let method: Method
     let school: School
-//    let timeZone: TimeZone
+    let latitudeAdjustmentMethod: LatitudeAdjustmentMethod
 }

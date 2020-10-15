@@ -80,13 +80,13 @@ struct SettingsView: View {
                     
                     SettingCell(colorScheme: $colorScheme,
                                 title: "High Latitude Adjustment",
-                                subTitle: "Angle-based method",
+                                subTitle: settings.latitudeAdjustmentMethod.toString,
                                 imageName: "chevron.forward",
                                 action: {
                                     isHighLattitudeSelectViewPresentated.toggle()
                                 })
                         .sheet(isPresented: $isHighLattitudeSelectViewPresentated) {
-                            SettingSelectView(type: .highLatitudeAdjustment, title: "High Latitude Adjustment")
+                            SettingSelectView(type: .latitudeAdjustmentMethod, title: "High Latitude Adjustment")
                         }
                 }
             }

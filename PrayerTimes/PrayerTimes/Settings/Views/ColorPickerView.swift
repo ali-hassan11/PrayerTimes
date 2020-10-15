@@ -24,6 +24,7 @@ struct ColorPickerView: View {
                     Capsule(style: .continuous).foregroundColor(colorScheme)
                         .frame(height: 50)
                     Text("Current selection").fontWeight(.medium)
+                        .foregroundColor(.white)
                 }
                 .padding(.top)
                 

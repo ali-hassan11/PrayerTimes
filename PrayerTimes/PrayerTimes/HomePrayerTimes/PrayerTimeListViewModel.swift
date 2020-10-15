@@ -83,7 +83,8 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
         let prayerTimesConfiguration = PrayerTimesConfiguration(timestamp: date.timestampString,
                                                                coordinates: coordinaties,
                                                                method: settings.method,
-                                                               school: settings.school)
+                                                               school: settings.school,
+                                                               latitudeAdjustmentMethod: settings.latitudeAdjustmentMethod)
         
         guard let url = URLBuilder.prayerTimesForDateURL(configuration: prayerTimesConfiguration) else { return }
 
