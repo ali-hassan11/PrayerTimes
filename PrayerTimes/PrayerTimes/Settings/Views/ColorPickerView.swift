@@ -10,7 +10,7 @@ import SwiftUI
 
 
 struct ColorPickerView: View {
-    let colors: [Color] = [ .init(.systemGreen), .init(.systemBlue), .init(.systemIndigo), .init(.systemPurple), .init(.systemPink), .init(.systemRed), .init(.systemOrange)]
+    let colors: [Color] = [ .init(.systemPink), .init(.systemRed), .init(.systemOrange), .init(.systemGreen), .init(.systemBlue), .init(.systemIndigo), .init(.systemPurple)]
     
     @Binding var colorScheme: Color
     @Binding var isColorPickerPresented: Bool
@@ -35,13 +35,14 @@ struct ColorPickerView: View {
                         .frame(height: 50)
                         .onTapGesture(perform: {
                             colorScheme = color
+                            SettingsConfiguration.shared.updateColorSetting(color)
                         })
                 }
                 
                 Spacer()
             }
             .padding()
-            .navigationBarTitle("Choose Color", displayMode: .inline)
+            .navigationBarTitle("Theme", displayMode: .inline)
             .navigationBarItems(trailing: Button("Done", action: {
                 isColorPickerPresented.toggle()
             })
