@@ -37,7 +37,7 @@ struct SettingsView: View {
                                 title: "Locate Me",
                                 imageName: "location.fill",
                                 action: {
-                                    //                                    locationManager.startUpdatingLocation()
+                                //locationManager.startUpdatingLocation()
                                 })
                         .sheet(isPresented: $isLocationLocateMePresented) {
                             
