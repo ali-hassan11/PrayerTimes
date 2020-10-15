@@ -18,7 +18,7 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
         }
     }
     
-    private let locationManager : CLLocationManager
+    let locationManager : CLLocationManager
     @Published var locationName = ""
 
     
@@ -197,7 +197,7 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
     
     private func updateTimeRemaining(with remainingTime: TimeInterval) {
         let (h,m,s) = secondsToHoursMinutesSeconds(seconds: remainingTime)
-        let formattedTimeString = "Begins in:\n\(h)h \(m)m \(s)s"
+        let formattedTimeString = "\(h)h \(m)m \(s)s"
         
         timeRemaining = Int(remainingTime)
         timeRemainingString = formattedTimeString

@@ -60,14 +60,5 @@ struct PrayerTimesHomeView: View {
             )
             
         }
-//        .gesture(DragGesture(minimumDistance: 25, coordinateSpace: .local)
-//                    .onEnded({ value in
-//                        if value.translation.width < 0 && value.translation.height > -30 && value.translation.height < 30 {
-//                            viewModel.plusOneDay()
-//                        }
-//                        if value.translation.width > 0 && value.translation.height > -30 && value.translation.height < 30 {
-//                            viewModel.minusOneDay()
-//                        }
-//                    }))
     }
 }

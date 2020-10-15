@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct SettingsView: View {
+    
+    @Binding var date: Date //(Here -> viewModel property in TabsView)
+    let locationManager: CLLocationManager
     
     @State private var isLocationSearchPresented = false
     @State private var isLocationLocateMePresented = false
@@ -15,8 +19,7 @@ struct SettingsView: View {
     @State private var isMethodSelectViewPresentated = false
     @State private var isSchoolSelectViewPresentated = false
     @State private var isHighLattitudeSelectViewPresentated = false
-    @Binding var date: Date //(Here -> viewModel property in TabsView)
-    
+        
     var body: some View {
         
         NavigationView {
@@ -31,7 +34,7 @@ struct SettingsView: View {
                     SubTitleCell(title: "Locate Me",
                                  imageName: "location.fill",
                                  action: {
-                                    isLocationLocateMePresented.toggle()
+//                                    locationManager.startUpdatingLocation()
                                  })
                         .sheet(isPresented: $isLocationLocateMePresented) {
 

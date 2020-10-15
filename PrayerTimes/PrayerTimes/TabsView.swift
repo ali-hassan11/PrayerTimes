@@ -10,7 +10,6 @@ import SwiftUI
 struct TabsView: View {
     
     @ObservedObject var viewModel: PrayerTimeListViewModel
-    @State var address: String
     
     var body: some View {
         TabView {
@@ -19,7 +18,7 @@ struct TabsView: View {
                     Image(systemName: "clock.fill")
                     Text("Times")
                 }
-            SettingsView(date: $viewModel.date)
+            SettingsView(date: $viewModel.date, locationManager: viewModel.locationManager)
                 .tabItem {
                     Image(systemName: "gear")
                     Text("Settings")

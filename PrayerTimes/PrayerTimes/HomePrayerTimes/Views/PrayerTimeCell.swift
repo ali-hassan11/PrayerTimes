@@ -20,17 +20,20 @@ struct PrayerTimeCell:  View {
                 .font(.title3).fontWeight(.medium)
             Spacer()
             if prayer.isNextPrayer {
-                Text(viewModel.timeRemainingString)
-                    .font(.subheadline)
-                    .lineLimit(2)
-                    .multilineTextAlignment(.center)
-                    .minimumScaleFactor(0.5)
+                VStack {
+                    Text("Begins in:")
+                    Text(viewModel.timeRemainingString)
+                }
+                .font(.subheadline)
+                .lineLimit(2)
+                .multilineTextAlignment(.center)
+                .minimumScaleFactor(0.5)
                 Spacer()
             }
             Text("\(prayer.formattedTime)")
                 .font(.title3).fontWeight(.medium)
-            Image(systemName: "bell.fill")
-                .padding(.leading, 10)
+//            Image(systemName: "bell.fill")
+//                .padding(.leading, 10)
         }
         .padding(.all, 20)
         .background(prayer.isNextPrayer ? Color(UIColor.systemPink) : Color(UIColor.tertiarySystemFill))

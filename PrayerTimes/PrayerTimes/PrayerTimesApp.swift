@@ -12,16 +12,14 @@ import BackgroundTasks
 struct PrayerTimesApp: App {
     
     let viewModel: PrayerTimeListViewModel
-    
-    @State var address: String = ""
-    
+        
     init() {
         self.viewModel = PrayerTimeListViewModel()
     }
     
     var body: some Scene {
         WindowGroup {
-            TabsView(viewModel: viewModel, address: address)
+            TabsView(viewModel: viewModel)
         }
     }
 }
