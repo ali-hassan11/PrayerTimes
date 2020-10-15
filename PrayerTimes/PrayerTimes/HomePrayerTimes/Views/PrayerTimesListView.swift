@@ -10,24 +10,14 @@ import SwiftUI
 struct PrayerTimesListView: View {
     
     @ObservedObject var viewModel: PrayerTimeListViewModel
-//    @Environment var settingsConfiguration: SettingsConfiguration
-
+    @Binding var colorScheme: Color
+    
     var body: some View {
         VStack(spacing: 0) {
             ForEach(viewModel.prayers) { prayer in
-                PrayerTimeCell(prayer: prayer, viewModel: viewModel)
+                PrayerTimeCell(prayer: prayer, viewModel: viewModel, colorScheme: $colorScheme)
                 Divider()
             }
         }
-    }
-}
-
-
-struct PrayerTimesListView_Previews: PreviewProvider {
-    
-    @State static var prayersListViewModel = PreviewData().prayerTimeListViewModel
-    
-    static var previews: some View {
-        PrayerTimesListView(viewModel: prayersListViewModel)
     }
 }

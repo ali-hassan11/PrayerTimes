@@ -11,6 +11,7 @@ struct PrayerTimeCell:  View {
 
     var prayer: Prayer
     var viewModel: PrayerTimeListViewModel
+    @Binding var colorScheme: Color
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -32,12 +33,9 @@ struct PrayerTimeCell:  View {
             }
             Text("\(prayer.formattedTime)")
                 .font(.title3).fontWeight(.medium)
-//            Image(systemName: "bell.fill")
-//                .padding(.leading, 10)
         }
         .padding(.all, 20)
-        .background(prayer.isNextPrayer ? Color(UIColor.systemPink) : Color(UIColor.tertiarySystemFill))
-//        .cornerRadius(5)
+        .background(prayer.isNextPrayer ? colorScheme : Color(UIColor.tertiarySystemFill))
         .foregroundColor(prayer.isNextPrayer ? Color(UIColor.white) : Color(UIColor.label).opacity(0.8))
         .onReceive(timer) { _ in
             viewModel.updateTimeRemaining()

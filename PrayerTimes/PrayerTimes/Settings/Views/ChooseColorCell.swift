@@ -10,6 +10,7 @@ import SwiftUI
 struct ChooseColorCell: View {
     
     var title: String
+    @Binding var color: Color
     var action: () -> Void
     
     var body: some View {
@@ -17,7 +18,7 @@ struct ChooseColorCell: View {
             Text(title).font(.body)
             Spacer()
             Button(action: action) {
-                RoundedRectangle(cornerRadius: 8, style: .continuous).frame(width: 30, height: 30)
+                ColorPicker("", selection: $color, supportsOpacity: false)
             }
         }
     }

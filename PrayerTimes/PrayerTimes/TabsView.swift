@@ -10,19 +10,21 @@ import SwiftUI
 struct TabsView: View {
     
     @ObservedObject var viewModel: PrayerTimeListViewModel
+    @State var colorScheme: Color
     
     var body: some View {
         TabView {
-            PrayerTimesHomeView(viewModel: viewModel)
+            PrayerTimesHomeView(viewModel: viewModel, colorScheme: $colorScheme)
                 .tabItem {
                     Image(systemName: "clock.fill")
                     Text("Times")
                 }
-            SettingsView(date: $viewModel.date, locationManager: viewModel.locationManager)
+            SettingsView(date: $viewModel.date, colorScheme: $colorScheme, locationManager: viewModel.locationManager)
                 .tabItem {
                     Image(systemName: "gear")
                     Text("Settings")
                 }
         }
+        .accentColor(colorScheme)
     }
 }

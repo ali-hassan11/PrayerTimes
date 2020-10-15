@@ -10,7 +10,9 @@ import CoreLocation
 
 struct SettingsView: View {
     
-    @Binding var date: Date //(Here -> viewModel property in TabsView)
+    //Dependencies
+    @Binding var date: Date
+    @Binding var colorScheme: Color
     let locationManager: CLLocationManager
     
     @State private var isLocationSearchPresented = false
@@ -27,57 +29,62 @@ struct SettingsView: View {
             
             List {
                 Section {
-                    ChooseColorCell(title: "Color Scheme", action: {})
+                    ChooseColorCell(title: "Color Scheme", color: $colorScheme, action: {})
                 }
                 
                 Section(header: Text(SettingsConfiguration.shared.locationInfo.locationName)) {
-                    SubTitleCell(title: "Locate Me",
-                                 imageName: "location.fill",
-                                 action: {
-//                                    locationManager.startUpdatingLocation()
-                                 })
+                    SettingCell(colorScheme: $colorScheme,
+                                title: "Locate Me",
+                                imageName: "location.fill",
+                                action: {
+                                    //                                    locationManager.startUpdatingLocation()
+                                })
                         .sheet(isPresented: $isLocationLocateMePresented) {
-
+                            
                         }
                     
-                    SubTitleCell(title: "Search",
-                                 imageName: "magnifyingglass",
-                                 action: {
+                    SettingCell(colorScheme: $colorScheme,
+                                title: "Search",
+                                imageName: "magnifyingglass",
+                                action: {
                                     isLocationSearchPresented.toggle()
-                                 })
+                                })
                         .sheet(isPresented: $isLocationSearchPresented) {
                             LocationPicker(date: $date)
                         }
                 }
                 
                 Section {
-                    SubTitleCell(title: "Prayer Time Calculation",
-                                 subTitle: settings.method.toString,
-                                 imageName: "chevron.forward",
-                                 action: {
+                    SettingCell(colorScheme: $colorScheme,
+                                title: "Prayer Time Calculation",
+                                subTitle: settings.method.toString,
+                                imageName: "chevron.forward",
+                                action: {
                                     isMethodSelectViewPresentated.toggle()
-                                 })
+                                })
                         .sheet(isPresented: $isMethodSelectViewPresentated) {
                             SettingSelectView(type: .method, title: "Prayer Time Calculation")
                         }
                     
-                    SubTitleCell(title: "Asr Calculation Method",
-                                 subTitle: settings.school.toString,
-                                 imageName: "chevron.forward",
-                                 action: {
+                    SettingCell(colorScheme: $colorScheme,
+                                title: "Asr Calculation Method",
+                                subTitle: settings.school.toString,
+                                imageName: "chevron.forward",
+                                action: {
                                     isSchoolSelectViewPresentated.toggle()
-                                 })
+                                })
                         .sheet(isPresented: $isSchoolSelectViewPresentated) {
                             SettingSelectView(type: .school, title: "Asr Calculation Method")
                                 .navigationBarTitle("Asr Calculation Method", displayMode: .inline)
                         }
                     
-                    SubTitleCell(title: "High Latitude Adjustment",
-                                 subTitle: "Angle-based method",
-                                 imageName: "chevron.forward",
-                                 action: {
+                    SettingCell(colorScheme: $colorScheme,
+                                title: "High Latitude Adjustment",
+                                subTitle: "Angle-based method",
+                                imageName: "chevron.forward",
+                                action: {
                                     isHighLattitudeSelectViewPresentated.toggle()
-                                 })
+                                })
                         .sheet(isPresented: $isHighLattitudeSelectViewPresentated) {
                             SettingSelectView(type: .highLatitudeAdjustment, title: "High Latitude Adjustment")
                         }

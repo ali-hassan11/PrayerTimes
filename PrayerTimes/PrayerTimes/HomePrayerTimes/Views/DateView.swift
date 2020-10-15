@@ -10,6 +10,7 @@ import SwiftUI
 struct DateView: View {
     
     @ObservedObject var viewModel: PrayerTimeListViewModel
+    @Binding var colorScheme: Color
 
     var body: some View {
         
@@ -19,6 +20,7 @@ struct DateView: View {
             }) {
                 Image(systemName: "chevron.backward")
                     .font(Font.system(size: 25, weight: .semibold))
+                    .accentColor(colorScheme)
             }
             .padding(.horizontal, 20)
             
@@ -28,7 +30,7 @@ struct DateView: View {
                 if viewModel.isToday(date: viewModel.date) {
                     Text("TODAY")
                         .font(Font.headline).fontWeight(.bold)
-                        .foregroundColor(Color(UIColor.systemPink)).opacity(0.9)
+                        .foregroundColor(colorScheme)
                         .padding(.top, 12)
                 }
                 

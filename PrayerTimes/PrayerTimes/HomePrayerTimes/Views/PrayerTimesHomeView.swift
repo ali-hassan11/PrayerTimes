@@ -10,7 +10,7 @@ import SwiftUI
 struct PrayerTimesHomeView: View {
     
     @ObservedObject var viewModel: PrayerTimeListViewModel
-    @EnvironmentObject var settingsConfiguration: SettingsConfiguration
+    @Binding var colorScheme: Color
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -25,7 +25,7 @@ struct PrayerTimesHomeView: View {
                     case (.loaded):
                         
                         Spacer()
-                        DateView(viewModel: viewModel)
+                        DateView(viewModel: viewModel, colorScheme: $colorScheme)
                             .cornerRadius(25)
                         
                         HStack {
@@ -39,7 +39,7 @@ struct PrayerTimesHomeView: View {
 
                         }
                         
-                        PrayerTimesListView(viewModel: viewModel)
+                        PrayerTimesListView(viewModel: viewModel, colorScheme: $colorScheme)
                             .cornerRadius(25)
                         Spacer()
 

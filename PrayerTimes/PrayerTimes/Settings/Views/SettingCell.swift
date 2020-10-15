@@ -7,8 +7,9 @@
 
 import SwiftUI
 
-struct SubTitleCell: View {
+struct SettingCell: View {
     
+    @Binding var colorScheme: Color
     var title: String
     var subTitle: String?
     var imageName: String
@@ -24,7 +25,7 @@ struct SubTitleCell: View {
             }
             Spacer()
             Image(systemName: imageName)
-                .foregroundColor(Color.init(.systemPink))
+                .foregroundColor(colorScheme)
         }
         .contentShape(Rectangle())
         .onTapGesture {

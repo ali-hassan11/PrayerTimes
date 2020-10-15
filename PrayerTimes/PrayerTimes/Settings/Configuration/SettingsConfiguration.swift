@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import SwiftUI
+
 let LOCATIONKEY = "locationkKey"
 class SettingsConfiguration: ObservableObject {
     
@@ -13,7 +15,32 @@ class SettingsConfiguration: ObservableObject {
     @Published var method: Method
     @Published var school: School
     @Published var locationInfo: LocationInfo
+    @Published var colorScheme: Color
     
+    //@Published var colorScheme: UIColor
+    
+    static let shared = SettingsConfiguration()
+    
+    private init() {
+        //Get all from UserDefaults/Core data
+        dateMode = .gregorian
+        method = .muslimWorldLeague
+        school = .shafi
+        locationInfo = SettingsConfiguration.getLocationInfoSetting() ?? LocationInfo(locationName: "Donnayyyy", lat: 53.5228, long: 1.1285)
+        colorScheme = Color(.systemPink)
+    }
+    
+    private init(dateType: DateMode, method: Method, school: School, locationInfo: LocationInfo, colorScheme: Color) {
+        self.dateMode = dateType
+        self.method = method
+        self.school = school
+        self.locationInfo = locationInfo
+        self.colorScheme = colorScheme
+    }
+}
+
+//MARK: Location Info
+extension SettingsConfiguration {
     func updateLocationSetting(_ locationInfo: LocationInfo) {
         self.locationInfo = locationInfo
         do {
@@ -35,23 +62,9 @@ class SettingsConfiguration: ObservableObject {
             return nil
         }
     }
+}
+
+//MARK: Color Scheme
+extension SettingsConfiguration {
     
-    //@Published var colorScheme: UIColor
-    
-    static let shared = SettingsConfiguration()
-    
-    private init() {
-        //Get all from UserDefaults/Core data
-        dateMode = .gregorian
-        method = .muslimWorldLeague
-        school = .shafi
-        locationInfo = SettingsConfiguration.getLocationInfoSetting() ?? LocationInfo(locationName: "Donnayyyy", lat: 53.5228, long: 1.1285) //
-    }
-    
-    private init(dateType: DateMode, method: Method, school: School, locationInfo: LocationInfo) {
-        self.dateMode = dateType
-        self.method = method
-        self.school = school
-        self.locationInfo = locationInfo
-    }
 }
