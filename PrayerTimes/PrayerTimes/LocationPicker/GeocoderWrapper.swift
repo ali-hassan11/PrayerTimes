@@ -7,7 +7,7 @@ class GeocoderWrapper {
     func locationInfo(for location: CLLocation?, completion: @escaping (Result<LocationInfo, CustomError>) -> Void) {
         guard let location = location else {
             completion(.failure(.init(title: "Unable to Locate",
-                                      message: "There was a problem finding your location. Please try again.")))
+                                      message: "There was a problem finding your location. Please try again 1")))
             return
         }
         
@@ -15,18 +15,29 @@ class GeocoderWrapper {
         geocoder.reverseGeocodeLocation(location) { placeMarks, error in
             
             if error != nil {
-                completion(.failure(.init(title: "Unable to Locate",
-                                          message: "There was a problem finding your location. Please try again.")))
+
             }
 
             let place = placeMarks?.first
-            guard let placeName = place?.locality, let country = place?.country else {
-                completion(.failure(.init(title: "Unable to Locate",
-                                          message: "There was a problem finding your location. Please try again.")))
-                return
-            }
-            let locationInfo = LocationInfo(locationName: "\(placeName), \(country)", lat: location.coordinate.latitude, long: location.coordinate.longitude)
 
+            var locationNameString = ""
+            if let locality = place?.locality, let country = place?.country {
+                locationNameString = "\(locality), \(country)"
+            } else
+            if let administrative = place?.administrativeArea, let country = place?.country {
+                locationNameString = "\(administrative), \(country)"
+            } else
+            if let locality = place?.locality {
+                locationNameString = locality
+            } else
+            if let administrative = place?.administrativeArea {
+                locationNameString = administrative
+            } else {
+                completion(.failure(.init(title: "Unable get location name",
+                                          message: "Failed to get any info about place name")))
+            }
+            
+            let locationInfo = LocationInfo(locationName: locationNameString, lat: location.coordinate.latitude, long: location.coordinate.longitude)
             completion(.success(locationInfo))
         }
     }

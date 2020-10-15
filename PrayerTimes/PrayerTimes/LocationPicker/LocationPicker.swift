@@ -34,7 +34,7 @@ struct LocationPicker: UIViewControllerRepresentable {
         autocompleteController.tableCellBackgroundColor = .systemBackground
 
         let filter = GMSAutocompleteFilter()
-        filter.type = .region
+        filter.type = .city
         autocompleteController.autocompleteFilter = filter
 
         return autocompleteController
