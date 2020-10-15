@@ -10,16 +10,25 @@ import SwiftUI
 struct ChooseColorCell: View {
     
     var title: String
-    @Binding var color: Color
+    @Binding var colorScheme: Color
     var action: () -> Void
     
+    @State var isColorPickerPresented = false
+        
     var body: some View {
         HStack {
             Text(title).font(.body)
             Spacer()
-            Button(action: action) {
-                ColorPicker("", selection: $color, supportsOpacity: false)
+            Button(action: {
+                isColorPickerPresented.toggle()
+            }) {
+                Rectangle()
+                    .cornerRadius(5)
+                    .frame(width: 30, height: 30)
             }
+        }
+        .sheet(isPresented: $isColorPickerPresented) {
+            ColorPickerView(colorScheme: $colorScheme, isColorPickerPresented: $isColorPickerPresented)
         }
     }
 }

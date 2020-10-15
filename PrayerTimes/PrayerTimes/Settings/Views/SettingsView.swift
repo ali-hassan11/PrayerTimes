@@ -29,7 +29,7 @@ struct SettingsView: View {
             
             List {
                 Section {
-                    ChooseColorCell(title: "Color Scheme", color: $colorScheme, action: {})
+                    ChooseColorCell(title: "Color Scheme", colorScheme: $colorScheme, action: {})
                 }
                 
                 Section(header: Text(SettingsConfiguration.shared.locationInfo.locationName)) {
