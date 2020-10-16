@@ -18,7 +18,7 @@ struct PrayerTimesHomeView: View {
         
         NavigationView {
             
-            Color(.systemBackground).overlay(
+            Color(.systemGroupedBackground).overlay(
                 VStack(spacing: 16) {
                     
                     switch (viewModel.stateManager.state) {
@@ -34,6 +34,7 @@ struct PrayerTimesHomeView: View {
                             DatePicker("", selection: $viewModel.date, displayedComponents: .date)
                                 .datePickerStyle(CompactDatePickerStyle())
                                 .labelsHidden()
+                                .foregroundColor(Color(.secondarySystemGroupedBackground))
                             
                             Spacer()
 

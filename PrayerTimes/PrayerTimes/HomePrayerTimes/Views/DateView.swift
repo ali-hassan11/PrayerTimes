@@ -54,13 +54,6 @@ struct DateView: View {
             }
             .padding(.horizontal, 20)
         }
-        .background(Color(UIColor.tertiarySystemFill))
+        .background(Color(UIColor.secondarySystemGroupedBackground))
     }
 }
-
-//struct DateView_Previews: PreviewProvider {
-//    @State static var viewModel = PreviewData().prayerTimeListViewModel
-//    static var previews: some View {
-//        DateView(viewModel: viewModel)
-//    }
-//}
