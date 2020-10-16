@@ -9,7 +9,8 @@ import SwiftUI
 
 struct SettingSelectView: View {
     
-    @Binding var isOptionSelectViewPresented: Bool
+    @Binding var isPresented: Bool
+    @Binding var date: Date
     
     enum SettingType {
         case method
@@ -31,8 +32,9 @@ struct SettingSelectView: View {
                         if method.index != 6 {
                             Button(action: {
                                 SettingsConfiguration.shared.saveMethodSetting(method)
-                                isOptionSelectViewPresented.toggle()
-                                // Reload/Trigger reload of prayer times
+                                triggerFetchData()
+                                isPresented.toggle()
+
                             }) {
                                 Text(method.toString)
                             }
@@ -41,12 +43,15 @@ struct SettingSelectView: View {
                     }
                 case .school:
                     ForEach(School.allCases, id: \.hashValue) { school in
-                        Text(school.toString)
-                            .onTapGesture(perform: {
-                                // Save
-                                isOptionSelectViewPresented.toggle()
-                                // Reload/Trigger reload of prayer times
-                            })
+                        Button(action: {
+                            SettingsConfiguration.shared.saveSchoolSetting(school)
+                            triggerFetchData()
+                            isPresented.toggle()
+
+                        }) {
+                            Text(school.toString)
+                        }
+                        .foregroundColor(Color.init(.label))
                     }
                     
                 case .latitudeAdjustmentMethod:
@@ -54,7 +59,7 @@ struct SettingSelectView: View {
                         Text(latitudeMethod.toString)
                             .onTapGesture(perform: {
                                 // Save
-                                isOptionSelectViewPresented.toggle()
+                                isPresented.toggle()
                                 // Reload/Trigger reload of prayer times
                             })
                     }
@@ -62,5 +67,9 @@ struct SettingSelectView: View {
             }
             .navigationBarTitle(title, displayMode: .inline)
         }
+    }
+    
+    private func triggerFetchData() {
+        date = Date()
     }
 }

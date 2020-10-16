@@ -13,7 +13,6 @@ struct SettingsView: View {
     //Dependencies
     @Binding var date: Date
     @Binding var colorScheme: Color
-    @Binding var method: Method
     let locationManager: CLLocationManager
     
     @State private var isLocationSearchPresented = false
@@ -31,7 +30,7 @@ struct SettingsView: View {
             List {
                 //MARK: Color
                 Section {
-                    ChooseColorCell(colorScheme: $colorScheme, title: "Color Scheme", action: {})
+                    ChooseColorCell(colorScheme: $colorScheme, title: "Theme", action: {})
                 }
                 
                 //MARK: Locate Me
@@ -68,7 +67,7 @@ struct SettingsView: View {
                                     isMethodSelectViewPresentated.toggle()
                                 })
                         .sheet(isPresented: $isMethodSelectViewPresentated) {
-                            SettingSelectView(isOptionSelectViewPresented: $isMethodSelectViewPresentated, type: .method, title: "Prayer Time Calculation")
+                            SettingSelectView(isPresented: $isMethodSelectViewPresentated, date: $date, type: .method, title: "Prayer Time Calculation")
                         }
                     
                     //MARK: School
@@ -80,7 +79,7 @@ struct SettingsView: View {
                                     isSchoolSelectViewPresentated.toggle()
                                 })
                         .sheet(isPresented: $isSchoolSelectViewPresentated) {
-                            SettingSelectView(isOptionSelectViewPresented: $isSchoolSelectViewPresentated, type: .school, title: "Asr Calculation Method")
+                            SettingSelectView(isPresented: $isSchoolSelectViewPresentated, date: $date, type: .school, title: "Asr Calculation Method")
                                 .navigationBarTitle("Asr Calculation Method", displayMode: .inline)
                         }
                     
@@ -93,7 +92,7 @@ struct SettingsView: View {
                                     isHighLattitudeSelectViewPresentated.toggle()
                                 })
                         .sheet(isPresented: $isHighLattitudeSelectViewPresentated) {
-                            SettingSelectView(isOptionSelectViewPresented: $isHighLattitudeSelectViewPresentated, type: .latitudeAdjustmentMethod, title: "High Latitude Adjustment")
+                            SettingSelectView(isPresented: $isHighLattitudeSelectViewPresentated, date: $date, type: .latitudeAdjustmentMethod, title: "High Latitude Adjustment")
                         }
                 }
             }

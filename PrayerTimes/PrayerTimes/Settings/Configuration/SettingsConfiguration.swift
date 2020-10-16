@@ -12,6 +12,7 @@ import SwiftUI
 let LOCATIONKEY = "locationkKey"
 let COLORKEY = "colorKey"
 let METHODKEY = "methodKey"
+let SCHOOLKEY = "schoolKey"
 class SettingsConfiguration: ObservableObject {
     
     @Published var method: Method
@@ -25,7 +26,7 @@ class SettingsConfiguration: ObservableObject {
     private init() {
         //Get all from UserDefaults/Core data
         method = Self.getMethodSetting() ?? .muslimWorldLeague
-        school = .shafi
+        school = Self.getSchoolSetting() ?? .hanafi
         latitudeAdjustmentMethod = .angleBased
         locationInfo = Self.getLocationInfoSetting() ?? LocationInfo(locationName: "Manchester, England", lat: 53.4808, long: 2.2426)
         colorScheme = Self.getColorSetting() ?? .init(.systemPink)
@@ -92,3 +93,19 @@ extension SettingsConfiguration {
         return Method(rawValue: methodIndex)
     }
 }
+
+//MARK: School
+extension SettingsConfiguration {
+    
+    func saveSchoolSetting(_ school: School) {
+        self.school = school
+        UserDefaults.standard.setValue(school.rawValue, forKey: SCHOOLKEY)
+    }
+    
+    private static func getSchoolSetting() -> School? {
+        guard let methodIndex = UserDefaults.standard.object(forKey: SCHOOLKEY) as? Int else { return nil }
+        return School(rawValue: methodIndex)
+    }
+}
+
+

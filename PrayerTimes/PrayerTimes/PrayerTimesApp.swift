@@ -21,7 +21,7 @@ struct PrayerTimesApp: App {
     
     var body: some Scene {
         WindowGroup {
-            TabsView(viewModel: viewModel, colorScheme: settings.colorScheme, method: $settings.method)
+            TabsView(viewModel: viewModel, colorScheme: settings.colorScheme)
         }
     }
 }
