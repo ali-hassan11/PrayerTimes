@@ -11,6 +11,9 @@ struct SettingSelectView: View {
     
     @Binding var isPresented: Bool
     @Binding var date: Date
+    @Binding var colorScheme: Color
+    
+    private let tickIconName = "checkmark.circle"
     
     enum SettingType {
         case method
@@ -28,41 +31,72 @@ struct SettingSelectView: View {
             List {
                 switch type {
                 case .method:
+                    let currentMethod = SettingsConfiguration.shared.method
+                   
                     ForEach(Method.allCases, id: \.hashValue) { method in
+                    
                         if method.index != 6 {
                             Button(action: {
                                 SettingsConfiguration.shared.saveMethodSetting(method)
-                                triggerFetchData()
                                 isPresented.toggle()
-
+                                triggerFetchData()
                             }) {
-                                Text(method.toString)
+                                HStack{
+                                    Text(method.toString)
+                                    
+                                    if method == currentMethod {
+                                        Spacer()
+                                        Image(systemName: tickIconName)
+                                            .foregroundColor(colorScheme)
+                                    }
+                                }
                             }
                             .foregroundColor(Color.init(.label))
                         }
                     }
                 case .school:
+                    
+                    let currentSchool = SettingsConfiguration.shared.school
+                    
                     ForEach(School.allCases, id: \.hashValue) { school in
                         Button(action: {
                             SettingsConfiguration.shared.saveSchoolSetting(school)
-                            triggerFetchData()
                             isPresented.toggle()
-
+                            triggerFetchData()
                         }) {
-                            Text(school.toString)
+                            
+                            HStack {
+                                Text(school.toString)
+                                
+                                if school == currentSchool {
+                                    Spacer()
+                                    Image(systemName: tickIconName)
+                                        .foregroundColor(colorScheme)
+                                }
+                            }
                         }
                         .foregroundColor(Color.init(.label))
                     }
                     
                 case .latitudeAdjustmentMethod:
+                    
+                    let currentLatitude = SettingsConfiguration.shared.latitudeAdjustmentMethod
+                    
                     ForEach(LatitudeAdjustmentMethod.allCases, id: \.hashValue) { latitudeMethod in
                         Button(action: {
                             SettingsConfiguration.shared.saveLatitudeSetting(latitudeMethod)
-                            triggerFetchData()
                             isPresented.toggle()
-
+                            triggerFetchData()
                         }) {
-                            Text(latitudeMethod.toString)
+                            HStack {
+                                Text(latitudeMethod.toString)
+                                
+                                if latitudeMethod == currentLatitude {
+                                    Spacer()
+                                    Image(systemName: tickIconName)
+                                        .foregroundColor(colorScheme)
+                                }
+                            }
                         }
                         .foregroundColor(Color.init(.label))
                     }

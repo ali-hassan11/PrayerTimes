@@ -14,6 +14,7 @@ let COLORKEY = "colorKey"
 let METHODKEY = "methodKey"
 let SCHOOLKEY = "schoolKey"
 let LATITUDEKEY = "latitudeKey"
+
 class SettingsConfiguration: ObservableObject {
     
     @Published var method: Method

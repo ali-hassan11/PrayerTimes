@@ -13,10 +13,9 @@ struct PrayerTimesListView: View {
     @Binding var colorScheme: Color
     
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(spacing: 2) {
             ForEach(viewModel.prayers) { prayer in
                 PrayerTimeCell(prayer: prayer, viewModel: viewModel, colorScheme: $colorScheme)
-                Divider()
             }
         }
     }

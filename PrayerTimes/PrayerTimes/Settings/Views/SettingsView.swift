@@ -67,7 +67,7 @@ struct SettingsView: View {
                                     isMethodSelectViewPresentated.toggle()
                                 })
                         .sheet(isPresented: $isMethodSelectViewPresentated) {
-                            SettingSelectView(isPresented: $isMethodSelectViewPresentated, date: $date, type: .method, title: "Prayer Time Calculation")
+                            SettingSelectView(isPresented: $isMethodSelectViewPresentated, date: $date, colorScheme: $colorScheme, type: .method, title: "Prayer Time Calculation")
                         }
                     
                     //MARK: School
@@ -79,7 +79,7 @@ struct SettingsView: View {
                                     isSchoolSelectViewPresentated.toggle()
                                 })
                         .sheet(isPresented: $isSchoolSelectViewPresentated) {
-                            SettingSelectView(isPresented: $isSchoolSelectViewPresentated, date: $date, type: .school, title: "Asr Calculation Method")
+                            SettingSelectView(isPresented: $isSchoolSelectViewPresentated, date: $date, colorScheme: $colorScheme, type: .school, title: "Asr Calculation Method")
                                 .navigationBarTitle("Asr Calculation Method", displayMode: .inline)
                         }
                     
@@ -92,7 +92,7 @@ struct SettingsView: View {
                                     isHighLattitudeSelectViewPresentated.toggle()
                                 })
                         .sheet(isPresented: $isHighLattitudeSelectViewPresentated) {
-                            SettingSelectView(isPresented: $isHighLattitudeSelectViewPresentated, date: $date, type: .latitudeAdjustmentMethod, title: "High Latitude Adjustment")
+                            SettingSelectView(isPresented: $isHighLattitudeSelectViewPresentated, date: $date, colorScheme: $colorScheme, type: .latitudeAdjustmentMethod, title: "High Latitude Adjustment")
                         }
                 }
             }

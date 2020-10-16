@@ -14,10 +14,10 @@
             filePath = "PrayerTimes/Settings/Configuration/SettingsConfiguration.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "SettingsConfiguration"
-            landmarkType = "21">
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "saveLocationSetting(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
