@@ -24,6 +24,8 @@
 	<string>Allow locations so that we can show your local prayer times</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Allow locations so that we can show your local prayer times</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Allow locations so that we can show your local prayer times</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

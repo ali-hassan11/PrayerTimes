@@ -46,9 +46,8 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
         }
     }
     
-    init() {
-        self.locationManager = CLLocationManager()
-        let locationManagerdelegate = LocationManagerDelegate(completion: { [weak self] result in
+    func createDelegate() -> CLLocationManagerDelegate? {
+        return LocationManagerDelegate(completion: { [weak self] result in
             guard let self = self else { return }
             
             switch result {
@@ -56,18 +55,37 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
                 
                 SettingsConfiguration.shared.saveLocationSetting(locationInfo)
                 self.fetchData(date: self.date, locationInfo: locationInfo)
+                
             case .failure(let error):
                 print(error)
                 self.stateManager.failed()
             }
-            
         })
-        locationManager.delegate = locationManagerdelegate
+    }
+    init() {
+        self.locationManager = CLLocationManager()
+    
+        locationManager.delegate = createDelegate()
 
         if let locationInfo = SettingsConfiguration.getLocationInfoSetting() {
             fetchData(date: date, locationInfo: locationInfo)
         } else {
-            locationManager.startUpdatingLocation()
+            
+            switch locationManager.authorizationStatus {
+            case .authorizedAlways, .authorizedWhenInUse: //Happy path
+                locationManager.startUpdatingLocation()
+                
+            case .notDetermined:
+                locationManager.delegate = createDelegate() //WHY IS THE DELEGATE NIL??????!!!!!!!
+                locationManager.requestAlwaysAuthorization()
+
+            case .restricted, .denied:
+                print("Location restricted or denied")
+
+            default:
+                print("default")
+            }
+            
         }
     }
     
