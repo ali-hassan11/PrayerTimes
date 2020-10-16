@@ -56,12 +56,15 @@ struct SettingSelectView: View {
                     
                 case .latitudeAdjustmentMethod:
                     ForEach(LatitudeAdjustmentMethod.allCases, id: \.hashValue) { latitudeMethod in
-                        Text(latitudeMethod.toString)
-                            .onTapGesture(perform: {
-                                // Save
-                                isPresented.toggle()
-                                // Reload/Trigger reload of prayer times
-                            })
+                        Button(action: {
+                            SettingsConfiguration.shared.saveLatitudeSetting(latitudeMethod)
+                            triggerFetchData()
+                            isPresented.toggle()
+
+                        }) {
+                            Text(latitudeMethod.toString)
+                        }
+                        .foregroundColor(Color.init(.label))
                     }
                 }
             }

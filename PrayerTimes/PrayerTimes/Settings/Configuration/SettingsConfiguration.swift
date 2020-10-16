@@ -13,6 +13,7 @@ let LOCATIONKEY = "locationkKey"
 let COLORKEY = "colorKey"
 let METHODKEY = "methodKey"
 let SCHOOLKEY = "schoolKey"
+let LATITUDEKEY = "latitudeKey"
 class SettingsConfiguration: ObservableObject {
     
     @Published var method: Method
@@ -24,10 +25,9 @@ class SettingsConfiguration: ObservableObject {
     static let shared = SettingsConfiguration()
     
     private init() {
-        //Get all from UserDefaults/Core data
         method = Self.getMethodSetting() ?? .muslimWorldLeague
         school = Self.getSchoolSetting() ?? .hanafi
-        latitudeAdjustmentMethod = .angleBased
+        latitudeAdjustmentMethod = Self.getLatitudeSetting() ?? .angleBased
         locationInfo = Self.getLocationInfoSetting() ?? LocationInfo(locationName: "Manchester, England", lat: 53.4808, long: 2.2426)
         colorScheme = Self.getColorSetting() ?? .init(.systemPink)
     }
@@ -89,8 +89,8 @@ extension SettingsConfiguration {
     }
     
     private static func getMethodSetting() -> Method? {
-        guard let methodIndex = UserDefaults.standard.object(forKey: METHODKEY) as? Int else { return nil }
-        return Method(rawValue: methodIndex)
+        guard let index = UserDefaults.standard.object(forKey: METHODKEY) as? Int else { return nil }
+        return Method(rawValue: index)
     }
 }
 
@@ -103,8 +103,22 @@ extension SettingsConfiguration {
     }
     
     private static func getSchoolSetting() -> School? {
-        guard let methodIndex = UserDefaults.standard.object(forKey: SCHOOLKEY) as? Int else { return nil }
-        return School(rawValue: methodIndex)
+        guard let index = UserDefaults.standard.object(forKey: SCHOOLKEY) as? Int else { return nil }
+        return School(rawValue: index)
+    }
+}
+
+//MARK: High Latitude Method
+extension SettingsConfiguration {
+    
+    func saveLatitudeSetting(_ latitudeAdjustmentMethod: LatitudeAdjustmentMethod) {
+        self.latitudeAdjustmentMethod = latitudeAdjustmentMethod
+        UserDefaults.standard.setValue(latitudeAdjustmentMethod.rawValue, forKey: SCHOOLKEY)
+    }
+    
+    private static func getLatitudeSetting() -> LatitudeAdjustmentMethod? {
+        guard let index = UserDefaults.standard.object(forKey: LATITUDEKEY) as? Int else { return nil }
+        return LatitudeAdjustmentMethod(rawValue: index)
     }
 }
 
