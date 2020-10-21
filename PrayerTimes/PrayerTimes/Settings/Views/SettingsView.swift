@@ -42,10 +42,9 @@ struct SettingsView: View {
                                 title: "Locate Me",
                                 imageName: "location.fill",
                                 action: {
-                                locationManagerDelegate = viewModel.createDelegate()
-                                locationManager.delegate = locationManagerDelegate
-                                locationManager.startUpdatingLocation()
-//                                    print("123")
+                                    locationManagerDelegate = viewModel.createDelegate()
+                                    locationManager.delegate = locationManagerDelegate
+                                    locationManager.startUpdatingLocation()
                                 })
                         .sheet(isPresented: $isLocationLocateMePresented) {
                             Text("Locate me!")
