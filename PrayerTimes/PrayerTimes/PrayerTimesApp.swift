@@ -12,16 +12,15 @@ import BackgroundTasks
 struct PrayerTimesApp: App {
     
     let viewModel: PrayerTimeListViewModel
-    @ObservedObject var settings: SettingsConfiguration
+    @State var colorScheme: Color = SettingsConfiguration.shared.colorScheme
         
     init() {
         self.viewModel = PrayerTimeListViewModel()
-        self.settings = SettingsConfiguration.shared
     }
     
     var body: some Scene {
         WindowGroup {
-            TabsView(viewModel: viewModel, colorScheme: settings.colorScheme)
+            TabsView(viewModel: viewModel, colorScheme: colorScheme)
         }
     }
 }

@@ -19,7 +19,10 @@ struct TabsView: View {
                     Image(systemName: "clock.fill")
                     Text("Times")
                 }
-            SettingsView(date: $viewModel.date, colorScheme: $colorScheme, locationManager: viewModel.locationManager)
+            SettingsView(date: $viewModel.date,
+                         colorScheme: $colorScheme,
+                         locationManager: viewModel.locationManager,
+                         viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "gear")
                     Text("Settings")

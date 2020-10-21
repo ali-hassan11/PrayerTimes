@@ -17,10 +17,10 @@ let LATITUDEKEY = "latitudeKey"
 
 class SettingsConfiguration: ObservableObject {
     
-    @Published var method: Method
-    @Published var school: School
-    @Published var latitudeAdjustmentMethod: LatitudeAdjustmentMethod
-    @Published var locationInfo: LocationInfo //Make optional
+    /*@Published*/ var method: Method
+    /*@Published*/ var school: School
+    /*@Published*/ var latitudeAdjustmentMethod: LatitudeAdjustmentMethod
+                    var locationInfo: LocationInfo //Make optional
     @Published var colorScheme: Color
         
     static let shared = SettingsConfiguration()

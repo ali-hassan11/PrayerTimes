@@ -8,12 +8,15 @@
 import SwiftUI
 import CoreLocation
 
+var locationManagerDelegate: CLLocationManagerDelegate?
+
 struct SettingsView: View {
     
     //Dependencies
     @Binding var date: Date
     @Binding var colorScheme: Color
     let locationManager: CLLocationManager
+    let viewModel: PrayerTimeListViewModel
     
     @State private var isLocationSearchPresented = false
     @State private var isLocationLocateMePresented = false
@@ -39,10 +42,14 @@ struct SettingsView: View {
                                 title: "Locate Me",
                                 imageName: "location.fill",
                                 action: {
-                                //locationManager.startUpdatingLocation()
+                                locationManagerDelegate = viewModel.createDelegate()
+                                locationManager.delegate = locationManagerDelegate
+                                locationManager.startUpdatingLocation()
+//                                    print("123")
                                 })
                         .sheet(isPresented: $isLocationLocateMePresented) {
                             Text("Locate me!")
+                            
                         }
                     
                     //MARK: Locate Search

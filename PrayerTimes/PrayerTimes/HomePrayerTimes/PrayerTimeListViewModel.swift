@@ -46,6 +46,8 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
         }
     }
     
+    var delegate: CLLocationManagerDelegate?
+    
     func createDelegate() -> CLLocationManagerDelegate? {
         return LocationManagerDelegate(completion: { [weak self] result in
             guard let self = self else { return }
@@ -63,20 +65,23 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
         })
     }
     init() {
+        print("ViewModel Initialiasation")
         self.locationManager = CLLocationManager()
-    
-        locationManager.delegate = createDelegate()
-
+        self.delegate = createDelegate()
+        
         if let locationInfo = SettingsConfiguration.getLocationInfoSetting() {
+            print("Location info exists")
             fetchData(date: date, locationInfo: locationInfo)
         } else {
-            
+            print("Location info DOES NOT exist")
+
             switch locationManager.authorizationStatus {
             case .authorizedAlways, .authorizedWhenInUse: //Happy path
+                locationManager.delegate = self.delegate
                 locationManager.startUpdatingLocation()
                 
             case .notDetermined:
-                locationManager.delegate = createDelegate() //WHY IS THE DELEGATE NIL??????!!!!!!!
+                locationManager.delegate = self.delegate
                 locationManager.requestAlwaysAuthorization()
 
             case .restricted, .denied:
@@ -90,7 +95,6 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
     }
     
 
-    //PASS IN SETTINGS HERE AS WE WILL ACCESS TO IT FROM THE VIEW
     func fetchData(date: Date, locationInfo: LocationInfo) {
 
         self.nextPrayerFound = false
