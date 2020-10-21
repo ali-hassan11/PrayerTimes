@@ -21,11 +21,11 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Allow locations so that we can show your local prayer times</string>
+	<string>Prayer Times + Widget uses your location to find accurate prayer times for you location</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Allow locations so that we can show your local prayer times</string>
+	<string>Prayer Times + Widget uses your location to find accurate prayer times for you location</string>
 	<key>NSLocationUsageDescription</key>
-	<string>Allow locations so that we can show your local prayer times</string>
+	<string>Prayer Times + Widget uses your location to find accurate prayer times for you location</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

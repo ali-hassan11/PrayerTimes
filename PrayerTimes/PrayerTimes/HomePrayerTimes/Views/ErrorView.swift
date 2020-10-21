@@ -9,16 +9,21 @@ import SwiftUI
 
 struct ErrorView: View {
     
+    let text: String
+    let hasRetryButton: Bool
     var action: () -> Void
     
     var body: some View {
-        Text("Failed to load prayer times, please check your internet connection and try again")
+        Text(text)
             .font(Font.body)
             .multilineTextAlignment(.center)
             .padding(.all, 40)
-        Button(action: { action() }) {
-            Image(systemName: "arrow.clockwise")
-                .font(Font.system(size: 25, weight: .semibold))
+        
+        if hasRetryButton {
+            Button(action: { action() }) {
+                Image(systemName: "arrow.clockwise")
+                    .font(Font.system(size: 25, weight: .semibold))
+            }
         }
     }
 }

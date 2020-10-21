@@ -24,6 +24,8 @@ struct SettingsView: View {
     @State private var isMethodSelectViewPresentated = false
     @State private var isSchoolSelectViewPresentated = false
     @State private var isHighLattitudeSelectViewPresentated = false
+    
+    @State private var isNoLocationAlertPresented = false
         
     var body: some View {
         
@@ -42,13 +44,28 @@ struct SettingsView: View {
                                 title: "Locate Me",
                                 imageName: "location.fill",
                                 action: {
+                    
                                     locationManagerDelegate = viewModel.createDelegate()
                                     locationManager.delegate = locationManagerDelegate
-                                    locationManager.startUpdatingLocation()
+                                    
+                                    switch locationManager.authorizationStatus {
+                                    case .authorizedAlways, .authorizedWhenInUse:
+                                        locationManager.startUpdatingLocation()
+                                        
+                                    case .notDetermined:
+                                        locationManager.requestAlwaysAuthorization()
+
+                                    case .restricted, .denied:
+                                        isNoLocationAlertPresented.toggle()
+
+                                    default:
+                                        isNoLocationAlertPresented.toggle()
+                                    }
                                 })
-                        .sheet(isPresented: $isLocationLocateMePresented) {
-                            Text("Locate me!")
-                            
+                        .popover(isPresented: $isNoLocationAlertPresented) {
+                            ErrorView(text: "Please enable location usage in your phone's settings so that we can find the prayer times for your area",
+                                      hasRetryButton: true,
+                                      action: { isNoLocationAlertPresented.toggle() })
                         }
                     
                     //MARK: Locate Search

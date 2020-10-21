@@ -46,7 +46,9 @@ struct PrayerTimesHomeView: View {
 
                     case (.failed):
                         
-                        ErrorView(action: { viewModel.retryFetchData() })
+                        ErrorView(text: "Failed to load prayer times, please check your internet connection and try again",
+                                  hasRetryButton: true,
+                                  action: { viewModel.retryFetchData() })
                         
                     default :
                         
