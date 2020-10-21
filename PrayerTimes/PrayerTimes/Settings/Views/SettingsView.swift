@@ -62,10 +62,11 @@ struct SettingsView: View {
                                         isNoLocationAlertPresented.toggle()
                                     }
                                 })
-                        .popover(isPresented: $isNoLocationAlertPresented) {
+                        .sheet(isPresented: $isNoLocationAlertPresented) {
                             ErrorView(text: "Please enable location usage in your phone's settings so that we can find the prayer times for your area",
-                                      hasRetryButton: true,
+                                      button: .ok,
                                       action: { isNoLocationAlertPresented.toggle() })
+                                .accentColor(colorScheme)
                         }
                     
                     //MARK: Locate Search
@@ -76,7 +77,8 @@ struct SettingsView: View {
                                     isLocationSearchPresented.toggle()
                                 })
                         .sheet(isPresented: $isLocationSearchPresented) {
-                            LocationPicker(date: $date)
+                            LocationPicker(date: $date, colorScheme: $colorScheme)
+                                .accentColor(colorScheme)
                         }
                 }
                 

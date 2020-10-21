@@ -7,22 +7,42 @@
 
 import SwiftUI
 
+enum ErrorButton {
+    case ok
+    case retry
+}
+
 struct ErrorView: View {
     
     let text: String
-    let hasRetryButton: Bool
+    let button: ErrorButton?
     var action: () -> Void
     
     var body: some View {
         Text(text)
             .font(Font.body)
             .multilineTextAlignment(.center)
-            .padding(.all, 40)
+            .padding(.horizontal, 40)
+            .padding(.bottom, 18)
         
-        if hasRetryButton {
-            Button(action: { action() }) {
-                Image(systemName: "arrow.clockwise")
-                    .font(Font.system(size: 25, weight: .semibold))
+        if let button = self.button {
+            
+            switch button {
+            
+            case .ok:
+                
+                Button(action: { action() }) {
+                    Text("OK")
+                        .font(Font.system(size: 19, weight: .semibold))
+                }
+                
+            case .retry:
+                
+                Button(action: { action() }) {
+                    Image(systemName: "arrow.clockwise")
+                        .font(Font.system(size: 25, weight: .semibold))
+                }
+                
             }
         }
     }

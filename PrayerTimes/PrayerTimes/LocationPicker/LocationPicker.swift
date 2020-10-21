@@ -17,6 +17,7 @@ struct LocationPicker: UIViewControllerRepresentable {
     }
     @Environment(\.presentationMode) var presentationMode
     @Binding var date: Date //(Here <- SettingsView <- viewModel property in TabsView)
+    @Binding var colorScheme: Color
 
     func makeUIViewController(context: UIViewControllerRepresentableContext<LocationPicker>) -> GMSAutocompleteViewController {
         
@@ -27,7 +28,7 @@ struct LocationPicker: UIViewControllerRepresentable {
         let autocompleteController = GMSAutocompleteViewController()
         autocompleteController.delegate = context.coordinator
 
-        autocompleteController.tintColor = .systemPink
+        autocompleteController.tintColor = UIColor(colorScheme)
         autocompleteController.primaryTextColor = .label
         autocompleteController.secondaryTextColor = .secondaryLabel
         autocompleteController.tableCellSeparatorColor = .separator
