@@ -25,17 +25,17 @@ class LocationManagerDelegate: NSObject, CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch manager.authorizationStatus {
         
-        case .authorizedAlways, .authorizedWhenInUse: //Happy path
+        case .authorizedAlways, .authorizedWhenInUse:
             manager.startUpdatingLocation()
             
         case .notDetermined:
             manager.requestAlwaysAuthorization()
 
         case .restricted, .denied:
-            print("Location restricted or denied")
+            print("Location restricted or denied"); #warning("Do something here")
 
         default:
-            print("default")
+            print("default"); #warning("Do something here")
         }
     }
 

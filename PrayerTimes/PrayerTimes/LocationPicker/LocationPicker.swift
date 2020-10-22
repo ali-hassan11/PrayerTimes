@@ -18,7 +18,7 @@ struct LocationPicker: UIViewControllerRepresentable {
     @Environment(\.presentationMode) var presentationMode
     @Binding var date: Date //(Here <- SettingsView <- viewModel property in TabsView)
     @Binding var colorScheme: Color
-
+    
     func makeUIViewController(context: UIViewControllerRepresentableContext<LocationPicker>) -> GMSAutocompleteViewController {
         
         GMSPlacesClient.provideAPIKey("AIzaSyAgIjIKhiEllBtS2f_OSGTxZyHSJI-lXpg")
@@ -54,11 +54,6 @@ struct LocationPicker: UIViewControllerRepresentable {
 
         func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
             DispatchQueue.main.async {
-                print(place.description.description as Any)
-                
-                for place in place.addressComponents! {
-                    print(place)
-                }
                 
                 let location = CLLocation(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude)
                 GeocoderWrapper().locationInfo(for: location) { [weak self] result in

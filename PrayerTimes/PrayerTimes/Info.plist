@@ -22,9 +22,9 @@
 	<true/>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Prayer Times + Widget uses your location to find accurate prayer times for you location</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Prayer Times + Widget uses your location to find accurate prayer times for you location</string>
 	<key>NSLocationUsageDescription</key>
+	<string>Prayer Times + Widget uses your location to find accurate prayer times for you location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Prayer Times + Widget uses your location to find accurate prayer times for you location</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
