@@ -13,8 +13,7 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
     
     @Published var date: Date = Date() {
         didSet {
-            guard let locationInfo = SettingsConfiguration.getLocationInfoSetting() else { return }
-            fetchData(date: date, locationInfo: locationInfo)
+            fetchData(date: date)
         }
     }
     
@@ -56,7 +55,7 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
             case .success(let locationInfo):
                 
                 SettingsConfiguration.shared.saveLocationSetting(locationInfo)
-                self.fetchData(date: self.date, locationInfo: locationInfo)
+                self.fetchTodayPrayerTimes()
                 
             case .failure(let error):
                 print(error)
@@ -69,8 +68,8 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
         self.locationManager = CLLocationManager()
         self.delegate = createDelegate()
         
-        if let locationInfo = SettingsConfiguration.getLocationInfoSetting() {
-            fetchData(date: date, locationInfo: locationInfo)
+        if SettingsConfiguration.getLocationInfoSetting() != nil {
+            fetchTodayPrayerTimes()
         } else {
             switch locationManager.authorizationStatus {
             
@@ -94,7 +93,7 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
     }
     
 
-    func fetchData(date: Date, locationInfo: LocationInfo) {
+    func fetchData(date: Date) {
 
         self.nextPrayerFound = false
         stateManager.loading()
@@ -144,8 +143,12 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
     }
     
     func retryFetchData() {
-        guard let locationInfo = SettingsConfiguration.getLocationInfoSetting() else { return }
-        fetchData(date: date, locationInfo: locationInfo)
+        let date = self.date
+        self.date = date
+    }
+    
+    func fetchTodayPrayerTimes() {
+        self.date = Date()
     }
     
     func plusOneDay() {
@@ -170,18 +173,20 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
         let currentDate = Date()
         let secondsRemaining = nextPrayerDate.timeIntervalSince(currentDate)
         
-        //IF TIME IS > 0
+        //If there is still time remaining
         if secondsRemaining > 0 {
             updateTimeRemaining(with: secondsRemaining)
             return
         }
-        //ELSE
+        
+        //Else If time's up...
         
         //If all there is no nextPrayer in self.prayers, do nothing
         if prayers.map({ return $0.isNextPrayer }) == [false, false, false, false, false, false] {
             nextPrayerFound = false
             return
         }
+                
         
         //If there is a next prayer in prayers, get its index
         var currentNextPrayerIndex: Int?
@@ -191,16 +196,16 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
                 break
             }
         }
-        
-        //Set the current isNextPrayer to false & set the new isNextPrayer to true
+    
+        //Set the current isNextPrayer to false & the current hasPassed to true
         guard let currentNextPrayerPosition = currentNextPrayerIndex else { return }
-        
         prayers[currentNextPrayerPosition].isNextPrayer = false
-        
+        prayers[currentNextPrayerPosition].hasPassed = true
+                
         //If a next prayer exists
         if prayers.indices.contains(currentNextPrayerPosition + 1) {
             
-            //Set its isNextPrayer to true & update self.nextPrayer
+            //Set the new isNextPrayer to true & update self.nextPrayer
             prayers[currentNextPrayerPosition + 1].isNextPrayer = true
             self.nextPrayer = prayers[currentNextPrayerPosition + 1]
             self.nextPrayerFound = true
@@ -260,7 +265,8 @@ extension PrayerTimeListViewModel {
                                 prayerDateString: prayerDateString,
                                 formattedTime: prayerTimeString,
                                 isNextPrayer: isNextPrayer,
-                                hasPassed: !self.nextPrayerFound && isToday(date: Date()))//Change to isInPast(date: prayerTimeDate)
+                                hasPassed: !self.nextPrayerFound && isToday(date: Date()),
+                                icon: Icon.forName(prayerName))//Change to isInPast(date: prayerTimeDate)
             prayerTimes.append(prayer)
         }
         
