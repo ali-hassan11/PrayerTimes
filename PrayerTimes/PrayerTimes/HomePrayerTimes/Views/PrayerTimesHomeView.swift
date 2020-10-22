@@ -60,7 +60,8 @@ struct PrayerTimesHomeView: View {
                                       button: .goToSettings,
                                       action: {
                                         if let url = URL(string: UIApplication.openSettingsURLString) {
-                                            UIApplication.shared.open(url, options: [:]) { _ in }}
+                                            UIApplication.shared.open(url, options: [:]) { _ in }
+                                        }
                                       })
                             
                         case Failure.geoCodingError:

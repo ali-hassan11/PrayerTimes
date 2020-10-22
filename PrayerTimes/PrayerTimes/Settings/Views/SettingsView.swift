@@ -18,6 +18,7 @@ struct SettingsView: View {
     let locationManager: CLLocationManager
     let viewModel: PrayerTimeListViewModel
     
+    
     @State private var isLocationSearchPresented = false
     @State private var isLocationLocateMePresented = false
     
@@ -44,7 +45,8 @@ struct SettingsView: View {
                                 title: "Locate Me",
                                 imageName: "location.fill",
                                 action: {
-                    
+                                                        
+                                    print("Getting userLocation")
                                     locationManagerDelegate = viewModel.createDelegate()
                                     locationManager.delegate = locationManagerDelegate
                                     
@@ -64,8 +66,14 @@ struct SettingsView: View {
                                 })
                         .sheet(isPresented: $isNoLocationAlertPresented) {
                             ErrorView(text: "Please enable location usage in your phone's settings so that we can find the prayer times for your area",
-                                      button: .ok,
-                                      action: { isNoLocationAlertPresented.toggle() })
+                                      button: .goToSettings,
+                                      action: {
+                                        if let url = URL(string: UIApplication.openSettingsURLString) {
+                                            UIApplication.shared.open(url, options: [:]) { bool in
+                                                isNoLocationAlertPresented.toggle()
+                                            }
+                                        }
+                                      })
                                 .accentColor(colorScheme)
                         }
                     

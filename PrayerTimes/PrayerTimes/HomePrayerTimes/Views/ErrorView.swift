@@ -9,6 +9,7 @@ import SwiftUI
 
 enum ErrorButton {
     case ok
+    case goToSettings
     case retry
 }
 
@@ -33,6 +34,13 @@ struct ErrorView: View {
                 
                 Button(action: { action() }) {
                     Text("OK")
+                        .font(Font.system(size: 19, weight: .semibold))
+                }
+                
+            case .goToSettings:
+                
+                Button(action: { action() }) {
+                    Text("Go to settings")
                         .font(Font.system(size: 19, weight: .semibold))
                 }
                 

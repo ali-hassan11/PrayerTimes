@@ -19,7 +19,7 @@ struct DateView: View {
                 viewModel.minusOneDay()
             }) {
                 Image(systemName: "chevron.backward")
-                    .font(Font.system(size: 25, weight: .semibold))
+                    .font(Font.system(size: 27, weight: .bold))
                     .accentColor(colorScheme)
             }
             .padding(.horizontal, 20)
@@ -50,7 +50,7 @@ struct DateView: View {
                 viewModel.plusOneDay()
             }) {
                 Image(systemName: "chevron.forward")
-                    .font(Font.system(size: 25, weight: .semibold))
+                    .font(Font.system(size: 27, weight: .bold))
             }
             .padding(.horizontal, 20)
         }
