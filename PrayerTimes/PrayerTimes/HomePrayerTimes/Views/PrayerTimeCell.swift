@@ -43,7 +43,8 @@ struct PrayerTimeCell:  View {
                 .font(.title3).fontWeight(.medium)
         }
         .padding(.all, 20)
-        .background(prayer.isNextPrayer ? colorScheme : prayer.hasPassed ? colorScheme.opacity(0.25) : Color(UIColor.secondarySystemGroupedBackground))
+        .background(prayer.isNextPrayer ? colorScheme : colorScheme.opacity(0.25))
+//        .background(prayer.isNextPrayer ? colorScheme : prayer.hasPassed ? colorScheme.opacity(0.25) : colorScheme.opacity(0.25) Color(UIColor.secondarySystemGroupedBackground))
         .foregroundColor(prayer.isNextPrayer ? Color(UIColor.white) : Color(UIColor.label).opacity(0.8))
         .onReceive(timer) { _ in
             viewModel.updateTimeRemaining()

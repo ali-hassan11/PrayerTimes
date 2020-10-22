@@ -20,7 +20,7 @@ struct DateView: View {
             }) {
                 Image(systemName: "chevron.backward")
                     .font(Font.system(size: 27, weight: .bold))
-                    .accentColor(colorScheme)
+                    .accentColor(.white)
             }
             .padding(.horizontal, 20)
             
@@ -30,7 +30,7 @@ struct DateView: View {
                 if viewModel.isToday(date: viewModel.date) {
                     Text("TODAY")
                         .font(Font.headline).fontWeight(.bold)
-                        .foregroundColor(colorScheme)
+                        .foregroundColor(.white)
                         .padding(.top, 12)
                 }
                 
@@ -39,7 +39,7 @@ struct DateView: View {
                     .lineLimit(1)
                     .minimumScaleFactor(0.5)
                     .multilineTextAlignment(.center)
-                    .foregroundColor(Color(UIColor.label))
+                    .foregroundColor(.white)
                     .padding(.bottom, 12)
                     .padding(.top, viewModel.isToday(date: viewModel.date) ? 0 : 12)
             }
@@ -51,9 +51,10 @@ struct DateView: View {
             }) {
                 Image(systemName: "chevron.forward")
                     .font(Font.system(size: 27, weight: .bold))
+                    .accentColor(.white)
             }
             .padding(.horizontal, 20)
         }
-        .background(Color(UIColor.secondarySystemGroupedBackground))
+        .background(colorScheme)
     }
 }

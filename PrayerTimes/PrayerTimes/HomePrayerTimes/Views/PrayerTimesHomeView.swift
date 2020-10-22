@@ -43,7 +43,7 @@ struct PrayerTimesHomeView: View {
                         
                         PrayerTimesListView(viewModel: viewModel, colorScheme: $colorScheme)
                             .cornerRadius(25)
-                            .shadow(radius: 2)
+//                            .shadow(radius: 2)
                         Spacer()
 
                     case .failed(let failure):
