@@ -17,6 +17,14 @@ struct PrayerTimeCell:  View {
     
     var body: some View {
         HStack {
+            if prayer.name == PrayerName.fajr.capitalized() {
+                Image(prayer.icon.rawValue).font(Font.system(size: 23))
+                    .padding(.trailing, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+            } else {
+                Image(systemName: prayer.icon.rawValue).font(Font.system(size: 23))
+                    .padding(.trailing, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+            }
+            
             Text(prayer.name)
                 .font(.title3).fontWeight(.medium)
             Spacer()

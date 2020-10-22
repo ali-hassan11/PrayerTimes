@@ -17,12 +17,12 @@ struct PrayerTimeEntry: TimelineEntry {
     
     static var stub: PrayerTimeEntry {
         let prayers: [Prayer] = [
-            Prayer(name: "Fajr", prayerDateString: "", formattedTime: "", isNextPrayer: false, hasPassed: false),
-            Prayer(name: "Sunrise", prayerDateString: "", formattedTime: "", isNextPrayer: false, hasPassed: false),
-            Prayer(name: "Dhuhr", prayerDateString: "", formattedTime: "", isNextPrayer: false, hasPassed: false),
-            Prayer(name: "Asr", prayerDateString: "", formattedTime: "", isNextPrayer: false, hasPassed: false),
-            Prayer(name: "Maghrib", prayerDateString: "", formattedTime: "", isNextPrayer: false, hasPassed: false),
-            Prayer(name: "Isha", prayerDateString: "", formattedTime: "", isNextPrayer: false, hasPassed: false)
+            Prayer(name: "Fajr", prayerDateString: "", formattedTime: "", isNextPrayer: false, hasPassed: false, icon: .fajr),
+            Prayer(name: "Sunrise", prayerDateString: "", formattedTime: "", isNextPrayer: false, hasPassed: false, icon: .sunrise),
+            Prayer(name: "Dhuhr", prayerDateString: "", formattedTime: "", isNextPrayer: false, hasPassed: false, icon: .dhuhr),
+            Prayer(name: "Asr", prayerDateString: "", formattedTime: "", isNextPrayer: false, hasPassed: false, icon: .asr),
+            Prayer(name: "Maghrib", prayerDateString: "", formattedTime: "", isNextPrayer: false, hasPassed: false, icon: .maghrib),
+            Prayer(name: "Isha", prayerDateString: "", formattedTime: "", isNextPrayer: false, hasPassed: false, icon: .isha)
         ]
         return PrayerTimeEntry(prayerTimes: prayers)
     }
@@ -93,13 +93,14 @@ struct Provider: TimelineProvider {
                 
                 let prayers: [Prayer] = prayerNames.map { prayerName in
                     let prayerTimeString = prayerTimesData.timings[prayerName.capitalized()]
-                    let prayerName = prayerName.capitalized()
+                    let prayerNameString = prayerName.capitalized()
                     
-                    return Prayer(name: prayerName,
+                    return Prayer(name: prayerNameString,
                                   prayerDateString: "",
                                   formattedTime: prayerTimeString ?? "",
                                   isNextPrayer: false,
-                                  hasPassed: false)
+                                  hasPassed: false,
+                                  icon: Icon.forName(prayerName))
                 }
                 
                 let prayerTimesEntry = PrayerTimeEntry(prayerTimes: prayers)
