@@ -242,16 +242,22 @@ extension PrayerTimeListViewModel {
             guard let prayerTimeString = prayerTimesData.timings[prayerName.capitalized()] else { return }
             let prayerDateString = prayerTimesData.dateInfo.gergorianDate.date
             
-            let prayerTimeDate = self.prayerTimesDate(dateString: prayerDateString, timeString: prayerTimeString)
+            let prayerTimeDate = self.prayerTimesDate(dateString: prayerDateString,
+                                                      timeString: prayerTimeString)
             
             let isNextPrayer: Bool
             if let prayerTimeDate = prayerTimeDate {
-                isNextPrayer = self.isNextPrayer(prayerTimesDate: prayerTimeDate, currentDate: currentDate)
+                isNextPrayer = self.isNextPrayer(prayerTimesDate: prayerTimeDate,
+                                                 currentDate: currentDate)
             } else {
                 isNextPrayer = false
             }
             
-            let prayer = Prayer(name: prayerName.capitalized(), prayerDateString: prayerDateString, formattedTime: prayerTimeString, isNextPrayer: isNextPrayer)
+            let prayer = Prayer(name: prayerName.capitalized(),
+                                prayerDateString: prayerDateString,
+                                formattedTime: prayerTimeString,
+                                isNextPrayer: isNextPrayer,
+                                hasPassed: !self.nextPrayerFound && isToday(date: Date()))//Change to isInPast(date: prayerTimeDate)
             prayerTimes.append(prayer)
         }
         

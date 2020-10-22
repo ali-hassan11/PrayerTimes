@@ -27,12 +27,3 @@ struct NextPrayerView: View {
             .cornerRadius(20)
     }
 }
-
-struct NextPrayerView_Previews: PreviewProvider {
-    
-    @State static var prayer: Prayer? = Prayer(name: "Fajr", prayerDateString: "22-10-1389", formattedTime: "05:00", isNextPrayer: true)
-    
-    static var previews: some View {
-        NextPrayerView(prayer: $prayer)
-    }
-}
