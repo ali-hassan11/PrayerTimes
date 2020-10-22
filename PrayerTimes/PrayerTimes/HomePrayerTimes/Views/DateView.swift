@@ -55,6 +55,6 @@ struct DateView: View {
             }
             .padding(.horizontal, 20)
         }
-        .background(LinearGradient(gradient: Gradient(colors: [colorScheme.opacity(0.8), colorScheme]), startPoint: .top, endPoint: .bottom))
+        .background(gradient(colorScheme: colorScheme))
     }
 }

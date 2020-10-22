@@ -8,7 +8,8 @@
 import WidgetKit
 import SwiftUI
 import Intents
-//Will need to call WidgetKit.reloadTimeline whenever user shancges setting, & Request new timeline after midnight
+//Will need to call WidgetKit.reloadTimeline whenever user shancges setting, whenever location changes
+//Request new timeline after midnight or after next prayer
 
 // MARK: Entry - Holds the date of when the date of when widget should be updated and presenter
 struct PrayerTimeEntry: TimelineEntry {
@@ -127,19 +128,38 @@ struct PlaceHolderView: View {
 struct PrayerTimesWidgetEntryView: View {
     
     let entry: Provider.Entry
+    @Environment(\.widgetFamily) var family
     
     var body: some View {
         HStack {
-            ForEach(entry.prayerTimes) { prayer in
-                VStack {
-                    Text(prayer.name)
-                        .foregroundColor(Color(.systemPink))
-                    Text(prayer.formattedTime)
-                }
+            switch family {
+            
+            case .systemSmall:
+                SmallWidget(entry: entry)
+                
+            case .systemMedium:
+                Text("Medium")
+                
+            case .systemLarge:
+                Text("Large")
+                
+            default:
+                Text("Dunno")
+            
             }
         }
     }
 }
+
+struct SmallWidget: View {
+    
+    let entry: PrayerTimeEntry
+    
+    var body: some View {
+        Text("SMALLLLL")
+    }
+}
+
 
 // MARK: Widget
 @main

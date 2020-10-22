@@ -44,7 +44,6 @@
 		CE29D9E02541AB0F00367EF7 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E87B92538D1CC007C8973 /* Color+Extension.swift */; };
 		CE29D9E52541AB3F00367EF7 /* GeocoderWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE609B82532B393009DD0C1 /* GeocoderWrapper.swift */; };
 		CE29D9EA2541AE8A00367EF7 /* PrayerName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D29F2527840200561999 /* PrayerName.swift */; };
-		CE29D9F02541B8B700367EF7 /* SmallWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE29D9EF2541B8B600367EF7 /* SmallWidget.swift */; };
 		CE29D9FA2541BCE700367EF7 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE29D9F92541BCE700367EF7 /* Icon.swift */; };
 		CE29D9FF2541BCF700367EF7 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE29D9F92541BCE700367EF7 /* Icon.swift */; };
 		CE49B71D2533C79300E8294E /* SettingSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE49B71C2533C79300E8294E /* SettingSelectView.swift */; };
@@ -159,7 +158,6 @@
 		CE29D9062540DD7E00367EF7 /* PrayerTimesWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = PrayerTimesWidget.intentdefinition; sourceTree = "<group>"; };
 		CE29D9072540DD8100367EF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE29D9092540DD8100367EF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE29D9EF2541B8B600367EF7 /* SmallWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallWidget.swift; sourceTree = "<group>"; };
 		CE29D9F92541BCE700367EF7 /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 		CE49B71C2533C79300E8294E /* SettingSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSelectView.swift; sourceTree = "<group>"; };
 		CE4A6365252919CE000D5CA9 /* PrayerTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimeCell.swift; sourceTree = "<group>"; };
@@ -327,7 +325,6 @@
 			isa = PBXGroup;
 			children = (
 				CE29D9042540DD7E00367EF7 /* PrayerTimesWidget.swift */,
-				CE29D9EF2541B8B600367EF7 /* SmallWidget.swift */,
 				CE29D9062540DD7E00367EF7 /* PrayerTimesWidget.intentdefinition */,
 				CE29D9072540DD8100367EF7 /* Assets.xcassets */,
 				CE29D9092540DD8100367EF7 /* Info.plist */,
@@ -763,7 +760,6 @@
 				CEE609B92532B393009DD0C1 /* GeocoderWrapper.swift in Sources */,
 				CEE609A92532A5DD009DD0C1 /* Constants.swift in Sources */,
 				CE28BA292526146300AAD5BD /* PrayerTimesApp.swift in Sources */,
-				CE29D9F02541B8B700367EF7 /* SmallWidget.swift in Sources */,
 				CE6EAEDD25262C2300E688D3 /* PrayerTimesListView.swift in Sources */,
 				CE4CBA06252A738200A42E1E /* CustomError.swift in Sources */,
 				CEA624F62526B45C00592075 /* Method.swift in Sources */,

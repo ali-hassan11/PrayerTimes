@@ -4,6 +4,11 @@
 //
 //  Created by user on 03/10/2020.
 //
+func gradient(colorScheme: Color) -> LinearGradient {
+    LinearGradient(gradient: Gradient(colors: [colorScheme.opacity(0.8), colorScheme]),
+                                  startPoint: .bottomTrailing,
+                                  endPoint: .topLeading)
+}
 
 import SwiftUI
 
@@ -57,9 +62,7 @@ struct PrayerTimeCell:  View {
     }
     var cellBackground: AnyView {
         if prayer.isNextPrayer {
-            return AnyView(LinearGradient(gradient: Gradient(colors: [colorScheme.opacity(0.8), colorScheme]),
-                                          startPoint: .top,
-                                          endPoint: .bottom))
+            return AnyView(gradient(colorScheme: colorScheme))
         } else {
             return AnyView(Color(UIColor.secondarySystemGroupedBackground))
         }
