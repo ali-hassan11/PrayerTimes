@@ -131,8 +131,11 @@ struct PrayerTimesWidgetEntryView: View {
     var body: some View {
         HStack {
             ForEach(entry.prayerTimes) { prayer in
-                Text(prayer.name)
-                    .foregroundColor(Color(.systemPink))
+                VStack {
+                    Text(prayer.name)
+                        .foregroundColor(Color(.systemPink))
+                    Text(prayer.formattedTime)
+                }
             }
         }
     }
