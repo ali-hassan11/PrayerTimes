@@ -107,7 +107,10 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
                                                                school: settings.school,
                                                                latitudeAdjustmentMethod: settings.latitudeAdjustmentMethod)
         
-        guard let url = URLBuilder.prayerTimesForDateURL(configuration: prayerTimesConfiguration) else { return }
+        guard let url = URLBuilder.prayerTimesForDateURL(configuration: prayerTimesConfiguration) else {
+            stateManager.failed(with: .geoCodingError) //Add another failure state for this
+            return
+        }
 
         Service.shared.fetchPrayerTimes(url: url) { [weak self] result in
             

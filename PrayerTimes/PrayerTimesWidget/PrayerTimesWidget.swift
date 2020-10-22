@@ -8,14 +8,14 @@
 import WidgetKit
 import SwiftUI
 import Intents
-
+//Will need to call WidgetKit.reloadTimeline whenever user shancges setting, & Request new timeline after midnight
 
 // MARK: Entry - Holds the date of when the date of when widget should be updated and presenter
 struct PrayerTimeEntry: TimelineEntry {
     let date = Date()
     let prayerTimes: [Prayer]
     
-    var stub: PrayerTimeEntry {
+    static var stub: PrayerTimeEntry {
         let prayers: [Prayer] = [
             Prayer(name: "Fajr", prayerDateString: "", formattedTime: "", isNextPrayer: false, hasPassed: false),
             Prayer(name: "Sunrise", prayerDateString: "", formattedTime: "", isNextPrayer: false, hasPassed: false),
@@ -39,16 +39,77 @@ struct Provider: TimelineProvider {
     
     //WidgetKit makes the snapshot request when displaying the widget in transient situations, such as when the user is adding a widget.
     func getSnapshot(in context: Context, completion: @escaping (PrayerTimeEntry) -> Void) {
-        let entry = Entry(prayerTimes: [])
-        completion(entry)
+        if context.isPreview {
+            completion(PrayerTimeEntry.stub)
+        } else {
+        
+            fetchData() { (result) in
+                switch result {
+                case .success(let entry):
+                    completion(entry)
+                    
+                case .failure:
+                    completion(PrayerTimeEntry.stub)
+                }
+            }
+        }
     }
     
-    //Used to update widget with new data
     func getTimeline(in context: Context, completion: @escaping (Timeline<PrayerTimeEntry>) -> Void) {
-        //Find out how to do this
-        let entry = Entry(prayerTimes: [])
-        let timeline = Timeline(entries: [entry], policy: .atEnd) //Request new timeline after mins to midnight
-        completion(timeline)
+        fetchData() { (result) in
+            switch result {
+            case .success(let entry):
+                let timeline = Timeline(entries: [entry], policy: .atEnd)
+                //After Midnight... (Get current day, add 1 day, change time to 00:0)
+                completion(timeline)
+                
+            case .failure:
+                let timeline = Timeline(entries: [PrayerTimeEntry.stub], policy: .after(Date().addingTimeInterval(60 * 2)))
+                completion(timeline)
+            }
+        }
+
+    }
+    
+    func fetchData(completion: @escaping (Result<PrayerTimeEntry, CustomError>) -> Void) {
+    
+        let settings = SettingsConfiguration.shared
+        let coordinaties = Coordinates(latitude: String(settings.locationInfo.lat),
+                                       longitude: String(settings.locationInfo.long))
+        let prayerTimesConfiguration = PrayerTimesConfiguration(timestamp: Date().timestampString,
+                                                                coordinates: coordinaties,
+                                                                method: settings.method,
+                                                                school: settings.school,
+                                                                latitudeAdjustmentMethod: settings.latitudeAdjustmentMethod)
+        
+        guard let url = URLBuilder.prayerTimesForDateURL(configuration: prayerTimesConfiguration) else { return }
+        
+        service.fetchPrayerTimes(url: url) { (result) in
+            switch result {
+            
+            case .success(let response):
+                let prayerTimesData = response.prayerTimesData
+                let prayerNames: [PrayerName] = [.fajr, .sunrise, .dhuhr, .asr, .maghrib, .isha]
+                
+                let prayers: [Prayer] = prayerNames.map { prayerName in
+                    let prayerTimeString = prayerTimesData.timings[prayerName.capitalized()]
+                    let prayerName = prayerName.capitalized()
+                    
+                    return Prayer(name: prayerName,
+                                  prayerDateString: "",
+                                  formattedTime: prayerTimeString ?? "",
+                                  isNextPrayer: false,
+                                  hasPassed: false)
+                }
+                
+                let prayerTimesEntry = PrayerTimeEntry(prayerTimes: prayers)
+                completion(.success(prayerTimesEntry))
+                
+            case .failure(let error):
+                print(error)
+                completion(.failure(.init(title: "Error", message: "Failed to get data for widget")))
+            }
+        }
 
     }
 }
@@ -68,9 +129,6 @@ struct PrayerTimesWidgetEntryView: View {
     
     var body: some View {
         HStack {
-            
-            Text("I'm ALIVE")
-            
             ForEach(entry.prayerTimes) { prayer in
                 Text(prayer.name)
                     .foregroundColor(Color(.systemPink))

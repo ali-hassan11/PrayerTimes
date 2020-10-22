@@ -32,6 +32,18 @@
 		CE29D9A42541A8B900367EF7 /* DateElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA625362526BE6800592075 /* DateElements.swift */; };
 		CE29D9A92541A8BE00367EF7 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA6253E2526BFE300592075 /* Month.swift */; };
 		CE29D9AE2541A8C500367EF7 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4CBA05252A738200A42E1E /* CustomError.swift */; };
+		CE29D9B32541A9E200367EF7 /* SettingsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D2692526D07E00561999 /* SettingsConfiguration.swift */; };
+		CE29D9B82541A9FC00367EF7 /* URLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA6247F25265D0300592075 /* URLBuilder.swift */; };
+		CE29D9BD2541AA0A00367EF7 /* PrayerTimesConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA6248425265DFC00592075 /* PrayerTimesConfiguration.swift */; };
+		CE29D9C22541AA2500367EF7 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA624E72526B41000592075 /* Coordinates.swift */; };
+		CE29D9C72541AA2900367EF7 /* Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA624F52526B45C00592075 /* Method.swift */; };
+		CE29D9CC2541AA2E00367EF7 /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA624FA2526B46C00592075 /* School.swift */; };
+		CE29D9D12541AA3400367EF7 /* LatitudeAdjustmentMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E87C12538D715007C8973 /* LatitudeAdjustmentMethod.swift */; };
+		CE29D9D62541AA7000367EF7 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4CB9F8252A728600A42E1E /* Date+Extensions.swift */; };
+		CE29D9DB2541AAE700367EF7 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE6099725321912009DD0C1 /* LocationManager.swift */; };
+		CE29D9E02541AB0F00367EF7 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E87B92538D1CC007C8973 /* Color+Extension.swift */; };
+		CE29D9E52541AB3F00367EF7 /* GeocoderWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE609B82532B393009DD0C1 /* GeocoderWrapper.swift */; };
+		CE29D9EA2541AE8A00367EF7 /* PrayerName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D29F2527840200561999 /* PrayerName.swift */; };
 		CE49B71D2533C79300E8294E /* SettingSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE49B71C2533C79300E8294E /* SettingSelectView.swift */; };
 		CE4A6366252919CE000D5CA9 /* PrayerTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4A6365252919CE000D5CA9 /* PrayerTimeCell.swift */; };
 		CE4CB9F0252A71D400A42E1E /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4CB9EF252A71D400A42E1E /* LoadingState.swift */; };
@@ -786,13 +798,25 @@
 				CE29D9A42541A8B900367EF7 /* DateElements.swift in Sources */,
 				CE29D98C2541A89B00367EF7 /* PrayerTimesResponse.swift in Sources */,
 				CE29D9A92541A8BE00367EF7 /* Month.swift in Sources */,
+				CE29D9B32541A9E200367EF7 /* SettingsConfiguration.swift in Sources */,
 				CE29D99A2541A8AF00367EF7 /* PrayerTimesData.swift in Sources */,
+				CE29D9D12541AA3400367EF7 /* LatitudeAdjustmentMethod.swift in Sources */,
+				CE29D9C72541AA2900367EF7 /* Method.swift in Sources */,
+				CE29D9EA2541AE8A00367EF7 /* PrayerName.swift in Sources */,
+				CE29D9B82541A9FC00367EF7 /* URLBuilder.swift in Sources */,
 				CE29D9482540E15D00367EF7 /* Prayer.swift in Sources */,
+				CE29D9BD2541AA0A00367EF7 /* PrayerTimesConfiguration.swift in Sources */,
 				CE29D9AE2541A8C500367EF7 /* CustomError.swift in Sources */,
+				CE29D9E02541AB0F00367EF7 /* Color+Extension.swift in Sources */,
+				CE29D9D62541AA7000367EF7 /* Date+Extensions.swift in Sources */,
+				CE29D9E52541AB3F00367EF7 /* GeocoderWrapper.swift in Sources */,
+				CE29D9C22541AA2500367EF7 /* Coordinates.swift in Sources */,
 				CE29D99F2541A8B400367EF7 /* DateInfo.swift in Sources */,
 				CE29D9872541A75600367EF7 /* Service.swift in Sources */,
 				CE29D90A2540DD8100367EF7 /* PrayerTimesWidget.intentdefinition in Sources */,
 				CE29D9052540DD7E00367EF7 /* PrayerTimesWidget.swift in Sources */,
+				CE29D9DB2541AAE700367EF7 /* LocationManager.swift in Sources */,
+				CE29D9CC2541AA2E00367EF7 /* School.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
