@@ -13,7 +13,7 @@ struct PrayerTimesListView: View {
     @Binding var colorScheme: Color
     
     var body: some View {
-        VStack(spacing: 2) {
+        VStack(spacing: 1) {
             ForEach(viewModel.prayers) { prayer in
                 PrayerTimeCell(prayer: prayer, viewModel: viewModel, colorScheme: $colorScheme)
             }

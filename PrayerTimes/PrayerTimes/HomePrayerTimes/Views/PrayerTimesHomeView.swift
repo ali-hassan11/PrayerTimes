@@ -27,6 +27,7 @@ struct PrayerTimesHomeView: View {
                         Spacer()
                         DateView(viewModel: viewModel, colorScheme: $colorScheme)
                             .cornerRadius(25)
+                            .shadow(radius: 2)
                         
                         HStack {
                             Spacer()
@@ -42,6 +43,7 @@ struct PrayerTimesHomeView: View {
                         
                         PrayerTimesListView(viewModel: viewModel, colorScheme: $colorScheme)
                             .cornerRadius(25)
+                            .shadow(radius: 2)
                         Spacer()
 
                     case .failed(let failure):

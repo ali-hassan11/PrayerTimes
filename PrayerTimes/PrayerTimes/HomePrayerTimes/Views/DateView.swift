@@ -37,7 +37,7 @@ struct DateView: View {
                 Text(viewModel.hijriDate)
                     .font(Font.system(size: 24, weight: .semibold))
                     .lineLimit(1)
-                    .minimumScaleFactor(0.7)
+                    .minimumScaleFactor(0.5)
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color(UIColor.label))
                     .padding(.bottom, 12)
