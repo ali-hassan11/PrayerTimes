@@ -22,7 +22,7 @@ struct PrayerTimesHomeView: View {
                 VStack(spacing: 16) {
                     
                     switch (viewModel.stateManager.state) {
-                    case (.loaded):
+                    case .loaded:
                         
                         Spacer()
                         DateView(viewModel: viewModel, colorScheme: $colorScheme)
@@ -44,11 +44,31 @@ struct PrayerTimesHomeView: View {
                             .cornerRadius(25)
                         Spacer()
 
-                    case (.failed):
+                    case .failed(let failure):
+
+                        switch failure {
                         
-                        ErrorView(text: "Failed to load prayer times, please check your internet connection and try again",
-                                  button: .retry,
-                                  action: { viewModel.retryFetchData() })
+                        case Failure.noInternet:
+                            
+                            ErrorView(text: "Failed to load prayer times, please check your internet connection and try again",
+                                      button: .retry,
+                                      action: { viewModel.retryFetchData() })
+                            
+                        case Failure.locationDisabled:
+                            
+                            ErrorView(text: "Please enable location usage in your phone's settings so that we can find the prayer times for your area",
+                                      button: .goToSettings,
+                                      action: {
+                                        if let url = URL(string: UIApplication.openSettingsURLString) {
+                                            UIApplication.shared.open(url, options: [:]) { _ in }}
+                                      })
+                            
+                        case Failure.geoCodingError:
+                            
+                            ErrorView(text: "Please enable location usage in your phone's settings so that we can find the prayer times for your area",
+                                      button: .ok,
+                                      action: { viewModel.retryFetchData() })
+                        }
                         
                     default :
                         

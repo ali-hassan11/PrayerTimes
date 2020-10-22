@@ -7,10 +7,16 @@
 
 import Foundation
 
+enum Failure {
+    case noInternet
+    case locationDisabled
+    case geoCodingError
+}
+
 enum LoadingState: Equatable {
     case loading
     case loaded
-    case failed
+    case failed(Failure)
 }
 
 class StateManager: ObservableObject { //ADD TESTS FOR THIS
@@ -24,8 +30,16 @@ class StateManager: ObservableObject { //ADD TESTS FOR THIS
             return .loaded
         }
         
-        if prayerTimesState == .failed || displayDateState == .failed {
-            return .failed
+        if prayerTimesState == .failed(.noInternet) || displayDateState == .failed(.noInternet) {
+            return .failed(.noInternet)
+        }
+        
+        if prayerTimesState == .failed(.locationDisabled) || displayDateState == .failed(.locationDisabled) {
+            return .failed(.locationDisabled)
+        }
+        
+        if prayerTimesState == .failed(.geoCodingError) || displayDateState == .failed(.geoCodingError) {
+            return .failed(.geoCodingError)
         }
         
         return .loading
@@ -44,9 +58,9 @@ class StateManager: ObservableObject { //ADD TESTS FOR THIS
         displayDateState = .loaded
     }
     
-    func failed() {
-        prayerTimesState = .failed
-        displayDateState = .failed
+    func failed(with failure: Failure) {
+        prayerTimesState = .failed(failure)
+        displayDateState = .failed(failure)
     }
     
     func loading() {

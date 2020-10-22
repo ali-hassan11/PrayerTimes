@@ -60,23 +60,21 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
                 
             case .failure(let error):
                 print(error)
-                self.stateManager.failed()
+                self.stateManager.failed(with: .geoCodingError)
             }
         })
     }
+    
     init() {
-        print("ViewModel Initialiasation")
         self.locationManager = CLLocationManager()
         self.delegate = createDelegate()
         
         if let locationInfo = SettingsConfiguration.getLocationInfoSetting() {
-            print("Location info exists")
             fetchData(date: date, locationInfo: locationInfo)
         } else {
-            print("Location info DOES NOT exist")
-
             switch locationManager.authorizationStatus {
-            case .authorizedAlways, .authorizedWhenInUse: //Happy path
+            
+            case .authorizedAlways, .authorizedWhenInUse:
                 locationManager.delegate = self.delegate
                 locationManager.startUpdatingLocation()
                 
@@ -85,10 +83,11 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
                 locationManager.requestAlwaysAuthorization()
 
             case .restricted, .denied:
-                print("Location restricted or denied")
+                stateManager.failed(with: .locationDisabled)
 
             default:
-                print("default")
+                stateManager.failed(with: .locationDisabled)
+
             }
             
         }
@@ -135,7 +134,7 @@ class PrayerTimeListViewModel: ObservableObject, Identifiable {
                 print(error)
                 DispatchQueue.main.async {
                     self?.prayers = []
-                    self?.stateManager.failed()
+                    self?.stateManager.failed(with: .noInternet)
                 }
             }
         }
@@ -243,11 +242,11 @@ extension PrayerTimeListViewModel {
             guard let prayerTimeString = prayerTimesData.timings[prayerName.capitalized()] else { return }
             let prayerDateString = prayerTimesData.dateInfo.gergorianDate.date
             
-            let prayerTimesDate = self.prayerTimesDate(dateString: prayerDateString, timeString: prayerTimeString)
+            let prayerTimeDate = self.prayerTimesDate(dateString: prayerDateString, timeString: prayerTimeString)
             
             let isNextPrayer: Bool
-            if let prayerTimesDate = prayerTimesDate {
-                isNextPrayer = self.isNextPrayer(prayerTimesDate: prayerTimesDate, currentDate: currentDate)
+            if let prayerTimeDate = prayerTimeDate {
+                isNextPrayer = self.isNextPrayer(prayerTimesDate: prayerTimeDate, currentDate: currentDate)
             } else {
                 isNextPrayer = false
             }
@@ -280,7 +279,18 @@ extension PrayerTimeListViewModel {
     
     func isNextPrayer(prayerTimesDate: Date, currentDate: Date) -> Bool {
         
-        if !isToday(date: prayerTimesDate) {
+        //Improvment: Show Next days fajr
+        
+        //If in past return { false }
+        
+        //if is within 24 hours of future {
+        
+        //Is not sunrise yet
+        //return true
+        
+        //}
+        
+        if isToday(date: prayerTimesDate) == false {
             return false
         }
         
