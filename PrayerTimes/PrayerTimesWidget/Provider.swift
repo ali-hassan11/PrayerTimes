@@ -13,7 +13,8 @@ struct Provider: TimelineProvider {
     let service = Service.shared
     
     func placeholder(in context: Context) -> PrayerTimeEntry {
-        return Entry(prayerTimes: [])
+        let color = SettingsConfiguration.getColorSetting()
+        return Entry(prayerTimes: [], colorScheme: color ?? .init(.systemPink))
     }
     
     //WidgetKit makes the snapshot request when displaying the widget in transient situations, such as when the user is adding a widget.
@@ -81,8 +82,7 @@ struct Provider: TimelineProvider {
                                   hasPassed: false,
                                   icon: Icon.forName(prayerName))
                 }
-                
-                let prayerTimesEntry = PrayerTimeEntry(prayerTimes: prayers)
+                let prayerTimesEntry = PrayerTimeEntry(prayerTimes: prayers, colorScheme: .init(.systemOrange))
                 completion(.success(prayerTimesEntry))
                 
             case .failure(let error):
@@ -90,6 +90,5 @@ struct Provider: TimelineProvider {
                 completion(.failure(.init(title: "Error", message: "Failed to get data for widget")))
             }
         }
-
     }
 }

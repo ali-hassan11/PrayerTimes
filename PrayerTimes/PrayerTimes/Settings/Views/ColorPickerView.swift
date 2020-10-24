@@ -36,7 +36,7 @@ struct ColorPickerView: View {
                         .frame(height: 50)
                         .onTapGesture(perform: {
                             colorScheme = color
-                            SettingsConfiguration.shared.saveColorSetting(color)
+//                            SettingsConfiguration.shared.saveColorSetting(color)
                         })
                 }
                 

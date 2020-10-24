@@ -8,7 +8,7 @@
 import SwiftUI
 
 func linearGradient(colorScheme: Color) -> LinearGradient {
-    LinearGradient(gradient: Gradient(colors: [colorScheme.opacity(0.8), colorScheme]),
-                                  startPoint: .bottomTrailing,
-                                  endPoint: .topLeading)
+    LinearGradient(gradient: Gradient(colors: [Color("CustomBlue"), Color("CustomPurple")]),
+                                  startPoint: .topLeading,
+                                  endPoint: .bottomTrailing)
 }

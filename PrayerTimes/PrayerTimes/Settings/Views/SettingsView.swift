@@ -34,10 +34,10 @@ struct SettingsView: View {
             let settings = SettingsConfiguration.shared
             
             List {
-                //MARK: Color
-                Section {
-                    ChooseColorCell(colorScheme: $colorScheme, title: "Theme", action: {})
-                }
+//                //MARK: Color
+//                Section {
+//                    ChooseColorCell(colorScheme: $colorScheme, title: "Theme", action: {})
+//                }
                 
                 //MARK: Locate Me
                 Section(header: Text(SettingsConfiguration.shared.locationInfo.locationName)) {

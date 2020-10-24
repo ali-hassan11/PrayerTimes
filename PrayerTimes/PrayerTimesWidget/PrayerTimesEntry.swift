@@ -10,17 +10,17 @@ import WidgetKit
 
 struct PrayerTimeEntry: TimelineEntry {
     let date = Date()
-    let prayerTimes: [Prayer]
+    let prayerTimes: AllPrayersWidgetViewModel
     
-    static var stub: PrayerTimeEntry {
-        let prayers: [Prayer] = [
-            Prayer(name: "Fajr", prayerDateString: "", formattedTime: "", isNextPrayer: false, hasPassed: false, icon: .fajr),
-            Prayer(name: "Sunrise", prayerDateString: "", formattedTime: "", isNextPrayer: false, hasPassed: false, icon: .sunrise),
-            Prayer(name: "Dhuhr", prayerDateString: "", formattedTime: "", isNextPrayer: false, hasPassed: false, icon: .dhuhr),
-            Prayer(name: "Asr", prayerDateString: "", formattedTime: "", isNextPrayer: false, hasPassed: false, icon: .asr),
-            Prayer(name: "Maghrib", prayerDateString: "", formattedTime: "", isNextPrayer: false, hasPassed: false, icon: .maghrib),
-            Prayer(name: "Isha", prayerDateString: "", formattedTime: "", isNextPrayer: false, hasPassed: false, icon: .isha)
-        ]
-        return PrayerTimeEntry(prayerTimes: prayers)
-    }
+//    static var stub: PrayerTimeEntry {
+//        let prayers: [Prayer] = [
+//            Prayer(name: "Fajr", prayerDateString: "", formattedTime: "", isNextPrayer: false, hasPassed: false, icon: .fajr),
+//            Prayer(name: "Sunrise", prayerDateString: "", formattedTime: "", isNextPrayer: false, hasPassed: false, icon: .sunrise),
+//            Prayer(name: "Dhuhr", prayerDateString: "", formattedTime: "", isNextPrayer: false, hasPassed: false, icon: .dhuhr),
+//            Prayer(name: "Asr", prayerDateString: "", formattedTime: "", isNextPrayer: false, hasPassed: false, icon: .asr),
+//            Prayer(name: "Maghrib", prayerDateString: "", formattedTime: "", isNextPrayer: false, hasPassed: false, icon: .maghrib),
+//            Prayer(name: "Isha", prayerDateString: "", formattedTime: "", isNextPrayer: false, hasPassed: false, icon: .isha)
+//        ]
+//        return PrayerTimeEntry(prayerTimes: prayers, colorScheme: .init(.systemPink))
+//    }
 }

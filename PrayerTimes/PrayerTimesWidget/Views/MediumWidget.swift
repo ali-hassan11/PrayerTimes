@@ -15,7 +15,7 @@ struct MediumWidget: View {
         GeometryReader.init(content: { geometry in
             ZStack {
                 
-                linearGradient(colorScheme: .init(.systemPink))
+                linearGradient(colorScheme: entry.colorScheme)
                 
                 VStack(alignment: .leading) {
                     HeaderView(family: .medium, hirjiDate: "28 Muharram, 1442", gregorianDate: "22 October 2020")
@@ -34,7 +34,7 @@ struct MediumWidget: View {
 
 struct MediumWidget_Previews: PreviewProvider {
     static var previews: some View {
-        MediumWidget(entry: PrayerTimeEntry(prayerTimes: []))
+        MediumWidget(entry: PrayerTimeEntry(prayerTimes: [], colorScheme: SettingsConfiguration.getColorSetting()!))
     }
 }
 

@@ -91,6 +91,10 @@
 		CECFCEAE25448CCF005E8ED9 /* CountdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECFCEAD25448CCF005E8ED9 /* CountdownView.swift */; };
 		CECFCEC025448DA4005E8ED9 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE29DA6E254223F600367EF7 /* Global.swift */; };
 		CECFCEC525448DB3005E8ED9 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE29D9F92541BCE700367EF7 /* Icon.swift */; };
+		CECFCF2B25449376005E8ED9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE609A82532A5DD009DD0C1 /* Constants.swift */; };
+		CECFCF302544DA06005E8ED9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE28BA2C2526146500AAD5BD /* Assets.xcassets */; };
+		CECFCF372544DF49005E8ED9 /* AllPrayersWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECFCF362544DF49005E8ED9 /* AllPrayersWidgetViewModel.swift */; };
+		CECFCF382544DF49005E8ED9 /* AllPrayersWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECFCF362544DF49005E8ED9 /* AllPrayersWidgetViewModel.swift */; };
 		CED3D26A2526D07E00561999 /* SettingsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D2692526D07E00561999 /* SettingsConfiguration.swift */; };
 		CED3D2752526E16600561999 /* DateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D2742526E16600561999 /* DateTests.swift */; };
 		CED3D2932526E7E000561999 /* SettingsConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D2922526E7E000561999 /* SettingsConfigurationTests.swift */; };
@@ -216,6 +220,9 @@
 		CEA625432526C00700592075 /* Month+DecodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Month+DecodableTests.swift"; sourceTree = "<group>"; };
 		CECFCEA225447EC3005E8ED9 /* PrayerIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerIconView.swift; sourceTree = "<group>"; };
 		CECFCEAD25448CCF005E8ED9 /* CountdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownView.swift; sourceTree = "<group>"; };
+		CECFCF1D25449274005E8ED9 /* PrayerTimes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PrayerTimes.entitlements; sourceTree = "<group>"; };
+		CECFCF2225449280005E8ED9 /* PrayerTimesWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PrayerTimesWidgetExtension.entitlements; sourceTree = "<group>"; };
+		CECFCF362544DF49005E8ED9 /* AllPrayersWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPrayersWidgetViewModel.swift; sourceTree = "<group>"; };
 		CED3D2692526D07E00561999 /* SettingsConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsConfiguration.swift; sourceTree = "<group>"; };
 		CED3D2742526E16600561999 /* DateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTests.swift; sourceTree = "<group>"; };
 		CED3D2922526E7E000561999 /* SettingsConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsConfigurationTests.swift; sourceTree = "<group>"; };
@@ -269,6 +276,7 @@
 		CE28BA1C2526146300AAD5BD = {
 			isa = PBXGroup;
 			children = (
+				CECFCF2225449280005E8ED9 /* PrayerTimesWidgetExtension.entitlements */,
 				CE28BA272526146300AAD5BD /* PrayerTimes */,
 				CE28BA392526146500AAD5BD /* PrayerTimesTests */,
 				CE28BA442526146500AAD5BD /* PrayerTimesUITests */,
@@ -293,6 +301,7 @@
 		CE28BA272526146300AAD5BD /* PrayerTimes */ = {
 			isa = PBXGroup;
 			children = (
+				CECFCF1D25449274005E8ED9 /* PrayerTimes.entitlements */,
 				CED3D2B52527CD1F00561999 /* TabsView.swift */,
 				CE28BA282526146300AAD5BD /* PrayerTimesApp.swift */,
 				CEA6249F252681BC00592075 /* PrayerTimeListViewModel.swift */,
@@ -345,6 +354,7 @@
 		CE29D9032540DD7E00367EF7 /* PrayerTimesWidget */ = {
 			isa = PBXGroup;
 			children = (
+				CECFCF362544DF49005E8ED9 /* AllPrayersWidgetViewModel.swift */,
 				CE29DA3D25421C7100367EF7 /* PrayerTimesWidgetEntryView.swift */,
 				CE29D9042540DD7E00367EF7 /* PrayerTimesWidget.swift */,
 				CE29DA5B25421D2400367EF7 /* Provider.swift */,
@@ -662,6 +672,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CECFCF302544DA06005E8ED9 /* Assets.xcassets in Resources */,
 				CE29D9082540DD8100367EF7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -820,6 +831,7 @@
 				CE49B71D2533C79300E8294E /* SettingSelectView.swift in Sources */,
 				CEA624FB2526B46C00592075 /* School.swift in Sources */,
 				CE6EAEE02526300200E688D3 /* NextPrayerView.swift in Sources */,
+				CECFCF372544DF49005E8ED9 /* AllPrayersWidgetViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -874,6 +886,8 @@
 				CE29DA3825421C0C00367EF7 /* SmallWidget.swift in Sources */,
 				CE29D9C22541AA2500367EF7 /* Coordinates.swift in Sources */,
 				CE29D99F2541A8B400367EF7 /* DateInfo.swift in Sources */,
+				CECFCF382544DF49005E8ED9 /* AllPrayersWidgetViewModel.swift in Sources */,
+				CECFCF2B25449376005E8ED9 /* Constants.swift in Sources */,
 				CE29D9872541A75600367EF7 /* Service.swift in Sources */,
 				CECFCEC025448DA4005E8ED9 /* Global.swift in Sources */,
 				CE29DA5C25421D2400367EF7 /* Provider.swift in Sources */,
@@ -1032,6 +1046,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PrayerTimes/PrayerTimes.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"PrayerTimes/Preview Content\"";
@@ -1058,6 +1073,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PrayerTimes/PrayerTimes.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"PrayerTimes/Preview Content\"";
@@ -1170,6 +1186,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = PrayerTimesWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 268E25G23B;
@@ -1179,7 +1196,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.AHApps.PrayerTimesApp.PrayerTimesWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AHApps.PrayerTimesApp.PrayerTimesWidgett;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1192,6 +1209,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = PrayerTimesWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 268E25G23B;
@@ -1201,7 +1219,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.AHApps.PrayerTimesApp.PrayerTimesWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AHApps.PrayerTimesApp.PrayerTimesWidgett;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;

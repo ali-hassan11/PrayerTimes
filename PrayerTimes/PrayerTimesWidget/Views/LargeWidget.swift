@@ -14,7 +14,7 @@ struct LargeWidget: View {
     var body: some View {
         GeometryReader.init(content: { geometry in
             ZStack {
-                linearGradient(colorScheme: .init(.systemPink))
+                linearGradient(colorScheme: entry.colorScheme)
                 
                 VStack(alignment: .leading) {
                     HeaderView(family: .large, hirjiDate: "28 Muharram, 1442", gregorianDate: "22 October 2020")

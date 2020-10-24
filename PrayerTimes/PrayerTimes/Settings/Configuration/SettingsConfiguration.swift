@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import WidgetKit
 
 //MOVE
 let LOCATIONKEY = "locationkKey"
@@ -16,6 +17,9 @@ let SCHOOLKEY = "schoolKey"
 let LATITUDEKEY = "latitudeKey"
 
 class SettingsConfiguration: ObservableObject {
+    
+    private static let userDefaults = UserDefaults(suiteName: Constants.groupName)!
+    private let userDefaults = UserDefaults(suiteName: Constants.groupName)!
     
     /*@Published*/ var method: Method
     /*@Published*/ var school: School
@@ -48,14 +52,15 @@ extension SettingsConfiguration {
         self.locationInfo = locationInfo
         do {
             let data = try JSONEncoder().encode(locationInfo)
-            UserDefaults.standard.setValue(data, forKey: LOCATIONKEY)
+            let userDefaults = UserDefaults(suiteName: Constants.groupName)!
+            userDefaults.setValue(data, forKey: LOCATIONKEY)
         } catch {
             print("Failed to save locationInfo to UserDefaults")
         }
     }
     
     static func getLocationInfoSetting() -> LocationInfo? {
-        guard let data = UserDefaults.standard.data(forKey: LOCATIONKEY) else { return nil }
+        guard let data = userDefaults.data(forKey: LOCATIONKEY) else { return nil }
         
         do {
             let locationInfo = try JSONDecoder().decode(LocationInfo.self, from: data)
@@ -70,14 +75,18 @@ extension SettingsConfiguration {
 //MARK: Color Scheme
 extension SettingsConfiguration {
     
-    func saveColorSetting(_ newColor: Color) {
+    //Made private as color scheme selection disabled for now
+    private func saveColorSetting(_ newColor: Color) {
         self.colorScheme = newColor
-        UserDefaults.standard.setValue(newColor.toString(), forKey: COLORKEY)
+        WidgetCenter.shared.reloadTimelines(ofKind: "Prayer_Times_Widget")
+        userDefaults.setValue(newColor.toString(), forKey: COLORKEY)
     }
     
-    private static func getColorSetting() -> Color? {
-        guard let colorName = UserDefaults.standard.string(forKey: COLORKEY) else { return nil }
-        return Color(colorName: colorName)
+    static func getColorSetting() -> Color? {
+
+//        guard let colorName = userDefaults.string(forKey: COLORKEY) else { return nil }
+//        return Color(colorName: colorName)
+        return Color("BlueBlue")
     }
 }
 
@@ -86,11 +95,14 @@ extension SettingsConfiguration {
     
     func saveMethodSetting(_ method: Method) {
         self.method = method
-        UserDefaults.standard.setValue(method.rawValue, forKey: METHODKEY)
+
+        userDefaults.setValue(method.rawValue, forKey: METHODKEY)
     }
     
     private static func getMethodSetting() -> Method? {
-        guard let index = UserDefaults.standard.object(forKey: METHODKEY) as? Int else { return nil }
+        let userDefaults = UserDefaults(suiteName: Constants.groupName)!
+
+        guard let index = userDefaults.object(forKey: METHODKEY) as? Int else { return nil }
         return Method(rawValue: index)
     }
 }
@@ -100,11 +112,14 @@ extension SettingsConfiguration {
     
     func saveSchoolSetting(_ school: School) {
         self.school = school
-        UserDefaults.standard.setValue(school.rawValue, forKey: SCHOOLKEY)
+        
+        let userDefaults = UserDefaults(suiteName: Constants.groupName)!
+
+        userDefaults.setValue(school.rawValue, forKey: SCHOOLKEY)
     }
     
     private static func getSchoolSetting() -> School? {
-        guard let index = UserDefaults.standard.object(forKey: SCHOOLKEY) as? Int else { return nil }
+        guard let index = userDefaults.object(forKey: SCHOOLKEY) as? Int else { return nil }
         return School(rawValue: index)
     }
 }
@@ -114,11 +129,13 @@ extension SettingsConfiguration {
     
     func saveLatitudeSetting(_ latitudeAdjustmentMethod: LatitudeAdjustmentMethod) {
         self.latitudeAdjustmentMethod = latitudeAdjustmentMethod
-        UserDefaults.standard.setValue(latitudeAdjustmentMethod.rawValue, forKey: SCHOOLKEY)
+
+        userDefaults.setValue(latitudeAdjustmentMethod.rawValue, forKey: SCHOOLKEY)
     }
     
     private static func getLatitudeSetting() -> LatitudeAdjustmentMethod? {
-        guard let index = UserDefaults.standard.object(forKey: LATITUDEKEY) as? Int else { return nil }
+
+        guard let index = userDefaults.object(forKey: LATITUDEKEY) as? Int else { return nil }
         return LatitudeAdjustmentMethod(rawValue: index)
     }
 }
