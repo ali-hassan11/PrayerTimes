@@ -15,10 +15,15 @@ struct SmallWidget: View {
         GeometryReader.init(content: { geometry in
             ZStack {
                 linearGradient(colorScheme: .init(.systemPink))
-                VStack {
-                    
-                    
+                VStack(alignment: .leading) {
+                    Text("Next:")
+                        .font(Font.system(size: 18, weight: .medium))
+                    Text("Maghrib")
+                        .font(Font.system(size: 20, weight: .light))
+                    Text("05:31")
+                        .font(Font.system(size: 45, weight: .medium)).minimumScaleFactor(0.6)
                 }
+                .padding(10)
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
         })
