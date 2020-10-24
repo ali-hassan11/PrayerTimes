@@ -14,7 +14,7 @@ struct SmallWidget: View {
     var body: some View {
         GeometryReader.init(content: { geometry in
             ZStack {
-                linearGradient(colorScheme: entry.colorScheme)
+                linearGradient(colorScheme: entry.viewModel.colorScheme)
                 VStack(alignment: .leading) {
                     Text("Next:")
                         .font(Font.system(size: 18, weight: .medium))

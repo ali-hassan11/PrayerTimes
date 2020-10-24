@@ -12,29 +12,29 @@ struct MediumWidget: View {
     let entry: PrayerTimeEntry
     
     var body: some View {
+        
+        let prayers = entry.viewModel.prayers
+        let hijriDate = entry.viewModel.hijriDate
+        let gregorianDate = entry.viewModel.gregorianDate
+        let colorScheme = entry.viewModel.colorScheme
+        
         GeometryReader.init(content: { geometry in
             ZStack {
                 
-                linearGradient(colorScheme: entry.colorScheme)
+                linearGradient(colorScheme: colorScheme)
                 
                 VStack(alignment: .leading) {
-                    HeaderView(family: .medium, hirjiDate: "28 Muharram, 1442", gregorianDate: "22 October 2020")
+                    HeaderView(family: .medium, hirjiDate: hijriDate, gregorianDate: gregorianDate)
                         .padding(.bottom, 3)
                     Spacer()
 
-                    MediumHorizontalPrayerList(prayers: entry.prayerTimes)
+                    MediumHorizontalPrayerList(prayers: prayers)
                 }
                 .padding()
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
             .foregroundColor(.white)
         })
-    }
-}
-
-struct MediumWidget_Previews: PreviewProvider {
-    static var previews: some View {
-        MediumWidget(entry: PrayerTimeEntry(prayerTimes: [], colorScheme: SettingsConfiguration.getColorSetting()!))
     }
 }
 

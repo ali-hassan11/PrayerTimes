@@ -12,19 +12,25 @@ struct LargeWidget: View {
     let entry: PrayerTimeEntry
     
     var body: some View {
+        
+        let prayers = entry.viewModel.prayers
+        let hijriDate = entry.viewModel.hijriDate
+        let gregorianDate = entry.viewModel.gregorianDate
+        let colorScheme = entry.viewModel.colorScheme
+        
         GeometryReader.init(content: { geometry in
             ZStack {
-                linearGradient(colorScheme: entry.colorScheme)
+                linearGradient(colorScheme: colorScheme)
                 
                 VStack(alignment: .leading) {
-                    HeaderView(family: .large, hirjiDate: "28 Muharram, 1442", gregorianDate: "22 October 2020")
+                    HeaderView(family: .large, hirjiDate: hijriDate, gregorianDate: gregorianDate)
                         .padding(.bottom, 4)
                     
                     Spacer()
                     
                     VStack {
                         
-                        ForEach(entry.prayerTimes) { prayer in
+                        ForEach(prayers) { prayer in
                             
                             HStack {
                                 

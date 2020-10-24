@@ -13,8 +13,7 @@ struct Provider: TimelineProvider {
     let service = Service.shared
     
     func placeholder(in context: Context) -> PrayerTimeEntry {
-        let color = SettingsConfiguration.getColorSetting()
-        return Entry(prayerTimes: [], colorScheme: color ?? .init(.systemPink))
+        return Entry(viewModel: AllPrayersWidgetViewModel.stub)
     }
     
     //WidgetKit makes the snapshot request when displaying the widget in transient situations, such as when the user is adding a widget.
@@ -36,11 +35,11 @@ struct Provider: TimelineProvider {
     }
     
     func getTimeline(in context: Context, completion: @escaping (Timeline<PrayerTimeEntry>) -> Void) {
-        fetchData() { (result) in
+        fetchData() { result in
             switch result {
             case .success(let entry):
                 let timeline = Timeline(entries: [entry], policy: .atEnd)
-                //After Midnight... (Get current day, add 1 day, change time to 00:0)
+                //After Midnight... 00:01 of next day
                 completion(timeline)
                 
             case .failure:
@@ -48,7 +47,6 @@ struct Provider: TimelineProvider {
                 completion(timeline)
             }
         }
-
     }
     
     func fetchData(completion: @escaping (Result<PrayerTimeEntry, CustomError>) -> Void) {
@@ -69,20 +67,9 @@ struct Provider: TimelineProvider {
             
             case .success(let response):
                 let prayerTimesData = response.prayerTimesData
-                let prayerNames: [PrayerName] = [.fajr, .sunrise, .dhuhr, .asr, .maghrib, .isha]
+                let viewModel = AllPrayersWidgetViewModel(prayerTimesData: prayerTimesData)
+                let prayerTimesEntry = PrayerTimeEntry(viewModel: viewModel)
                 
-                let prayers: [Prayer] = prayerNames.map { prayerName in
-                    let prayerTimeString = prayerTimesData.timings[prayerName.capitalized()]
-                    let prayerNameString = prayerName.capitalized()
-                    
-                    return Prayer(name: prayerNameString,
-                                  prayerDateString: "",
-                                  formattedTime: prayerTimeString ?? "",
-                                  isNextPrayer: false,
-                                  hasPassed: false,
-                                  icon: Icon.forName(prayerName))
-                }
-                let prayerTimesEntry = PrayerTimeEntry(prayerTimes: prayers, colorScheme: .init(.systemOrange))
                 completion(.success(prayerTimesEntry))
                 
             case .failure(let error):

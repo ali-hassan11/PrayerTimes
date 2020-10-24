@@ -18,7 +18,7 @@ let LATITUDEKEY = "latitudeKey"
 
 class SettingsConfiguration: ObservableObject {
     
-    private static let userDefaults = UserDefaults(suiteName: Constants.groupName)!
+    private static let userDefaults = UserDefaults(suiteName: Constants.groupName)! ; #warning("Sort this out")
     private let userDefaults = UserDefaults(suiteName: Constants.groupName)!
     
     /*@Published*/ var method: Method
@@ -54,6 +54,7 @@ extension SettingsConfiguration {
             let data = try JSONEncoder().encode(locationInfo)
             let userDefaults = UserDefaults(suiteName: Constants.groupName)!
             userDefaults.setValue(data, forKey: LOCATIONKEY)
+            updateWidget()
         } catch {
             print("Failed to save locationInfo to UserDefaults")
         }
@@ -78,8 +79,8 @@ extension SettingsConfiguration {
     //Made private as color scheme selection disabled for now
     private func saveColorSetting(_ newColor: Color) {
         self.colorScheme = newColor
-        WidgetCenter.shared.reloadTimelines(ofKind: "Prayer_Times_Widget")
         userDefaults.setValue(newColor.toString(), forKey: COLORKEY)
+        updateWidget()
     }
     
     static func getColorSetting() -> Color? {
@@ -95,12 +96,12 @@ extension SettingsConfiguration {
     
     func saveMethodSetting(_ method: Method) {
         self.method = method
-
+        WidgetCenter.shared.reloadAllTimelines()
         userDefaults.setValue(method.rawValue, forKey: METHODKEY)
+        updateWidget()
     }
     
     private static func getMethodSetting() -> Method? {
-        let userDefaults = UserDefaults(suiteName: Constants.groupName)!
 
         guard let index = userDefaults.object(forKey: METHODKEY) as? Int else { return nil }
         return Method(rawValue: index)
@@ -112,10 +113,8 @@ extension SettingsConfiguration {
     
     func saveSchoolSetting(_ school: School) {
         self.school = school
-        
-        let userDefaults = UserDefaults(suiteName: Constants.groupName)!
-
         userDefaults.setValue(school.rawValue, forKey: SCHOOLKEY)
+        updateWidget()
     }
     
     private static func getSchoolSetting() -> School? {
@@ -129,15 +128,20 @@ extension SettingsConfiguration {
     
     func saveLatitudeSetting(_ latitudeAdjustmentMethod: LatitudeAdjustmentMethod) {
         self.latitudeAdjustmentMethod = latitudeAdjustmentMethod
-
         userDefaults.setValue(latitudeAdjustmentMethod.rawValue, forKey: SCHOOLKEY)
+        updateWidget()
     }
     
     private static func getLatitudeSetting() -> LatitudeAdjustmentMethod? {
-
+        
         guard let index = userDefaults.object(forKey: LATITUDEKEY) as? Int else { return nil }
         return LatitudeAdjustmentMethod(rawValue: index)
     }
 }
 
+extension SettingsConfiguration {
+    func updateWidget() {
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+}
 
