@@ -46,27 +46,12 @@ struct PrayerTimeCell:  View {
             }
         }
     }
+    
     var cellBackground: AnyView {
         if prayer.isNextPrayer {
             return AnyView(linearGradient(colorScheme: colorScheme))
         } else {
             return AnyView(Color(UIColor.secondarySystemGroupedBackground))
         }
-    }
-}
-
-struct CountdownView: View {
-    
-    let timeRemaining: String
-    
-    var body: some View {
-        VStack {
-            Text("Begins in:")
-            Text(timeRemaining)
-        }
-        .font(.subheadline)
-        .lineLimit(2)
-        .multilineTextAlignment(.center)
-        .minimumScaleFactor(0.5)
     }
 }
