@@ -4,11 +4,6 @@
 //
 //  Created by user on 03/10/2020.
 //
-func gradient(colorScheme: Color) -> LinearGradient {
-    LinearGradient(gradient: Gradient(colors: [colorScheme.opacity(0.8), colorScheme]),
-                                  startPoint: .bottomTrailing,
-                                  endPoint: .topLeading)
-}
 
 import SwiftUI
 
@@ -27,29 +22,20 @@ struct PrayerTimeCell:  View {
                 Divider()
             }
             HStack {
-                if prayer.name == PrayerName.fajr.capitalized() {
-                    Image(prayer.icon.rawValue).font(Font.system(size: 23))
-                        .padding(.trailing, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                } else {
-                    Image(systemName: prayer.icon.rawValue).font(Font.system(size: 23))
-                        .padding(.trailing, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                }
+                PrayerIconView(prayerIconName: prayer.icon.rawValue)
+                    .frame(width: 30)
                 
                 Text(prayer.name)
                     .font(.title3).fontWeight(.medium)
+                
                 Spacer()
+                
                 if prayer.isNextPrayer {
-                    VStack {
-                        Text("Begins in:")
-                        Text(viewModel.timeRemainingString)
-                    }
-                    .font(.subheadline)
-                    .lineLimit(2)
-                    .multilineTextAlignment(.center)
-                    .minimumScaleFactor(0.5)
+                    CountdownView(timeRemaining: viewModel.timeRemainingString)
                     Spacer()
                 }
-                Text("\(prayer.formattedTime)")
+                
+                Text(prayer.formattedTime)
                     .font(.title3).fontWeight(.medium)
             }
             .padding(.all, 20)
@@ -62,9 +48,25 @@ struct PrayerTimeCell:  View {
     }
     var cellBackground: AnyView {
         if prayer.isNextPrayer {
-            return AnyView(gradient(colorScheme: colorScheme))
+            return AnyView(linearGradient(colorScheme: colorScheme))
         } else {
             return AnyView(Color(UIColor.secondarySystemGroupedBackground))
         }
+    }
+}
+
+struct CountdownView: View {
+    
+    let timeRemaining: String
+    
+    var body: some View {
+        VStack {
+            Text("Begins in:")
+            Text(timeRemaining)
+        }
+        .font(.subheadline)
+        .lineLimit(2)
+        .multilineTextAlignment(.center)
+        .minimumScaleFactor(0.5)
     }
 }

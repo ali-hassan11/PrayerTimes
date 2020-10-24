@@ -46,6 +46,15 @@
 		CE29D9EA2541AE8A00367EF7 /* PrayerName.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D29F2527840200561999 /* PrayerName.swift */; };
 		CE29D9FA2541BCE700367EF7 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE29D9F92541BCE700367EF7 /* Icon.swift */; };
 		CE29D9FF2541BCF700367EF7 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE29D9F92541BCE700367EF7 /* Icon.swift */; };
+		CE29DA2D25421B8200367EF7 /* MediumWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE29DA2725421B7B00367EF7 /* MediumWidget.swift */; };
+		CE29DA3825421C0C00367EF7 /* SmallWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE29DA3225421C0300367EF7 /* SmallWidget.swift */; };
+		CE29DA3E25421C7100367EF7 /* PrayerTimesWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE29DA3D25421C7100367EF7 /* PrayerTimesWidgetEntryView.swift */; };
+		CE29DA4825421CAE00367EF7 /* Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE29DA4725421CAE00367EF7 /* Placeholder.swift */; };
+		CE29DA5225421CDC00367EF7 /* PrayerTimesEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE29DA5125421CDC00367EF7 /* PrayerTimesEntry.swift */; };
+		CE29DA5C25421D2400367EF7 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE29DA5B25421D2400367EF7 /* Provider.swift */; };
+		CE29DA6F254223F700367EF7 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE29DA6E254223F600367EF7 /* Global.swift */; };
+		CE29DA70254223F700367EF7 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE29DA6E254223F600367EF7 /* Global.swift */; };
+		CE29DA7B2542274100367EF7 /* LargeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE29DA792542274100367EF7 /* LargeWidget.swift */; };
 		CE49B71D2533C79300E8294E /* SettingSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE49B71C2533C79300E8294E /* SettingSelectView.swift */; };
 		CE4A6366252919CE000D5CA9 /* PrayerTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4A6365252919CE000D5CA9 /* PrayerTimeCell.swift */; };
 		CE4CB9F0252A71D400A42E1E /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4CB9EF252A71D400A42E1E /* LoadingState.swift */; };
@@ -79,6 +88,8 @@
 		CEA625372526BE6800592075 /* DateElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA625362526BE6800592075 /* DateElements.swift */; };
 		CEA6253F2526BFE300592075 /* Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA6253E2526BFE300592075 /* Month.swift */; };
 		CEA625442526C00700592075 /* Month+DecodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA625432526C00700592075 /* Month+DecodableTests.swift */; };
+		CECFCEA325447EC3005E8ED9 /* PrayerIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECFCEA225447EC3005E8ED9 /* PrayerIconView.swift */; };
+		CECFCEA825447ED2005E8ED9 /* PrayerIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECFCEA225447EC3005E8ED9 /* PrayerIconView.swift */; };
 		CED3D26A2526D07E00561999 /* SettingsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D2692526D07E00561999 /* SettingsConfiguration.swift */; };
 		CED3D2752526E16600561999 /* DateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D2742526E16600561999 /* DateTests.swift */; };
 		CED3D2932526E7E000561999 /* SettingsConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3D2922526E7E000561999 /* SettingsConfigurationTests.swift */; };
@@ -159,6 +170,14 @@
 		CE29D9072540DD8100367EF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE29D9092540DD8100367EF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE29D9F92541BCE700367EF7 /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		CE29DA2725421B7B00367EF7 /* MediumWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumWidget.swift; sourceTree = "<group>"; };
+		CE29DA3225421C0300367EF7 /* SmallWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallWidget.swift; sourceTree = "<group>"; };
+		CE29DA3D25421C7100367EF7 /* PrayerTimesWidgetEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimesWidgetEntryView.swift; sourceTree = "<group>"; };
+		CE29DA4725421CAE00367EF7 /* Placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Placeholder.swift; sourceTree = "<group>"; };
+		CE29DA5125421CDC00367EF7 /* PrayerTimesEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimesEntry.swift; sourceTree = "<group>"; };
+		CE29DA5B25421D2400367EF7 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
+		CE29DA6E254223F600367EF7 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		CE29DA792542274100367EF7 /* LargeWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeWidget.swift; sourceTree = "<group>"; };
 		CE49B71C2533C79300E8294E /* SettingSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSelectView.swift; sourceTree = "<group>"; };
 		CE4A6365252919CE000D5CA9 /* PrayerTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimeCell.swift; sourceTree = "<group>"; };
 		CE4CB9EF252A71D400A42E1E /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
@@ -194,6 +213,7 @@
 		CEA625362526BE6800592075 /* DateElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateElements.swift; sourceTree = "<group>"; };
 		CEA6253E2526BFE300592075 /* Month.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Month.swift; sourceTree = "<group>"; };
 		CEA625432526C00700592075 /* Month+DecodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Month+DecodableTests.swift"; sourceTree = "<group>"; };
+		CECFCEA225447EC3005E8ED9 /* PrayerIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerIconView.swift; sourceTree = "<group>"; };
 		CED3D2692526D07E00561999 /* SettingsConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsConfiguration.swift; sourceTree = "<group>"; };
 		CED3D2742526E16600561999 /* DateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTests.swift; sourceTree = "<group>"; };
 		CED3D2922526E7E000561999 /* SettingsConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsConfigurationTests.swift; sourceTree = "<group>"; };
@@ -276,6 +296,7 @@
 				CEE609A82532A5DD009DD0C1 /* Constants.swift */,
 				CE29D9F92541BCE700367EF7 /* Icon.swift */,
 				CE28BA312526146500AAD5BD /* Info.plist */,
+				CE29DA6E254223F600367EF7 /* Global.swift */,
 				CE4CBA0D252A7A2400A42E1E /* HomePrayerTimes */,
 				CEE609A42532A596009DD0C1 /* LocationPicker */,
 				CE4CBA0E252A7A3900A42E1E /* Settings */,
@@ -324,12 +345,27 @@
 		CE29D9032540DD7E00367EF7 /* PrayerTimesWidget */ = {
 			isa = PBXGroup;
 			children = (
+				CE29DA3D25421C7100367EF7 /* PrayerTimesWidgetEntryView.swift */,
 				CE29D9042540DD7E00367EF7 /* PrayerTimesWidget.swift */,
+				CE29DA5B25421D2400367EF7 /* Provider.swift */,
+				CE29DA5125421CDC00367EF7 /* PrayerTimesEntry.swift */,
+				CE29DA6925421F9E00367EF7 /* Views */,
 				CE29D9062540DD7E00367EF7 /* PrayerTimesWidget.intentdefinition */,
 				CE29D9072540DD8100367EF7 /* Assets.xcassets */,
 				CE29D9092540DD8100367EF7 /* Info.plist */,
 			);
 			path = PrayerTimesWidget;
+			sourceTree = "<group>";
+		};
+		CE29DA6925421F9E00367EF7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE29DA3225421C0300367EF7 /* SmallWidget.swift */,
+				CE29DA2725421B7B00367EF7 /* MediumWidget.swift */,
+				CE29DA792542274100367EF7 /* LargeWidget.swift */,
+				CE29DA4725421CAE00367EF7 /* Placeholder.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		CE4CBA0D252A7A2400A42E1E /* HomePrayerTimes */ = {
@@ -361,6 +397,7 @@
 				CE28BA2A2526146300AAD5BD /* PrayerTimesHomeView.swift */,
 				CE6EAEDC25262C2300E688D3 /* PrayerTimesListView.swift */,
 				CE4A6365252919CE000D5CA9 /* PrayerTimeCell.swift */,
+				CECFCEA225447EC3005E8ED9 /* PrayerIconView.swift */,
 				CE6EAEDF2526300200E688D3 /* NextPrayerView.swift */,
 				CE6EAEE12526313800E688D3 /* DateView.swift */,
 				CE196A85252BBDE10078D63A /* ErrorView.swift */,
@@ -736,6 +773,7 @@
 				CED3D2B62527CD1F00561999 /* TabsView.swift in Sources */,
 				CE4A6366252919CE000D5CA9 /* PrayerTimeCell.swift in Sources */,
 				CEA6248025265D0300592075 /* URLBuilder.swift in Sources */,
+				CECFCEA325447EC3005E8ED9 /* PrayerIconView.swift in Sources */,
 				CEA6248525265DFC00592075 /* PrayerTimesConfiguration.swift in Sources */,
 				CEA624A0252681BC00592075 /* PrayerTimeListViewModel.swift in Sources */,
 				CE4E87B225388313007C8973 /* ColorPickerView.swift in Sources */,
@@ -748,6 +786,7 @@
 				CEE6099825321912009DD0C1 /* LocationManager.swift in Sources */,
 				CEE6099D25328C55009DD0C1 /* LocationPicker.swift in Sources */,
 				CEA624E82526B41000592075 /* Coordinates.swift in Sources */,
+				CE29DA6F254223F700367EF7 /* Global.swift in Sources */,
 				CE196A86252BBDE10078D63A /* ErrorView.swift in Sources */,
 				CE7CB07E252A93BA00158CAF /* ChooseColorCell.swift in Sources */,
 				CEA624BD252690C600592075 /* PrayerTimesData.swift in Sources */,
@@ -804,8 +843,13 @@
 				CE29D98C2541A89B00367EF7 /* PrayerTimesResponse.swift in Sources */,
 				CE29D9A92541A8BE00367EF7 /* Month.swift in Sources */,
 				CE29D9B32541A9E200367EF7 /* SettingsConfiguration.swift in Sources */,
+				CE29DA5225421CDC00367EF7 /* PrayerTimesEntry.swift in Sources */,
 				CE29D99A2541A8AF00367EF7 /* PrayerTimesData.swift in Sources */,
+				CECFCEA825447ED2005E8ED9 /* PrayerIconView.swift in Sources */,
 				CE29D9D12541AA3400367EF7 /* LatitudeAdjustmentMethod.swift in Sources */,
+				CE29DA7B2542274100367EF7 /* LargeWidget.swift in Sources */,
+				CE29DA3E25421C7100367EF7 /* PrayerTimesWidgetEntryView.swift in Sources */,
+				CE29DA70254223F700367EF7 /* Global.swift in Sources */,
 				CE29D9C72541AA2900367EF7 /* Method.swift in Sources */,
 				CE29D9EA2541AE8A00367EF7 /* PrayerName.swift in Sources */,
 				CE29D9B82541A9FC00367EF7 /* URLBuilder.swift in Sources */,
@@ -815,14 +859,18 @@
 				CE29D9E02541AB0F00367EF7 /* Color+Extension.swift in Sources */,
 				CE29D9D62541AA7000367EF7 /* Date+Extensions.swift in Sources */,
 				CE29D9E52541AB3F00367EF7 /* GeocoderWrapper.swift in Sources */,
+				CE29DA3825421C0C00367EF7 /* SmallWidget.swift in Sources */,
 				CE29D9C22541AA2500367EF7 /* Coordinates.swift in Sources */,
 				CE29D99F2541A8B400367EF7 /* DateInfo.swift in Sources */,
 				CE29D9872541A75600367EF7 /* Service.swift in Sources */,
+				CE29DA5C25421D2400367EF7 /* Provider.swift in Sources */,
+				CE29DA2D25421B8200367EF7 /* MediumWidget.swift in Sources */,
 				CE29D90A2540DD8100367EF7 /* PrayerTimesWidget.intentdefinition in Sources */,
 				CE29D9052540DD7E00367EF7 /* PrayerTimesWidget.swift in Sources */,
 				CE29D9DB2541AAE700367EF7 /* LocationManager.swift in Sources */,
 				CE29D9CC2541AA2E00367EF7 /* School.swift in Sources */,
 				CE29D9FF2541BCF700367EF7 /* Icon.swift in Sources */,
+				CE29DA4825421CAE00367EF7 /* Placeholder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
