@@ -19,7 +19,7 @@ enum LoadingState: Equatable {
     case failed(Failure)
 }
 
-class StateManager: ObservableObject { //ADD TESTS FOR THIS
+class StateManager: ObservableObject {
    
     @Published var displayDateState: LoadingState
     @Published var prayerTimesState: LoadingState

@@ -303,8 +303,8 @@
 			children = (
 				CECFCF1D25449274005E8ED9 /* PrayerTimes.entitlements */,
 				CED3D2B52527CD1F00561999 /* TabsView.swift */,
-				CE28BA282526146300AAD5BD /* PrayerTimesApp.swift */,
 				CEA6249F252681BC00592075 /* PrayerTimeListViewModel.swift */,
+				CE28BA282526146300AAD5BD /* PrayerTimesApp.swift */,
 				CEA6248C25267FC900592075 /* Service.swift */,
 				CE28BA312526146500AAD5BD /* Info.plist */,
 				CE4CBA0D252A7A2400A42E1E /* HomePrayerTimes */,

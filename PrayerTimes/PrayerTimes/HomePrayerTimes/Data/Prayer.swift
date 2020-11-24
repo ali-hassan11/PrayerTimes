@@ -5,8 +5,8 @@ struct Prayer: Identifiable, Equatable {
     
     let id = UUID()
     let name: String
-    let prayerDateString: String //dd-MM-yyyy
-    let formattedTime: String //HH:mm
+    let prayerDateString: String ///Format: dd-MM-yyyy
+    let formattedTime: String ///Format: /HH:mm
     var isNextPrayer: Bool
     var hasPassed: Bool
     let icon: Icon

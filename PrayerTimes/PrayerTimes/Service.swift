@@ -13,9 +13,7 @@ class Service {
 
     static let shared = Service()
     private init() {}
-    
-    #warning("Add actual (localized?) error messages")
-    
+        
     let cache = NSCache<NSString, PrayerTimesResponse>()
     
     public func fetchPrayerTimes(url: URL, completion: @escaping ((Result<PrayerTimesResponse, CustomError>) -> Void)) {
